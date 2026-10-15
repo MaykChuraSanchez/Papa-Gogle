@@ -1,5 +1,9 @@
 # AgroDecide AI · Papa v4.1
 
+**Aplicación publicada:** https://papa-gogle.vercel.app · [Repositorio](https://github.com/MaykChuraSanchez/Papa-Gogle).
+
+Despliegue inicial verificado el 15/10/2026, desde el commit `3c8b867`. Vercel está conectado a `main`: los siguientes cambios publicados en esa rama generan un despliegue. La actualización nocturna de datos requiere configurar los secrets de Vercel descritos abajo; desplegar la interfaz por primera vez no activa esa publicación nocturna.
+
 La interfaz de **Papa-Gogle** se conecta ahora a datos históricos SISAP y a pronósticos calculados en Python. Se conserva la identidad verde, la navegación de nueve módulos y los caminos **Quiero sembrar / Ya coseché** del repositorio original.
 
 ## Abrir la aplicación
@@ -71,6 +75,6 @@ Diez pruebas TypeScript verifican cálculos económicos, fechas, frescura, venta
 
 ## Publicar
 
-Consulta [DESPLIEGUE.md](docs/DESPLIEGUE.md). La configuración Vercel está preparada; **no se ha desplegado ni modificado GitHub desde esta entrega local**. El frontend usa artefactos precalculados; el entrenamiento no corre dentro de Vercel ni en el celular.
+Consulta [DESPLIEGUE.md](docs/DESPLIEGUE.md). La configuración Vercel está activa y la aplicación está publicada. El frontend usa artefactos precalculados; el entrenamiento no corre dentro de Vercel ni en el celular.
 
 Detalles: [auditoría del repositorio](docs/AUDITORIA_REPOSITORIO.md), [fuentes](docs/FUENTES.md), [metodología](docs/METODOLOGIA.md), [resultados](docs/RESULTADOS.md). La implementación demostrativa original está en `archive/demo-v3` para consulta y queda excluida del build.

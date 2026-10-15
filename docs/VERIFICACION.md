@@ -25,6 +25,10 @@ Con 1 ha, 22 t/ha, 10% de merma, S/ 15.000/ha de cultivo, flete S/ 0,25/kg y com
 
 ## No ejecutado
 
-Despliegue remoto, push/PR en GitHub, conexión PostgreSQL remota, integración de estaciones SENAMHI/boletines ENFEN o prueba de un servicio MLflow. Los archivos de configuración preparados no significan que esos servicios estén activos.
+Conexión PostgreSQL remota, integración de estaciones SENAMHI/boletines ENFEN, servicio MLflow y secrets para publicar actualizaciones nocturnas.
+
+## Publicación posterior verificada
+
+La versión se subió a `main` en GitHub y se desplegó en https://papa-gogle.vercel.app el 15/10/2026, desde `3c8b867`. Se verificaron portada e índice HTTP 200, diez series completas, CSV de 28.752 filas, CSP y el simulador público sin errores de consola. No se creó PR: la actualización se publicó directamente en la rama solicitada.
 
 Las capturas están en `docs/screenshots`. El servidor local usado para verificar se detiene al terminar; `ABRIR_AGRODECIDE.cmd` vuelve a iniciarlo.
