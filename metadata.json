@@ -1,0 +1,6 @@
+{
+  "name": "AgroDecide AI - Pronóstico de Precios & Decisión Agrícola",
+  "description": "Plataforma de inteligencia de mercado y pronóstico para agricultores peruanos. Integra datos de EMMSA, MIDAGRI SISAP, SIEA, SENAMHI y BCRP con machine learning y Gemini AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
