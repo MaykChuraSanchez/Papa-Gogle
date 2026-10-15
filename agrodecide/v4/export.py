@@ -58,6 +58,8 @@ def run():
     monitoring=DATA/'monitoring.json'
     index['monitoring']=json.loads(monitoring.read_text(encoding='utf-8')) if monitoring.exists() else {'series':[]}
     prices=read('prices')
+    from .diagnostics import run as diagnostics
+    diagnostics(artifact, prices)
     csv_path=web/'prices.csv'
     fd,temp=tempfile.mkstemp(dir=web,suffix='.tmp');os.close(fd)
     try:

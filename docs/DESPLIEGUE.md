@@ -35,3 +35,7 @@ La migración opcional `sql/001_warehouse.sql` y `python -m agrodecide.v4.postgr
 Se conserva la publicación anterior si el job no termina. La pantalla muestra fechas y bloquea proyecciones con precios mayores a siete días o evaluación mayor a 45 días. Los estados/logs del worker y la auditoría de rangos quedan en artefactos. Las notificaciones de fallo de GitHub dependen de la configuración del propietario; no hay Telegram/email externo configurado.
 
 El seguimiento compara pronósticos emitidos previamente con precios que ya se observaron. Al inicio no hay resultados futuros realizados; el sistema lo informa. El registro JSON conserva ejecuciones. MLflow es opcional vía `requirements-ops.txt` y no se presenta como servicio desplegado.
+
+## Función de asistente (4.2)
+
+El frontend sigue en `dist`; Vercel añade `api/assistant.ts` como función Node. `vercel.json` incluye las publicaciones JSON que necesita el servidor. GET `/api/assistant` informa el proveedor configurado; POST responde con datos verificados. Sin API configurada funciona en modo local. Consultar `VERSION_4_2.md` para habilitar GPT; no se incluye ninguna clave en el repositorio.

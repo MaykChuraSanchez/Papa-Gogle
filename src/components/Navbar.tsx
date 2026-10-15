@@ -31,12 +31,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navItems: { id: ViewTab; label: string; icon: React.ReactNode; shortLabel: string }[] = [
     { id: 'home', label: '01. Inicio', shortLabel: 'Inicio', icon: <Sprout className="w-3.5 h-3.5" /> },
     { id: 'sync', label: '02. Conectores', shortLabel: 'Datos', icon: <Database className="w-3.5 h-3.5" /> },
-    { id: 'varieties', label: '03. 10 Variedades SISAP', shortLabel: 'Variedades', icon: <BarChart3 className="w-3.5 h-3.5 text-[#B7F36B]" /> },
+    { id: 'varieties', label: '03. 10 Variedades SISAP', shortLabel: 'Explorar precios', icon: <BarChart3 className="w-3.5 h-3.5 text-[#B7F36B]" /> },
     { id: 'market', label: '04. Mercado & Mapa', shortLabel: 'Mercado', icon: <BarChart3 className="w-3.5 h-3.5" /> },
     { id: 'enfen', label: '05. El Niño (ENFEN)', shortLabel: 'El Niño', icon: <TrendingUp className="w-3.5 h-3.5 text-amber-300" /> },
     { id: 'planting', label: '06. Quiero Sembrar', shortLabel: 'Sembrar', icon: <CalendarDays className="w-3.5 h-3.5" /> },
     { id: 'harvest', label: '07. Ya Coseché', shortLabel: 'Coseché', icon: <Truck className="w-3.5 h-3.5" /> },
-    { id: 'modellab', label: '08. Model Lab', shortLabel: 'Model Lab', icon: <Cpu className="w-3.5 h-3.5" /> },
+    { id: 'modellab', label: '08. Model Lab', shortLabel: 'Laboratorio', icon: <Cpu className="w-3.5 h-3.5" /> },
     { id: 'architecture', label: '09. Asistente', shortLabel: 'Asistente', icon: <Workflow className="w-3.5 h-3.5" /> },
   ];
 

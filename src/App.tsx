@@ -4,6 +4,10 @@ import { DataProvider } from './data/DataProvider';
 import { useData } from './data/DataContext';
 import { Navbar } from './components/Navbar';
 import { Card, Home, Varieties, Planting, Harvest, ModelLab, Sources, Climate, Market, Assistant } from './components/ConnectedViews';
+import { Dashboard } from './components/Dashboard';
+import { Explorer } from './components/Explorer';
+import { ResearchLab } from './components/ResearchLab';
+import { AssistantChat } from './components/AssistantChat';
 import { freshness } from './utils/forecast';
 import type { ViewTab } from './types/agro';
 const tabs: ViewTab[] = ['home','sync','varieties','market','enfen','planting','harvest','modellab','architecture'];
@@ -17,21 +21,21 @@ function Platform() {
   return <div className="min-h-screen bg-[#F8FAF8] text-[#14211C] flex flex-col selection:bg-[#20C77A]/30">
     <a className="skip-link" href="#main">Ir al contenido</a>
     <Navbar currentTab={tab} onSelectTab={navigate} onOpenAssistant={()=>navigate('architecture')} onSelectVariety={v=>{select(v);navigate('varieties');}}/>
-    <main id="main" className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <main key={tab} id="main" className="flex-1 max-w-[1440px] w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
       {(cached||stale)&&<div className="rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-sm p-4 mb-6" role="status">{cached?'Estás viendo la última publicación guardada en este dispositivo. ':''}{stale}</div>}
       {error ? <Card><p role="alert">{error}</p><button className="primary mt-4" onClick={retry}>Reintentar</button></Card> : !index ? <Card><p role="status">Cargando publicación de datos…</p></Card> : <>
-        {tab==='home'&&(series?<Home navigate={navigate}/>:<Card>Cargando variedad…</Card>)}
-        {tab==='varieties'&&<Varieties plant={v=>{select(v);navigate('planting');}}/>}
+        {tab==='home'&&(series?<Dashboard navigate={navigate}/>:<Card>Cargando variedad…</Card>)}
+        {tab==='varieties'&&<Explorer plant={()=>navigate('planting')}/>}
         {tab==='planting'&&<Planting/>}
         {tab==='harvest'&&(series?<Harvest/>:<Card>Cargando variedad…</Card>)}
-        {tab==='modellab'&&(series?<ModelLab/>:<Card>Cargando variedad…</Card>)}
+        {tab==='modellab'&&<ResearchLab/>}
         {tab==='sync'&&<Sources/>}
         {tab==='enfen'&&<Climate/>}
         {tab==='market'&&(series?<Market/>:<Card>Cargando variedad…</Card>)}
-        {tab==='architecture'&&<Assistant navigate={navigate}/>}
+        {tab==='architecture'&&<AssistantChat navigate={navigate}/>}
       </>}
     </main>
-    <footer className="bg-[#0B3025] text-white border-t border-[#174436] py-8 px-4 sm:px-6 mt-10"><div className="max-w-7xl mx-auto flex flex-wrap justify-between gap-5 items-center"><div className="flex gap-3 items-center"><div className="p-3 bg-[#20C77A]/20 rounded-xl"><Sprout className="text-[#B7F36B]"/></div><div><p className="font-extrabold">AgroDecide AI <span className="text-[#B7F36B] text-xs">· Piloto papa</span></p><p className="text-xs text-[#A2C7B8] mt-1">Siembra con información. Cosecha con mejores decisiones.</p></div></div><div className="text-xs text-[#A2C7B8] max-w-md leading-relaxed">Precios mayoristas de Lima. Escenarios orientativos, con errores y limitaciones visibles. Diseño basado en tu plataforma Papa-Gogle · v4.1.</div></div></footer>
+    <footer className="bg-[#0B3025] text-white border-t border-[#174436] py-8 px-4 sm:px-6 mt-10"><div className="max-w-7xl mx-auto flex flex-wrap justify-between gap-5 items-center"><div className="flex gap-3 items-center"><div className="p-3 bg-[#20C77A]/20 rounded-xl"><Sprout className="text-[#B7F36B]"/></div><div><p className="font-extrabold">AgroDecide AI <span className="text-[#B7F36B] text-xs">· Piloto papa</span></p><p className="text-xs text-[#A2C7B8] mt-1">Siembra con información. Cosecha con mejores decisiones.</p></div></div><div className="text-xs text-[#A2C7B8] max-w-md leading-relaxed">Precios mayoristas de Lima. Escenarios orientativos, con errores y limitaciones visibles. Diseño basado en tu plataforma Papa-Gogle · v4.2.</div></div></footer>
   </div>;
 }
 export default function App(){return <DataProvider><Platform/></DataProvider>;}

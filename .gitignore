@@ -12,3 +12,6 @@ coverage/
 __pycache__/
 *.pyc
 *.zip
+
+# Evidencia visual de desarrollo; se entrega localmente.
+docs/screenshots/v42*.jpg

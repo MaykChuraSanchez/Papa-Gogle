@@ -1,10 +1,16 @@
-# AgroDecide AI · Papa v4.1
+# AgroDecide AI · Papa v4.2
 
 **Aplicación publicada:** https://papa-gogle.vercel.app · [Repositorio](https://github.com/MaykChuraSanchez/Papa-Gogle).
 
 Despliegue inicial verificado el 15/10/2026, desde el commit `3c8b867`. Vercel está conectado a `main`: los siguientes cambios publicados en esa rama generan un despliegue. La actualización nocturna de datos requiere configurar los secrets de Vercel descritos abajo; desplegar la interfaz por primera vez no activa esa publicación nocturna.
 
 La interfaz de **Papa-Gogle** se conecta ahora a datos históricos SISAP y a pronósticos calculados en Python. Se conserva la identidad verde, la navegación de nueve módulos y los caminos **Quiero sembrar / Ya coseché** del repositorio original.
+
+## Novedades 4.2
+
+Experiencia ampliada a partir del código de AI Studio: gráficos interactivos y zoom, comparación de variedades/base 100, mapa de calor mensual, estacionalidad, oferta observada, dispersión precio–volumen, 50 auditorías por fecha reconciliadas, residuales e histograma, cuaderno de campañas, sensibilidad económica y escena isométrica 3D ligera.
+
+El asistente funciona **sin API en modo local**, distingue el modo en cada respuesta y traslada la variedad/fecha al simulador. La conexión OpenAI está preparada para activarse con credenciales privadas, pero no se afirma que GPT esté activo. Ver [detalle de funciones, pruebas y configuración](docs/VERSION_4_2.md).
 
 ## Abrir la aplicación
 
@@ -71,7 +77,7 @@ npm run build
 python -m unittest discover -s tests -p 'test_*.py'
 ```
 
-Diez pruebas TypeScript verifican cálculos económicos, fechas, frescura, ventanas completas, huecos, publicación de las diez variedades y reconciliación regional. Trece pruebas Python verifican contratos SISAP, caché, fallos de red, causalidad, separación de mercados y auditoría temporal. El caso de regresión de Canchán se congela en `tests/fixtures`, para no bloquear actualizaciones diarias por cambios normales de precios.
+Veinte pruebas TypeScript y de servidor verifican cálculos económicos, fechas, frescura, ventanas completas, huecos, publicación de las diez variedades y reconciliación regional. Trece pruebas Python verifican contratos SISAP, caché, fallos de red, causalidad, separación de mercados y auditoría temporal. El caso de regresión de Canchán se congela en `tests/fixtures`, para no bloquear actualizaciones diarias por cambios normales de precios.
 
 ## Publicar
 

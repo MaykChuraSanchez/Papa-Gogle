@@ -1,7 +1,7 @@
 {
   "name": "agrodecide-papa",
   "private": true,
-  "version": "4.1.0",
+  "version": "4.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
@@ -9,7 +9,7 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "lint": "tsc --noEmit",
-    "test": "tsx --test src/utils/forecast.test.ts",
+    "test": "tsx --test src/utils/*.test.ts server/*.test.ts",
     "data:update": "python -m agrodecide.v4.pipeline",
     "data:train": "python -m agrodecide.v4.pipeline --retrain"
   },
@@ -19,6 +19,7 @@
     "lucide-react": "^0.546.0",
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
+    "recharts": "^3.10.1",
     "vite": "^8.3.0"
   },
   "devDependencies": {

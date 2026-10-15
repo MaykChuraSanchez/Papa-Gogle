@@ -4,12 +4,12 @@ from zipfile import ZipFile, ZIP_DEFLATED
 import json
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT.parent / 'AgroDecide_Papa_v4_1.zip'
-TOP = 'AgroDecide_Papa_v4_1'
+OUTPUT = ROOT.parent / 'AgroDecide_Papa_v4_2.zip'
+TOP = 'AgroDecide_Papa_v4_2'
 FILES = ['README.md', 'ABRIR_AGRODECIDE.cmd', 'package.json', 'package-lock.json',
          'tsconfig.json', 'vite.config.ts', 'vercel.json', 'index.html', '.env.example',
          '.gitignore', 'requirements-v4.txt', 'requirements-ops.txt']
-DIRS = ['src', 'agrodecide', 'reference', 'tests', 'docs', 'sql', 'scripts', '.github', 'archive', 'data/v4', 'dist']
+DIRS = ['src', 'api', 'server', 'public/analytics', 'agrodecide', 'reference', 'tests', 'docs', 'sql', 'scripts', '.github', 'archive', 'data/v4', 'dist']
 
 def include(path):
     return path.is_file() and '__pycache__' not in path.parts and path.suffix not in {'.pyc', '.wal', '.tmp'}

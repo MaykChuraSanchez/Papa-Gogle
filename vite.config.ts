@@ -5,10 +5,30 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), {
+      name: 'agrodecide-assistant-api',
+      configureServer(server) {
+        server.middlewares.use('/api/assistant', async (req, res, next) => {
+          try { const api = await server.ssrLoadModule('/api/assistant.ts'); await api.default(req, res); }
+          catch { res.statusCode = 500; res.setHeader('Content-Type', 'application/json'); res.end(JSON.stringify({error:'Servicio no disponible'})); }
+        });
+      },
+    }],
     resolve: {
       alias: {
         '@': path.resolve(import.meta.dirname, '.'),
+      },
+    },
+    build: {
+      rolldownOptions: {
+        output: {
+          codeSplitting: {
+            groups: [
+              { name: 'react-vendor', test: /node_modules[\\/](react|react-dom|scheduler)[\\/]/, priority: 20 },
+              { name: 'charts', test: /node_modules[\\/](recharts|recharts-scale|d3-[^\\/]+|victory-vendor)[\\/]/, priority: 15 },
+            ],
+          },
+        },
       },
     },
     server: {
