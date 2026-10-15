@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { evaluateHarvestDecision } from '../../utils/economicEngine';
+import { VARIETIES_CATALOG } from '../../utils/agronomicEngine';
 import {
   Truck,
   DollarSign,
@@ -87,21 +88,23 @@ export const HarvestDecisionView: React.FC = () => {
           </div>
 
           <div className="space-y-1">
-            <label className="text-xs font-bold text-slate-700">Variedad Cosechada</label>
+            <label className="text-xs font-bold text-slate-700">Variedad Cosechada (MIDAGRI SISAP)</label>
             <select
               value={varietyName}
               onChange={(e) => {
+                const selected = VARIETIES_CATALOG.find((v) => v.name === e.target.value);
                 setVarietyName(e.target.value);
-                if (e.target.value.includes('Amarilla')) setCurrentPrice(2.52);
-                else if (e.target.value.includes('Yungay')) setCurrentPrice(1.42);
-                else setCurrentPrice(1.48);
+                if (selected) {
+                  setCurrentPrice(selected.currentGMMLPrice);
+                }
               }}
               className="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-medium bg-slate-50 focus:ring-2 focus:ring-amber-500 focus:outline-none"
             >
-              <option value="Papa Canchán">Papa Canchán (S/ 1.48 hoy)</option>
-              <option value="Papa Yungay">Papa Yungay (S/ 1.42 hoy)</option>
-              <option value="Papa Amarilla Tumbay">Papa Amarilla Tumbay (S/ 2.52 hoy)</option>
-              <option value="Papa Huamantanga">Papa Huamantanga (S/ 2.10 hoy)</option>
+              {VARIETIES_CATALOG.map((v) => (
+                <option key={v.id} value={v.name}>
+                  {v.name} (S/ {v.currentGMMLPrice.toFixed(2)} hoy) — {v.type}
+                </option>
+              ))}
             </select>
           </div>
 

@@ -3,7 +3,9 @@ import { ViewTab } from './types/agro';
 import { Navbar } from './components/Navbar';
 import { HomeView } from './components/views/HomeView';
 import { DataSyncView } from './components/views/DataSyncView';
+import { VarietiesBreakdownView } from './components/views/VarietiesBreakdownView';
 import { MarketView } from './components/views/MarketView';
+import { EnfenSenamhiView } from './components/views/EnfenSenamhiView';
 import { PlantingSimulatorView } from './components/views/PlantingSimulatorView';
 import { HarvestDecisionView } from './components/views/HarvestDecisionView';
 import { ModelLabView } from './components/views/ModelLabView';
@@ -12,9 +14,20 @@ import { Sprout, ExternalLink } from 'lucide-react';
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<ViewTab>('home');
+  const [selectedVarietyForPlanting, setSelectedVarietyForPlanting] = useState<string>('canchan');
 
   const handleOpenAssistant = () => {
     setCurrentTab('architecture');
+  };
+
+  const handleSelectVariety = (varId: string) => {
+    setSelectedVarietyForPlanting(varId);
+    setCurrentTab('varieties');
+  };
+
+  const handleVarietyChosenForPlanting = (varId: string) => {
+    setSelectedVarietyForPlanting(varId);
+    setCurrentTab('planting');
   };
 
   return (
@@ -24,6 +37,7 @@ export default function App() {
         currentTab={currentTab}
         onSelectTab={setCurrentTab}
         onOpenAssistant={handleOpenAssistant}
+        onSelectVariety={handleSelectVariety}
       />
 
       {/* Main Content Area */}
@@ -35,8 +49,22 @@ export default function App() {
           />
         )}
         {currentTab === 'sync' && <DataSyncView />}
+        {currentTab === 'varieties' && (
+          <VarietiesBreakdownView
+            onNavigateTab={setCurrentTab}
+            onSelectVarietyForPlanting={handleVarietyChosenForPlanting}
+          />
+        )}
         {currentTab === 'market' && <MarketView />}
-        {currentTab === 'planting' && <PlantingSimulatorView />}
+        {currentTab === 'enfen' && (
+          <EnfenSenamhiView
+            onNavigateTab={setCurrentTab}
+            onSelectVarietyForPlanting={handleVarietyChosenForPlanting}
+          />
+        )}
+        {currentTab === 'planting' && (
+          <PlantingSimulatorView initialVarietyId={selectedVarietyForPlanting} />
+        )}
         {currentTab === 'harvest' && <HarvestDecisionView />}
         {currentTab === 'modellab' && <ModelLabView />}
         {currentTab === 'architecture' && <ArchitectureAssistantView />}

@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import { DEPARTMENTS_DATA, HISTORICAL_PRICES } from '../../data/seedData';
-import { DepartmentData } from '../../types/agro';
+import { VARIETIES_CATALOG } from '../../utils/agronomicEngine';
+import { OFFICIAL_ENFEN_DATA } from '../../utils/enfenEngine';
+import { DepartmentData, VarietyInfo } from '../../types/agro';
 import {
   MapPin,
   TrendingUp,
   BarChart3,
   Calendar,
-  Layers,
   ThermometerSnowflake,
   DollarSign,
   Truck,
-  Info,
+  Waves,
+  ShieldAlert,
+  ExternalLink,
   Scale,
+  Sparkles,
+  Info,
+  CheckCircle2,
+  AlertTriangle,
 } from 'lucide-react';
 
 type MapMetric = 'production' | 'yield' | 'gmmlShare' | 'farmgatePrice' | 'climateRisk';
@@ -20,7 +27,14 @@ export const MarketView: React.FC = () => {
   const [selectedMetric, setSelectedMetric] = useState<MapMetric>('gmmlShare');
   const [selectedDept, setSelectedDept] = useState<DepartmentData>(DEPARTMENTS_DATA[0]); // Junín default
   const [hoveredDept, setHoveredDept] = useState<DepartmentData | null>(null);
-  const [selectedVariety, setSelectedVariety] = useState<'canchan' | 'yungay' | 'amarilla' | 'huamantanga'>('canchan');
+  const [selectedVarietyFilter, setSelectedVarietyFilter] = useState<'all' | 'blanca' | 'amarilla' | 'color' | 'nativa'>('all');
+  const [inspectedVariety, setInspectedVariety] = useState<VarietyInfo>(VARIETIES_CATALOG[0]);
+
+  // Filtered varieties
+  const filteredVarieties = VARIETIES_CATALOG.filter((v) => {
+    if (selectedVarietyFilter === 'all') return true;
+    return v.type === selectedVarietyFilter;
+  });
 
   // Color generator for Peru Choropleth Map based on selected metric
   const getDeptFillColor = (dept: DepartmentData) => {
@@ -46,7 +60,7 @@ export const MarketView: React.FC = () => {
 
     if (selectedMetric === 'yield') {
       const y = dept.yieldTonHa;
-      if (y >= 26) return '#0369A1'; // Costa tecnificada (Ica, Lima, Arequipa)
+      if (y >= 26) return '#0369A1';
       if (y >= 22) return '#0284C7';
       if (y >= 18) return '#38BDF8';
       if (y >= 14) return '#BAE6FD';
@@ -55,7 +69,7 @@ export const MarketView: React.FC = () => {
 
     if (selectedMetric === 'farmgatePrice') {
       const p = dept.farmgatePrice;
-      if (p >= 1.15) return '#854D0E'; // Costa / cercanas
+      if (p >= 1.15) return '#854D0E';
       if (p >= 0.95) return '#CA8A04';
       if (p >= 0.88) return '#FACC15';
       if (p > 0) return '#FEF08A';
@@ -66,7 +80,7 @@ export const MarketView: React.FC = () => {
       if (dept.climateRisk === 'Muy Alto') return '#DC2626'; // Puno
       if (dept.climateRisk === 'Alto') return '#EA580C'; // Pasco, Huancavelica, Apurímac
       if (dept.climateRisk === 'Moderado') return '#F59E0B'; // Junín, Huánuco, Cajamarca
-      return '#10B981'; // Costa bajo riesgo heladas
+      return '#10B981';
     }
 
     return '#CBD5E1';
@@ -82,10 +96,10 @@ export const MarketView: React.FC = () => {
             Radiografía Nacional de la Papa
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-            Mercado Mayorista & Mapa Productivo del Perú
+            Mercado Mayorista, Variedades & Alerta ENFEN
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 max-w-2xl mt-1">
-            Visualiza los volúmenes de ingreso a Lima, la distribución de la producción regional, los precios en chacra y los riesgos agroclimáticos en cada departamento del Perú.
+            Analiza las 10 variedades oficiales de MIDAGRI SISAP y EMMSA, el mapa de producción departamental y los reportes climáticos del <strong>ENFEN y SENAMHI</strong>.
           </p>
         </div>
 
@@ -144,6 +158,113 @@ export const MarketView: React.FC = () => {
         </div>
       </div>
 
+      {/* Official ENFEN & SENAMHI Climate Radar Banner */}
+      <section className="bg-gradient-to-br from-[#0B2535] via-[#0E3547] to-[#08202C] text-white rounded-3xl p-6 sm:p-8 border border-sky-900/60 shadow-xl space-y-5">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-4">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
+              <span className="text-xs font-extrabold uppercase tracking-widest text-amber-300">
+                COMITÉ MULTISECTORIAL ENFEN & SENAMHI
+              </span>
+            </div>
+            <h2 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
+              <Waves className="w-6 h-6 text-sky-400" />
+              Monitoreo Oficial del Fenómeno El Niño
+            </h2>
+            <p className="text-xs text-sky-200">
+              {OFFICIAL_ENFEN_DATA.latestBulletinNumber} • Publicado el {OFFICIAL_ENFEN_DATA.bulletinDate}
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="p-3 bg-white/10 rounded-2xl border border-white/15 text-center">
+              <span className="text-[10px] text-sky-200 uppercase block font-semibold">Estado Oficial</span>
+              <span className="text-xs sm:text-sm font-extrabold text-amber-300">
+                {OFFICIAL_ENFEN_DATA.status}
+              </span>
+            </div>
+            <a
+              href={OFFICIAL_ENFEN_DATA.officialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold rounded-2xl text-xs flex items-center gap-1.5 transition-all shadow-md cursor-pointer"
+            >
+              <span>Ver Boletín</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+
+        {/* Ocean & Atmospheric Indicators */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+            <span className="text-[10px] text-sky-300 block uppercase font-mono">Región Niño 1+2 (Costa Perú)</span>
+            <div className="text-xl font-black text-amber-300 mt-0.5">
+              +{OFFICIAL_ENFEN_DATA.seaSurfaceTempAnomaly} °C
+            </div>
+            <p className="text-[11px] text-slate-300 mt-0.5">Anomalía Temperatura Superficial del Mar (TSM)</p>
+          </div>
+
+          <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+            <span className="text-[10px] text-sky-300 block uppercase font-mono">Región Niño 3.4 (Pacífico Central)</span>
+            <div className="text-xl font-black text-emerald-300 mt-0.5">
+              +{OFFICIAL_ENFEN_DATA.pacificCentralAnomaly} °C
+            </div>
+            <p className="text-[11px] text-slate-300 mt-0.5">Condición Neutra predominante</p>
+          </div>
+
+          <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+            <span className="text-[10px] text-sky-300 block uppercase font-mono">Probabilidad ENFEN</span>
+            <div className="text-xl font-black text-white mt-0.5">
+              {OFFICIAL_ENFEN_DATA.probabilities.neutro}% Neutro
+            </div>
+            <p className="text-[11px] text-slate-300 mt-0.5">24% Niño Débil | 10% Moderado</p>
+          </div>
+
+          <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+            <span className="text-[10px] text-sky-300 block uppercase font-mono">Impacto en Precios GMML</span>
+            <div className="text-xl font-black text-sky-300 mt-0.5">
+              +8% a +15%
+            </div>
+            <p className="text-[11px] text-slate-300 mt-0.5">Prima de riesgo climático en papa</p>
+          </div>
+        </div>
+
+        {/* Regional Impact on Potato Sectors */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1 text-xs">
+          <div className="p-4 rounded-2xl bg-[#071924] border border-sky-800/60 space-y-1.5">
+            <span className="font-extrabold text-amber-300 flex items-center gap-1.5">
+              <ShieldAlert className="w-4 h-4 text-amber-400" />
+              1. Costa Central & Norte (Barranca/Cañete)
+            </span>
+            <p className="text-slate-300 text-[11px] leading-relaxed">
+              {OFFICIAL_ENFEN_DATA.impactOnPotato.coast}
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-[#071924] border border-sky-800/60 space-y-1.5">
+            <span className="font-extrabold text-emerald-300 flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+              2. Sierra Central (Tarma / Mantaro / Huánuco)
+            </span>
+            <p className="text-slate-300 text-[11px] leading-relaxed">
+              {OFFICIAL_ENFEN_DATA.impactOnPotato.centralHighlands}
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-[#071924] border border-sky-800/60 space-y-1.5">
+            <span className="font-extrabold text-sky-300 flex items-center gap-1.5">
+              <AlertTriangle className="w-4 h-4 text-sky-400" />
+              3. Sierra Sur & Altiplano (Puno / Cusco)
+            </span>
+            <p className="text-slate-300 text-[11px] leading-relaxed">
+              {OFFICIAL_ENFEN_DATA.impactOnPotato.southernHighlands}
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Main Grid: Interactive Map of Peru + Department Inspector */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Interactive SVG Choropleth Map of Peru */}
@@ -171,10 +292,8 @@ export const MarketView: React.FC = () => {
               viewBox="60 10 400 480"
               className="w-full h-full max-h-[440px] drop-shadow-sm transition-all"
             >
-              {/* Render each department polygon */}
               {DEPARTMENTS_DATA.map((dept) => {
                 const isSelected = selectedDept.id === dept.id;
-                const isHovered = hoveredDept?.id === dept.id;
                 const fillColor = getDeptFillColor(dept);
 
                 return (
@@ -190,7 +309,6 @@ export const MarketView: React.FC = () => {
                       onMouseLeave={() => setHoveredDept(null)}
                       onClick={() => setSelectedDept(dept)}
                     />
-                    {/* Visual department label */}
                     <text
                       x={dept.labelPos.x}
                       y={dept.labelPos.y}
@@ -213,7 +331,6 @@ export const MarketView: React.FC = () => {
               </text>
             </svg>
 
-            {/* Map Legend */}
             <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm p-2.5 rounded-xl border border-slate-200 text-[10px] space-y-1 shadow-sm">
               <span className="font-bold text-slate-700 block">Intensidad ({selectedMetric}):</span>
               <div className="flex items-center gap-1">
@@ -248,7 +365,6 @@ export const MarketView: React.FC = () => {
               </div>
             </div>
 
-            {/* Metric Cards Grid */}
             <div className="grid grid-cols-2 gap-3">
               <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
                 <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
@@ -315,7 +431,6 @@ export const MarketView: React.FC = () => {
               </div>
             </div>
 
-            {/* Differential Spread: Chacra vs GMML Lima */}
             <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 text-xs text-emerald-950 space-y-1.5">
               <div className="flex items-center justify-between font-bold">
                 <span className="flex items-center gap-1.5">
@@ -339,155 +454,159 @@ export const MarketView: React.FC = () => {
         </div>
       </div>
 
-      {/* Varietal Comparison & Historical Spread */}
+      {/* Complete Varietal Directory: All 10 Varieties from SISAP / EMMSA */}
       <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div>
-            <h2 className="text-xl font-bold text-slate-900">
-              Comparativa de Precios por Variedad en GMML (2024 - 2026)
-            </h2>
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-emerald-700" />
+              <h2 className="text-xl font-bold text-slate-900">
+                Catálogo Completo de las 10 Variedades Oficiales (MIDAGRI SISAP & EMMSA)
+              </h2>
+            </div>
             <p className="text-xs text-slate-500 mt-0.5">
-              Diferencial entre variedades blancas (Canchán, Yungay) vs variedades amarillas y de color
+              Haz clic en cualquier variedad para inspeccionar sus parámetros agronómicos de INIA, cotización actual y sensibilidad climática al ENFEN.
             </p>
           </div>
 
-          <div className="flex items-center gap-2">
-            {(['canchan', 'yungay', 'amarilla', 'huamantanga'] as const).map((v) => (
+          {/* Filter Pills */}
+          <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-2xl overflow-x-auto whitespace-nowrap">
+            {[
+              { id: 'all', label: 'Todas (10)' },
+              { id: 'blanca', label: 'Blancas (4)' },
+              { id: 'nativa', label: 'Nativas / Altura (3)' },
+              { id: 'color', label: 'Color / Jaspeadas (2)' },
+              { id: 'amarilla', label: 'Amarillas (1)' },
+            ].map((tab) => (
               <button
-                key={v}
-                onClick={() => setSelectedVariety(v)}
+                key={tab.id}
+                onClick={() => setSelectedVarietyFilter(tab.id as any)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                  selectedVariety === v
-                    ? 'bg-slate-900 text-white shadow-sm'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  selectedVarietyFilter === tab.id
+                    ? 'bg-white text-slate-900 shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
-                {v === 'canchan'
-                  ? 'Papa Canchán'
-                  : v === 'yungay'
-                  ? 'Papa Yungay'
-                  : v === 'amarilla'
-                  ? 'Amarilla Tumbay'
-                  : 'Huamantanga'}
+                {tab.label}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Variety Price Table Comparison */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div className={`p-4 rounded-2xl border transition-all ${selectedVariety === 'canchan' ? 'border-[#20C77A] bg-emerald-50/40 ring-2 ring-[#20C77A]/20' : 'border-slate-200 bg-white'}`}>
-            <span className="text-xs font-bold text-slate-500 uppercase">Líder de Consumo</span>
-            <h3 className="font-bold text-base text-slate-900 mt-0.5">Papa Canchán</h3>
-            <div className="text-2xl font-black text-emerald-800 mt-2">S/ 1.48 <span className="text-xs font-normal text-slate-500">/kg</span></div>
-            <p className="text-xs text-slate-500 mt-1">Variedad blanca de alto rendimiento (24-30 t/ha). Representa el 60% de la papa frita en pollerías de Lima.</p>
-          </div>
+        {/* 10 Varieties Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
+          {filteredVarieties.map((v) => {
+            const isSelected = inspectedVariety.id === v.id;
+            return (
+              <div
+                key={v.id}
+                onClick={() => setInspectedVariety(v)}
+                className={`p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between space-y-2 ${
+                  isSelected
+                    ? 'border-2 border-[#20C77A] bg-emerald-50/60 shadow-md ring-2 ring-[#20C77A]/20'
+                    : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/50'
+                }`}
+              >
+                <div className="space-y-1">
+                  <div className="flex items-center justify-between">
+                    <span
+                      className={`text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full ${
+                        v.type === 'amarilla'
+                          ? 'bg-amber-100 text-amber-900'
+                          : v.type === 'nativa'
+                          ? 'bg-purple-100 text-purple-900'
+                          : v.type === 'color'
+                          ? 'bg-rose-100 text-rose-900'
+                          : 'bg-emerald-100 text-emerald-900'
+                      }`}
+                    >
+                      {v.type}
+                    </span>
+                    <span className="text-[10px] font-bold text-emerald-700 flex items-center gap-0.5">
+                      <TrendingUp className="w-3 h-3" />
+                      +{v.change7d}%
+                    </span>
+                  </div>
 
-          <div className={`p-4 rounded-2xl border transition-all ${selectedVariety === 'yungay' ? 'border-[#20C77A] bg-emerald-50/40 ring-2 ring-[#20C77A]/20' : 'border-slate-200 bg-white'}`}>
-            <span className="text-xs font-bold text-slate-500 uppercase">Resistente a Altura</span>
-            <h3 className="font-bold text-base text-slate-900 mt-0.5">Papa Yungay</h3>
-            <div className="text-2xl font-black text-slate-900 mt-2">S/ 1.42 <span className="text-xs font-normal text-slate-500">/kg</span></div>
-            <p className="text-xs text-slate-500 mt-1">Ciclo más largo (150-180 días). Tolera heladas severas en zonas altas de Junín y Huancavelica.</p>
-          </div>
+                  <h3 className="font-bold text-sm text-slate-900 leading-tight">
+                    {v.name}
+                  </h3>
+                  <p className="text-[10px] text-slate-400 truncate">
+                    {v.officialMidagriName}
+                  </p>
+                </div>
 
-          <div className={`p-4 rounded-2xl border transition-all ${selectedVariety === 'amarilla' ? 'border-[#20C77A] bg-emerald-50/40 ring-2 ring-[#20C77A]/20' : 'border-slate-200 bg-white'}`}>
-            <span className="text-xs font-bold text-amber-600 uppercase">Premium Culinario</span>
-            <h3 className="font-bold text-base text-slate-900 mt-0.5">Amarilla Tumbay</h3>
-            <div className="text-2xl font-black text-amber-700 mt-2">S/ 2.52 <span className="text-xs font-normal text-slate-500">/kg</span></div>
-            <p className="text-xs text-slate-500 mt-1">Menor rendimiento (16 t/ha) pero cotización 70% superior a la Canchán en el mercado limeño.</p>
-          </div>
-
-          <div className={`p-4 rounded-2xl border transition-all ${selectedVariety === 'huamantanga' ? 'border-[#20C77A] bg-emerald-50/40 ring-2 ring-[#20C77A]/20' : 'border-slate-200 bg-white'}`}>
-            <span className="text-xs font-bold text-purple-600 uppercase">Variedad de Color</span>
-            <h3 className="font-bold text-base text-slate-900 mt-0.5">Huamantanga</h3>
-            <div className="text-2xl font-black text-purple-900 mt-2">S/ 2.10 <span className="text-xs font-normal text-slate-500">/kg</span></div>
-            <p className="text-xs text-slate-500 mt-1">Pulpa harinosa de alta demanda en pollerías gourmet y restaurantes tradicionales.</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Seasonality Heatmap & Supply Volume Curve */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Seasonality Heatmap */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
-          <div className="flex items-center gap-2">
-            <Calendar className="w-5 h-5 text-emerald-700" />
-            <h3 className="text-lg font-bold text-slate-900">
-              Calendario Estacional de la Papa en el Perú
-            </h3>
-          </div>
-          <p className="text-xs text-slate-500">
-            Comportamiento anual típico de cosechas en valles andinos y su efecto en los precios de Lima:
-          </p>
-
-          <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 pt-2">
-            {[
-              { m: 'Ene', phase: 'Precios Altos', color: 'bg-emerald-100 text-emerald-900 border-emerald-300', note: 'Escasez sierra' },
-              { m: 'Feb', phase: 'Transición', color: 'bg-emerald-50 text-emerald-800 border-emerald-200', note: 'Costa temprana' },
-              { m: 'Mar', phase: 'Cosecha Temprana', color: 'bg-blue-50 text-blue-800 border-blue-200', note: 'Comienzan arribos' },
-              { m: 'Abr', phase: 'Ingreso Creciente', color: 'bg-blue-100 text-blue-900 border-blue-300', note: 'Valles bajos' },
-              { m: 'May', phase: 'Pico de Cosecha', color: 'bg-amber-100 text-amber-900 border-amber-300', note: 'Precios a la baja' },
-              { m: 'Jun', phase: 'Sobreoferta GMML', color: 'bg-red-100 text-red-900 border-red-300', note: 'Precios mínimos' },
-              { m: 'Jul', phase: 'Cosecha Plena', color: 'bg-amber-100 text-amber-900 border-amber-300', note: 'Heladas en altura' },
-              { m: 'Ago', phase: 'Fin Campaña Sierra', color: 'bg-amber-50 text-amber-800 border-amber-200', note: 'Se frena oferta' },
-              { m: 'Set', phase: 'Inicio de Alza', color: 'bg-emerald-50 text-emerald-800 border-emerald-200', note: 'Poco tubérculo' },
-              { m: 'Oct', phase: 'Precios Firmes', color: 'bg-emerald-100 text-emerald-900 border-emerald-300', note: 'Demanda estable' },
-              { m: 'Nov', phase: 'Pico de Precios', color: 'bg-emerald-200 text-emerald-950 border-emerald-400', note: 'Oferta mínima' },
-              { m: 'Dic', phase: 'Alta Demanda', color: 'bg-emerald-200 text-emerald-950 border-emerald-400', note: 'Fiestas / Navidad' },
-            ].map((item, idx) => (
-              <div key={idx} className={`p-2.5 rounded-xl border text-center ${item.color} flex flex-col justify-between`}>
-                <span className="font-black text-xs block">{item.m}</span>
-                <span className="text-[11px] font-semibold mt-1 block leading-tight">{item.phase}</span>
-                <span className="text-[10px] opacity-75 mt-0.5 block">{item.note}</span>
+                <div className="pt-1">
+                  <span className="text-[10px] text-slate-400 block">Precio GMML</span>
+                  <div className="text-xl font-black text-slate-900">
+                    S/ {v.currentGMMLPrice.toFixed(2)} <span className="text-xs font-normal text-slate-500">/kg</span>
+                  </div>
+                  <div className="text-[10px] text-slate-500 mt-1 flex justify-between font-mono">
+                    <span>{v.cycleAvgDays} días</span>
+                    <span>{v.avgYield} t/ha</span>
+                  </div>
+                </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
 
-        {/* Volume vs Price Elasticity Card */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
-          <div className="flex items-center gap-2">
-            <Truck className="w-5 h-5 text-emerald-700" />
-            <h3 className="text-lg font-bold text-slate-900">
-              Curva Oferta Física vs Precio Mayorista
-            </h3>
+        {/* Selected Variety In-Depth Inspector Card */}
+        <div className="p-6 rounded-3xl bg-slate-900 text-white border border-slate-800 space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+            <div>
+              <span className="text-xs text-[#B7F36B] font-mono uppercase font-bold">
+                Ficha Técnica: {inspectedVariety.officialMidagriName}
+              </span>
+              <h3 className="text-2xl font-black text-white mt-0.5">
+                {inspectedVariety.name} ({inspectedVariety.commercialName})
+              </h3>
+            </div>
+            <div className="text-right">
+              <span className="text-xs text-slate-400 block">Precio en GMML Hoy</span>
+              <span className="text-2xl font-black text-[#B7F36B]">
+                S/ {inspectedVariety.currentGMMLPrice.toFixed(2)} /kg
+              </span>
+            </div>
           </div>
-          <p className="text-xs text-slate-500">
-            Relación empírica en el GMML: a mayor volumen de camiones ingresados por día, menor el precio negociado en piso:
-          </p>
 
-          <div className="space-y-3 pt-2">
-            <div className="p-3.5 rounded-2xl bg-red-50 border border-red-200 flex items-center justify-between text-xs">
-              <div>
-                <span className="font-bold text-red-900 block">&gt; 3,200 Toneladas / día</span>
-                <span className="text-red-700">Sobreoferta de camiones en pabellones</span>
-              </div>
-              <div className="text-right">
-                <span className="font-black text-red-900 text-sm">S/ 1.10 - S/ 1.25</span>
-                <span className="text-[10px] text-red-600 block">Presión bajista</span>
-              </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs">
+            <div className="p-3 bg-slate-800/80 rounded-xl">
+              <span className="text-[10px] text-slate-400 block font-sans">Ciclo Fenológico (INIA)</span>
+              <strong className="text-white text-sm">{inspectedVariety.cycleMinDays} – {inspectedVariety.cycleMaxDays} días</strong>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-between text-xs">
-              <div>
-                <span className="font-bold text-emerald-900 block">2,400 a 2,700 Toneladas / día (Actual)</span>
-                <span className="text-emerald-700">Equilibrio normal de abastecimiento</span>
-              </div>
-              <div className="text-right">
-                <span className="font-black text-emerald-900 text-sm">S/ 1.45 - S/ 1.55</span>
-                <span className="text-[10px] text-emerald-600 block">Precio estable</span>
-              </div>
+            <div className="p-3 bg-slate-800/80 rounded-xl">
+              <span className="text-[10px] text-slate-400 block font-sans">Altitud Recomendada</span>
+              <strong className="text-white text-sm">{inspectedVariety.altitudeMin} – {inspectedVariety.altitudeMax} msnm</strong>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-between text-xs">
-              <div>
-                <span className="font-bold text-blue-900 block">&lt; 2,100 Toneladas / día</span>
-                <span className="text-blue-700">Escasez por lluvias, huaycos o fin de ciclo</span>
-              </div>
-              <div className="text-right">
-                <span className="font-black text-blue-900 text-sm">S/ 1.80 - S/ 2.20</span>
-                <span className="text-[10px] text-blue-600 block">Pico alcista</span>
-              </div>
+            <div className="p-3 bg-slate-800/80 rounded-xl">
+              <span className="text-[10px] text-slate-400 block font-sans">Rendimiento Promedio</span>
+              <strong className="text-white text-sm">{inspectedVariety.avgYield} t/ha</strong>
+            </div>
+
+            <div className="p-3 bg-slate-800/80 rounded-xl">
+              <span className="text-[10px] text-slate-400 block font-sans">Sensibilidad al ENFEN</span>
+              <strong className={`text-sm ${inspectedVariety.enfenSensitivity === 'Alta' ? 'text-amber-400' : 'text-emerald-400'}`}>
+                {inspectedVariety.enfenSensitivity}
+              </strong>
+            </div>
+          </div>
+
+          <div className="space-y-2 text-xs">
+            <div className="p-3 rounded-xl bg-slate-800/50 border border-slate-700/60">
+              <strong className="text-[#B7F36B] block">Perfil Culinario & Comercial:</strong>
+              <p className="text-slate-300 text-[11px] mt-0.5 leading-relaxed">
+                {inspectedVariety.culinaryProfile}
+              </p>
+            </div>
+
+            <div className="p-3 rounded-xl bg-slate-800/50 border border-slate-700/60">
+              <strong className="text-white block">Descripción del Cultivo:</strong>
+              <p className="text-slate-300 text-[11px] mt-0.5 leading-relaxed">
+                {inspectedVariety.description}
+              </p>
             </div>
           </div>
         </div>

@@ -1,7 +1,9 @@
 export type ViewTab =
   | 'home'
   | 'sync'
+  | 'varieties'
   | 'market'
+  | 'enfen'
   | 'planting'
   | 'harvest'
   | 'modellab'
@@ -10,18 +12,54 @@ export type ViewTab =
 export interface VarietyInfo {
   id: string;
   name: string;
+  officialMidagriName: string;
   commercialName: string;
-  type: 'blanca' | 'amarilla' | 'color' | 'nativa';
+  type: 'blanca' | 'amarilla' | 'color' | 'nativa' | 'mixta';
   cycleMinDays: number;
   cycleMaxDays: number;
   cycleAvgDays: number;
   altitudeMin: number;
   altitudeMax: number;
   avgYield: number; // t/ha
+  currentGMMLPrice: number; // S/ per kg
+  change7d: number; // %
+  change30d: number; // %
   frostResistance: 'Baja' | 'Media' | 'Alta';
   blightResistance: 'Baja' | 'Media' | 'Alta'; // Rancha
+  enfenSensitivity: 'Alta' | 'Media' | 'Baja';
+  culinaryProfile: string;
   description: string;
   source: string;
+  dailyVolumeTon?: number;
+  gmmlSharePct?: number;
+  mainRegions?: string[];
+  enfenVulnerabilityDetail?: string;
+  scientificName?: string;
+  sisapQueryUrl?: string;
+  emmsaQueryUrl?: string;
+}
+
+export interface EnfenAlertInfo {
+  status: 'NO ACTIVA' | 'VIGILANCIA DE EL NIÑO COSTERO' | 'ALERTA DE EL NIÑO COSTERO' | 'ALERTA DE LA NIÑA COSTERA';
+  ensoGlobalStatus: 'Condición Neutra' | 'El Niño Débil' | 'El Niño Moderado' | 'La Niña Débil';
+  latestBulletinNumber: string;
+  bulletinDate: string;
+  seaSurfaceTempAnomaly: number; // TSM Anomaly in °C (Región Niño 1+2)
+  pacificCentralAnomaly: number; // Región Niño 3.4
+  officialSummary: string;
+  probabilities: {
+    neutro: number;
+    ninoDebil: number;
+    ninoModerado: number;
+    nina: number;
+  };
+  impactOnPotato: {
+    coast: string;
+    centralHighlands: string;
+    southernHighlands: string;
+    priceShockMultiplier: number; // e.g. 1.15 in supply disruption
+  };
+  officialUrl: string;
 }
 
 export interface DepartmentData {
@@ -48,13 +86,20 @@ export interface HistoricalPricePoint {
   canchán: number; // S/ per kg
   yungay: number;
   amarilla: number;
+  blanca: number;
+  color: number;
+  huayro: number;
   huamantanga: number;
+  negraAndina: number;
+  peruanita: number;
+  unica: number;
   volumeTon: number; // Daily potato inflow in GMML
   juninInflowTon: number;
   dieselIndex: number; // S/ per gallon / BCRP proxy
   ipcAlimentos: number; // BCRP Index
   tipoCambio: number; // PEN/USD
   senamhiMinTempJunin: number; // °C
+  enfenAnomalyTSM: number; // °C
 }
 
 export interface MacroIndicator {

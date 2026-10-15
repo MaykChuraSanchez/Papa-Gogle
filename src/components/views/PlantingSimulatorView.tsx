@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { VARIETIES_CATALOG, calculateHarvestWindow } from '../../utils/agronomicEngine';
 import { calculateEconomicScenarios } from '../../utils/economicEngine';
 import { calculateForecastForHarvest } from '../../utils/forecastingEngine';
+import { calculateEnfenClimateAdjustment, EnfenScenarioType } from '../../utils/enfenEngine';
 import {
   CalendarDays,
   Sparkles,
@@ -14,16 +15,30 @@ import {
   BrainCircuit,
   RefreshCw,
   Info,
+  Waves,
 } from 'lucide-react';
 
-export const PlantingSimulatorView: React.FC = () => {
+interface PlantingSimulatorViewProps {
+  initialVarietyId?: string;
+}
+
+export const PlantingSimulatorView: React.FC<PlantingSimulatorViewProps> = ({
+  initialVarietyId = 'canchan',
+}) => {
   // Simulator Inputs
-  const [varietyId, setVarietyId] = useState<string>('canchan');
+  const [varietyId, setVarietyId] = useState<string>(initialVarietyId);
+
+  React.useEffect(() => {
+    if (initialVarietyId) {
+      setVarietyId(initialVarietyId);
+    }
+  }, [initialVarietyId]);
   const [location, setLocation] = useState<string>('Tarma, Junín (Valle del Mantaro)');
   const [plantingDate, setPlantingDate] = useState<string>('2026-10-15');
   const [hectares, setHectares] = useState<number>(1.5);
   const [expectedYield, setExpectedYield] = useState<number>(24.5);
   const [costPerHa, setCostPerHa] = useState<number>(18500);
+  const [enfenScenario, setEnfenScenario] = useState<EnfenScenarioType>('vigilancia');
 
   // AI explanation state
   const [isExplaining, setIsExplaining] = useState<boolean>(false);
@@ -35,15 +50,33 @@ export const PlantingSimulatorView: React.FC = () => {
   // Calculate harvest window based on INIA agronomic cycle
   const harvestWindow = calculateHarvestWindow(plantingDate, varietyId);
 
-  // Calculate forecast for target harvest date
-  const forecast = calculateForecastForHarvest(varietyId, plantingDate, harvestWindow.avgHarvestDate);
+  // Region determination for ENFEN
+  const regionType: 'Costa' | 'Sierra' | 'Sierra_Sur' = location.includes('Barranca')
+    ? 'Costa'
+    : location.includes('Andahuaylas') || location.includes('Puno')
+    ? 'Sierra_Sur'
+    : 'Sierra';
+
+  // Base Forecast without ENFEN
+  const rawForecast = calculateForecastForHarvest(varietyId, plantingDate, harvestWindow.avgHarvestDate, 1.0);
+
+  // ENFEN Adjustment
+  const enfenResult = calculateEnfenClimateAdjustment(
+    rawForecast.forecastPrice,
+    expectedYield,
+    regionType,
+    enfenScenario
+  );
+
+  const finalForecastPrice = enfenResult.adjustedPrice;
+  const effectiveYield = enfenResult.adjustedYield;
 
   // Economic motor scenarios
   const economics = calculateEconomicScenarios({
     hectares,
-    expectedYieldTonHa: expectedYield,
+    expectedYieldTonHa: effectiveYield,
     costPerHa,
-    forecastPricePerKg: forecast.forecastPrice,
+    forecastPricePerKg: finalForecastPrice,
   });
 
   // Request AI explanation from server
@@ -58,18 +91,20 @@ export const PlantingSimulatorView: React.FC = () => {
           location,
           plantingDate,
           harvestWindow: `${harvestWindow.minHarvestDate} a ${harvestWindow.maxHarvestDate} (promedio ${harvestWindow.avgHarvestDate})`,
-          forecastPrice: forecast.forecastPrice,
-          rangeMin: forecast.rangeMin,
-          rangeMax: forecast.rangeMax,
+          forecastPrice: finalForecastPrice,
+          rangeMin: Number((finalForecastPrice * 0.88).toFixed(2)),
+          rangeMax: Number((finalForecastPrice * 1.14).toFixed(2)),
           adversePrice: economics.adverseScenario.price,
           favorablePrice: economics.favorableScenario.price,
           hectares,
-          expectedYield,
+          expectedYield: effectiveYield,
           costPerHa,
           netMargin: economics.centralScenario.netMargin,
           roiPct: economics.centralScenario.roiPct,
           championModel: 'LightGBM / HistGradientBoosting',
           mape: 7.4,
+          enfenScenario,
+          enfenNote: enfenResult.riskNote,
         }),
       });
 
@@ -79,9 +114,9 @@ export const PlantingSimulatorView: React.FC = () => {
     } catch (err) {
       // Offline fallback explanation
       setAiExplanation(
-        `Para una siembra de ${variety.name} en ${location} con fecha ${plantingDate}, el ciclo agronómico de INIA proyecta cosecha entre ${harvestWindow.minHarvestDate} y ${harvestWindow.maxHarvestDate} (mes de ${forecast.monthName}).\n\n` +
-        `En esa época del año, el Gran Mercado Mayorista de Lima (GMML) experimenta una transición estacional: los arribos masivos de la sierra central disminuyen gradualmente, lo que históricamente favorece precios más firmes, proyectándose un valor central de S/ ${forecast.forecastPrice} /kg.\n\n` +
-        `Bajo tu estructura de costos de S/ ${costPerHa.toLocaleString()} /ha y un rendimiento de ${expectedYield} t/ha, tu precio de equilibrio es de S/ ${economics.breakEvenPrice} /kg. Incluso en el escenario adverso (S/ ${economics.adverseScenario.price} /kg), la operación se mantiene por encima del costo unitario. AgroDecide te presenta estos datos para que compares alternativas antes de comprar semilla y fertilizantes.`
+        `Para una siembra de ${variety.name} (${variety.officialMidagriName}) en ${location} con fecha ${plantingDate}, el ciclo agronómico de INIA (${variety.cycleMinDays}-${variety.cycleMaxDays} días) proyecta cosecha entre ${harvestWindow.minHarvestDate} y ${harvestWindow.maxHarvestDate} (mes de ${rawForecast.monthName}).\n\n` +
+        `Bajo el reporte oficial de ENFEN ("${enfenScenario.toUpperCase()}"), ${enfenResult.riskNote} Por este motivo, el precio central estimado se proyecta en S/ ${finalForecastPrice.toFixed(2)} /kg con un rendimiento ajustado de ${effectiveYield} t/ha.\n\n` +
+        `Bajo tu inversión de S/ ${costPerHa.toLocaleString()} /ha, tu precio de equilibrio es de S/ ${economics.breakEvenPrice} /kg. Con un margen neto central esperado de S/ ${economics.centralScenario.netMargin.toLocaleString()} (ROI ${economics.centralScenario.roiPct}%), cuentas con un margen de seguridad frente a caídas de mercado. Como siempre en AgroDecide: te mostramos la evidencia, tú tomas la decisión.`
       );
     } finally {
       setIsExplaining(false);
@@ -219,7 +254,33 @@ export const PlantingSimulatorView: React.FC = () => {
               />
             </div>
             <p className="text-[10px] text-slate-400">
-              Incluye semilla certificada, jornales, fertilizantes químicos, pesticidas y alquiler de maquinaria.
+              Semilla certificada, jornales, fertilizantes, pesticidas y maquinaria.
+            </p>
+          </div>
+
+          {/* Escenario Climático ENFEN & SENAMHI */}
+          <div className="space-y-1.5 pt-2 border-t border-slate-100">
+            <div className="flex items-center justify-between">
+              <label className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                <Waves className="w-3.5 h-3.5 text-sky-600" />
+                Escenario Climático ENFEN
+              </label>
+              <span className="text-[10px] text-sky-800 font-bold bg-sky-100 px-2 py-0.5 rounded-full border border-sky-300">
+                Oficial
+              </span>
+            </div>
+            <select
+              value={enfenScenario}
+              onChange={(e) => setEnfenScenario(e.target.value as any)}
+              className="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-medium focus:ring-2 focus:ring-sky-500 focus:outline-none bg-sky-50/50 text-slate-800"
+            >
+              <option value="vigilancia">Vigilancia ENFEN (Vigente / Primavera 2026)</option>
+              <option value="neutral">Condición Neutra (Sin anomalía ENSO)</option>
+              <option value="nino_debil">El Niño Débil (+1.5°C TSM / Veranillos andinos)</option>
+              <option value="nino_moderado_fuerte">El Niño Moderado/Fuerte (Lluvias costa / Sequía sur)</option>
+            </select>
+            <p className="text-[11px] text-sky-900 bg-sky-50 p-2 rounded-xl border border-sky-200">
+              {enfenResult.riskNote}
             </p>
           </div>
         </div>
@@ -245,22 +306,29 @@ export const PlantingSimulatorView: React.FC = () => {
                   <span className="text-xs font-normal text-white">al</span> {harvestWindow.maxHarvestDate}
                 </div>
                 <p className="text-xs text-slate-300 mt-1">
-                  Fecha central: <strong>{harvestWindow.avgHarvestDate}</strong> ({forecast.monthName})
+                  Fecha central: <strong>{harvestWindow.avgHarvestDate}</strong> ({rawForecast.monthName})
                 </p>
               </div>
 
               <div className="bg-white/10 rounded-2xl p-4 border border-white/15 space-y-2">
-                <span className="text-xs text-slate-200 block font-semibold">
-                  Pronóstico de Precio en GMML Santa Anita
-                </span>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-slate-200 block font-semibold">
+                    Pronóstico de Precio GMML
+                  </span>
+                  {enfenScenario !== 'neutral' && (
+                    <span className="text-[10px] bg-amber-400 text-slate-950 font-bold px-1.5 py-0.5 rounded">
+                      Ajuste ENFEN
+                    </span>
+                  )}
+                </div>
                 <div className="text-3xl font-black text-white">
-                  S/ {forecast.forecastPrice.toFixed(2)} <span className="text-xs font-normal text-slate-300">/kg</span>
+                  S/ {finalForecastPrice.toFixed(2)} <span className="text-xs font-normal text-slate-300">/kg</span>
                 </div>
                 <div className="text-xs text-[#B7F36B] font-mono">
-                  Rango Probable: S/ {forecast.rangeMin.toFixed(2)} – S/ {forecast.rangeMax.toFixed(2)}
+                  Rango Probable: S/ {(finalForecastPrice * 0.88).toFixed(2)} – S/ {(finalForecastPrice * 1.14).toFixed(2)}
                 </div>
                 <p className="text-[11px] text-slate-300">
-                  {forecast.seasonalTrend}
+                  {rawForecast.seasonalTrend}
                 </p>
               </div>
             </div>
@@ -286,14 +354,14 @@ export const PlantingSimulatorView: React.FC = () => {
               <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
                 <span className="font-bold text-slate-900 block">1. Estacionalidad GMML</span>
                 <p className="text-slate-500 text-[11px]">
-                  En {forecast.monthName}, la oferta de papa en Lima entra en etapa de {forecast.seasonalTrend.toLowerCase()}.
+                  En {rawForecast.monthName}, la oferta de papa en Lima entra en etapa de {rawForecast.seasonalTrend.toLowerCase()}.
                 </p>
               </div>
 
               <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
-                <span className="font-bold text-slate-900 block">2. Clima en Junín</span>
+                <span className="font-bold text-slate-900 block">2. Alerta ENFEN / Clima</span>
                 <p className="text-slate-500 text-[11px]">
-                  Estación Ricrán/Jauja SENAMHI: sin heladas críticas previstas en la floración de este ciclo.
+                  {enfenResult.riskNote}
                 </p>
               </div>
 

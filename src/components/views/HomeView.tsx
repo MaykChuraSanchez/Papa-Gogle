@@ -227,6 +227,86 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onOpenAssistant 
         </div>
       </section>
 
+      {/* Deep Dive Modules: 10 Potato Varieties SISAP & Official ENFEN Observatory */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Module 1: 10 Varieties */}
+        <div className="bg-gradient-to-br from-slate-900 to-[#0B3025] text-white rounded-3xl p-6 sm:p-7 border border-[#1A4537] shadow-lg flex flex-col justify-between">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#B7F36B] bg-[#20C77A]/20 px-2.5 py-0.5 rounded-full border border-[#20C77A]/30">
+                Catálogo Homologado
+              </span>
+              <span className="text-xs text-slate-400 font-mono">10 Variedades Oficiales</span>
+            </div>
+            <h3 className="text-xl font-extrabold text-white">
+              Desglose y Spreads de las 10 Variedades de Papa
+            </h3>
+            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+              Analiza en detalle <strong>Papa Canchán, Amarilla, Huayro, Peruanita, Huamantanga, Negra Andina, Yungay, Color, Blanca y Única</strong>. Precios en tiempo real del GMML Santa Anita, diferenciales de mercado vs Canchán, volúmenes de ingreso y fichas agronómicas del INIA.
+            </p>
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              {['Canchán', 'Amarilla', 'Huayro', 'Peruanita', 'Huamantanga', 'Negra Andina', 'Yungay', 'Color', 'Blanca', 'Única'].map((v, i) => (
+                <span key={i} className="text-[10px] bg-white/10 px-2 py-0.5 rounded-md text-slate-200">
+                  {v}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="pt-5">
+            <button
+              onClick={() => onNavigate('varieties')}
+              className="w-full py-3 px-4 rounded-xl bg-[#20C77A] text-[#07241C] hover:bg-[#1db36e] font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md"
+            >
+              <span>Ver desglose completo de las 10 variedades</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        {/* Module 2: Official ENFEN / SENAMHI Climate Observatory */}
+        <div className="bg-gradient-to-br from-[#1A2D24] to-[#0E1E18] text-white rounded-3xl p-6 sm:p-7 border border-amber-500/30 shadow-lg flex flex-col justify-between">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-amber-300 bg-amber-400/20 px-2.5 py-0.5 rounded-full border border-amber-400/30 flex items-center gap-1.5">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
+                </span>
+                Alerta Oficial ENFEN
+              </span>
+              <span className="text-xs text-amber-300 font-mono">Boletín N° 14-2026</span>
+            </div>
+            <h3 className="text-xl font-extrabold text-white">
+              Sitio Oficial del Fenómeno El Niño (ENFEN & SENAMHI)
+            </h3>
+            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+              Monitoreo de anomalías de Temperatura Superficial del Mar en la <strong>Región Niño 1+2 (+0.6°C)</strong> y <strong>Niño 3.4 (+0.3°C)</strong>, boletines de precipitación en valles paperos de la sierra central y simulador de shock de precios por huaicos en Carretera Central.
+            </p>
+            <div className="grid grid-cols-2 gap-2 text-xs pt-1">
+              <div className="bg-white/5 p-2 rounded-lg border border-white/10">
+                <span className="text-[10px] text-slate-400 block">Condición Neutra:</span>
+                <strong className="text-emerald-400">58% probabilidad</strong>
+              </div>
+              <div className="bg-white/5 p-2 rounded-lg border border-white/10">
+                <span className="text-[10px] text-slate-400 block">El Niño Débil:</span>
+                <strong className="text-amber-300">32% probabilidad</strong>
+              </div>
+            </div>
+          </div>
+
+          <div className="pt-5">
+            <button
+              onClick={() => onNavigate('enfen')}
+              className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md"
+            >
+              <span>Abrir Observatorio El Niño (ENFEN / SENAMHI)</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* Historical Market Overview Preview Chart */}
       <section className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">

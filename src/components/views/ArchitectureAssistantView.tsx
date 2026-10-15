@@ -20,7 +20,7 @@ export const ArchitectureAssistantView: React.FC = () => {
     {
       id: 'welcome',
       sender: 'assistant',
-      text: '¡Hola, hermano agricultor! Soy el asistente inteligente de **AgroDecide AI**.\n\nPuedo responder tus dudas sobre cuándo sembrar, el ciclo fenológico de la variedad que elijas (Canchán, Yungay, Amarilla), los precios históricos en el GMML Santa Anita de Lima, o cómo influyen el clima de SENAMHI y las variables macroeconómicas de BCRP.\n\n¿En qué te puedo orientar hoy?',
+      text: '¡Hola, hermano agricultor! Soy el asistente inteligente de **AgroDecide AI**.\n\nPuedo responder tus dudas sobre cuándo sembrar cualquiera de las **10 variedades oficiales de MIDAGRI SISAP y EMMSA** (Canchán, Yungay, Amarilla Tumbay, Huayro, Huamantanga, Negra Andina, Peruanita, Única, Blanca y Color), cómo influye el **Boletín Oficial del ENFEN y SENAMHI (El Niño/La Niña)** en el rendimiento y los precios, o cómo impactan el flete de diésel y fertilizantes del BCRP.\n\n¿En qué te puedo orientar hoy?',
       timestamp: 'Ahora',
     },
   ]);
@@ -28,10 +28,10 @@ export const ArchitectureAssistantView: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const quickChips = [
-    '¿Me conviene sembrar papa Canchán hoy en Tarma?',
+    '¿Cómo afectará el reporte del ENFEN a la cosecha de papa?',
+    '¿Me conviene sembrar papa Canchán o Huayro en Tarma?',
+    '¿Por qué la Papa Amarilla Tumbay cotiza más alto que la Blanca?',
     '¿Por qué influye el precio del diésel en la papa?',
-    '¿Cómo impactan las heladas de junio en Junín?',
-    '¿Cuál es el modelo Champion y por qué se eligió?',
     '¿De dónde saca los datos el dashboard de MIDAGRI en Power BI?',
   ];
 
@@ -74,7 +74,13 @@ export const ArchitectureAssistantView: React.FC = () => {
     } catch (err) {
       // Fallback synthesis if offline
       let fallback = '';
-      if (text.includes('sembrar') && text.includes('Canchán')) {
+      if (text.includes('ENFEN') || text.includes('Niño') || text.includes('clima')) {
+        fallback =
+          'Según el Comunicado Oficial ENFEN N° 14-2026, el mar peruano (Región Niño 1+2) presenta una anomalía térmica moderada de +0.6°C en estado de "Vigilancia". Para la papa, esto significa:\n\n1. En la Costa (Barranca/Cañete): Noches cálidas pueden demorar la tuberización y exigir mayor control fitosanitario de polilla y mosca minadora.\n2. En la Sierra Central (Tarma/Junín): Se monitorea el inicio oportuno de las lluvias de primavera para las siembras de secano.\n3. En la Sierra Sur (Puno/Altiplano): Riesgo de veranillos que podrían retrasar cosechas de papa nativa hacia mayo 2027.\n\nEn general, un evento ENSO genera una prima de riesgo alcista de entre 8% y 15% en los precios mayoristas del GMML.';
+      } else if (text.includes('Huayro') || text.includes('variedades') || text.includes('Amarilla')) {
+        fallback =
+          'En el GMML Santa Anita, las variedades nativas y amarillas cotizan significativamente por encima de la papa blanca:\n\n- Papa Amarilla Tumbay (S/ 2.52 /kg): Ciclo corto (100-125d), pulpa arenosa muy demandada para causas y purés.\n- Papa Huayro (S/ 2.25 /kg): Ciclo de 145-175 días, excelente rusticidad en alturas sobre 3,200 msnm, favorita para Pachamanca.\n- Papa Canchán (S/ 1.48 /kg): Ciclo de 120-150 días, alta productividad (24-28 t/ha), base de consumo masivo y pollerías.\n\nSembrar Huayro o Amarilla da un precio unitario mayor pero rinde menos t/ha y exige mayor altitud que la Canchán.';
+      } else if (text.includes('sembrar') && text.includes('Canchán')) {
         fallback =
           'Si siembras papa Canchán en Tarma hoy, el ciclo de INIA (120-150 días) estima cosecha entre febrero y marzo de 2027. Para ese período, el GMML suele pagar entre S/ 1.60 y S/ 1.85 /kg debido a que la sierra central aún no entra en su pico masivo de cosechas (que ocurre entre mayo y junio). Con costos promedio de S/ 18,500/ha y un rendimiento de 24 t/ha, tendrías un margen neto esperado positivo.';
       } else if (text.includes('diésel') || text.includes('diesel')) {
@@ -85,7 +91,7 @@ export const ArchitectureAssistantView: React.FC = () => {
           'Los dashboards de Power BI de MIDAGRI/SIEA se alimentan de la Dirección General de Estadística, Seguimiento y Evaluación de Políticas (DGESEP). Los datos de pesaje y volumen de camiones provienen del portal SISAP mayorista, y los reportes de siembras se integran con el Sistema Integrado de Estadísticas Agrarias (SIEA) y el Portal Nacional de Datos Abiertos (datosabiertos.gob.pe).';
       } else {
         fallback =
-          'AgroDecide AI integra datos oficiales de EMMSA, MIDAGRI SISAP, SIEA, SENAMHI y BCRP. Recuerda que no emitimos órdenes absolutas; te mostramos escenarios de sensibilidad económica (P10, P50, P90) para que tomes la mejor decisión según tu presupuesto.';
+          'AgroDecide AI integra datos oficiales de EMMSA, MIDAGRI SISAP, SIEA, ENFEN, SENAMHI, INIA y BCRP. Recuerda que no emitimos órdenes absolutas; te mostramos escenarios de sensibilidad económica (P10, P50, P90) para que tomes la mejor decisión según tu presupuesto.';
       }
 
       const aiMsg: ChatMessage = {

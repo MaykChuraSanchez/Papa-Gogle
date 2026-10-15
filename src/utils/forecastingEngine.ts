@@ -173,7 +173,8 @@ export const FEATURE_IMPORTANCE_LIST = [
 export function calculateForecastForHarvest(
   varietyId: string,
   plantingDateStr: string,
-  targetHarvestDateStr: string
+  targetHarvestDateStr: string,
+  enfenMultiplier: number = 1.0
 ) {
   // Compute target month to apply seasonal price factors of GMML Lima
   const targetDate = new Date(targetHarvestDateStr);
@@ -199,19 +200,24 @@ export function calculateForecastForHarvest(
   };
 
   const basePriceByVariety: Record<string, number> = {
-    canchan: 1.45,
-    yungay: 1.40,
-    amarilla: 2.55,
+    canchan: 1.48,
+    yungay: 1.42,
+    amarilla: 2.52,
+    blanca: 1.38,
+    color: 1.62,
+    huayro: 2.25,
     huamantanga: 2.10,
+    negra_andina: 1.85,
+    peruanita: 2.38,
     unica: 1.35,
   };
 
-  const basePrice = basePriceByVariety[varietyId] || 1.45;
+  const basePrice = basePriceByVariety[varietyId] || 1.48;
   const factor = seasonalFactors[month] || 1.05;
 
-  // Add macro inflation adjustment (BCRP IPC Alimentos trend ~+3%)
+  // Add macro inflation adjustment (BCRP IPC Alimentos trend ~+3%) and ENFEN climate risk
   const macroAdjust = 1.03;
-  const rawForecast = basePrice * factor * macroAdjust;
+  const rawForecast = basePrice * factor * macroAdjust * enfenMultiplier;
   const forecastPrice = Number(rawForecast.toFixed(2));
 
   // Range based on champion model MAPE (7.4%)
@@ -224,6 +230,7 @@ export function calculateForecastForHarvest(
     rangeMax,
     monthName: getMonthName(month),
     seasonalTrend: factor < 0.95 ? 'Baja estacional (pico de cosechas en sierra)' : factor > 1.15 ? 'Alta estacional (menor oferta en GMML)' : 'Estable / Promedio',
+    enfenImpactActive: enfenMultiplier !== 1.0,
   };
 }
 
