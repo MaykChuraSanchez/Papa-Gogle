@@ -51,11 +51,12 @@ export const PlantingSimulatorView: React.FC<PlantingSimulatorViewProps> = ({
   const harvestWindow = calculateHarvestWindow(plantingDate, varietyId);
 
   // Region determination for ENFEN
-  const regionType: 'Costa' | 'Sierra' | 'Sierra_Sur' = location.includes('Barranca')
-    ? 'Costa'
-    : location.includes('Andahuaylas') || location.includes('Puno')
-    ? 'Sierra_Sur'
-    : 'Sierra';
+  const regionType: 'Costa' | 'Sierra' | 'Sierra_Sur' =
+    location.includes('Barranca') || location.includes('Nazca') || location.includes('Majes')
+      ? 'Costa'
+      : location.includes('Andahuaylas') || location.includes('Puno')
+      ? 'Sierra_Sur'
+      : 'Sierra';
 
   // Base Forecast without ENFEN
   const rawForecast = calculateForecastForHarvest(varietyId, plantingDate, harvestWindow.avgHarvestDate, 1.0);
@@ -190,6 +191,8 @@ export const PlantingSimulatorView: React.FC<PlantingSimulatorViewProps> = ({
               <option value="Huancayo / Concepción, Junín">Huancayo / Concepción, Junín — 3,250 msnm</option>
               <option value="Valle del Huallaga, Huánuco">Valle del Huallaga, Huánuco — 2,800 msnm</option>
               <option value="Cerro de Pasco / Paucartambo">Cerro de Pasco / Paucartambo — 3,600 msnm</option>
+              <option value="Nazca / Palpa, Ica (Costa Sur)">Nazca / Palpa, Ica (Costa Sur) — 520 msnm (Riego)</option>
+              <option value="Majes / Valle de Tambo, Arequipa (Costa Sur)">Majes / Valle de Tambo, Arequipa — 1,420 msnm (Fertirriego)</option>
               <option value="Andahuaylas, Apurímac">Andahuaylas, Apurímac — 2,980 msnm</option>
               <option value="Barranca / Huaral (Costa Norte Lima)">Barranca / Huaral (Costa Norte Lima) — 150 msnm</option>
             </select>

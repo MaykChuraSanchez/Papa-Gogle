@@ -100,6 +100,13 @@ export interface HistoricalPricePoint {
   tipoCambio: number; // PEN/USD
   senamhiMinTempJunin: number; // °C
   enfenAnomalyTSM: number; // °C
+  arequipaInflowTon?: number;
+  costaSurInflowTon?: number; // Nazca, Palpa, Ica
+  predictedLightGBM?: number;
+  predictedSARIMAX?: number;
+  predictedHoltWinters?: number;
+  predictedRidge?: number;
+  residualLightGBM?: number;
 }
 
 export interface MacroIndicator {
@@ -143,6 +150,7 @@ export interface ModelMetric {
   smape: number;
   coverage80: number; // % of true values within 80% interval
   coverage95: number;
+  hitRate?: number; // Directional accuracy %
   isChampion?: boolean;
   notes: string;
 }

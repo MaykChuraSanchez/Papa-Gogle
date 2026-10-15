@@ -281,17 +281,17 @@ export const DEPARTMENTS_DATA: DepartmentData[] = [
   },
   {
     id: 'arequipa',
-    name: 'Arequipa (Camaná / Majes)',
+    name: 'Arequipa (Majes / Valle de Tambo / Camaná)',
     region: 'Costa',
-    productionTon: 190000,
-    harvestedAreaHa: 6800,
-    yieldTonHa: 27.9,
-    farmgatePrice: 1.10,
+    productionTon: 215000,
+    harvestedAreaHa: 7600,
+    yieldTonHa: 28.3,
+    farmgatePrice: 1.12,
     wholesalePriceGMML: 1.52,
-    gmmlSharePct: 1.2,
+    gmmlSharePct: 2.4,
     climateRisk: 'Bajo',
     frostRiskMonths: ['Junio', 'Julio (Sierra Alta)'],
-    rainfallSeason: 'Enero a Marzo',
+    rainfallSeason: 'Enero a Marzo (Irrigación permanente)',
     pathD: 'M 290 355 L 350 350 L 370 400 L 310 410 Z',
     labelPos: { x: 330, y: 380 },
   },
@@ -393,17 +393,17 @@ export const DEPARTMENTS_DATA: DepartmentData[] = [
   },
   {
     id: 'ica',
-    name: 'Ica (Chincha / Pisco)',
+    name: 'Ica (Nazca / Palpa / Chincha / Pisco)',
     region: 'Costa',
-    productionTon: 115000,
-    harvestedAreaHa: 4100,
-    yieldTonHa: 28.0,
-    farmgatePrice: 1.20,
-    wholesalePriceGMML: 1.45,
-    gmmlSharePct: 1.8,
+    productionTon: 145000,
+    harvestedAreaHa: 5100,
+    yieldTonHa: 28.4,
+    farmgatePrice: 1.18,
+    wholesalePriceGMML: 1.46,
+    gmmlSharePct: 2.8,
     climateRisk: 'Bajo',
     frostRiskMonths: [],
-    rainfallSeason: 'Seco',
+    rainfallSeason: 'Árido / Riego tecnificado (Invierno-Primavera)',
     pathD: 'M 210 290 L 255 295 L 245 345 L 210 335 Z',
     labelPos: { x: 230, y: 315 },
   },
@@ -489,30 +489,30 @@ export const DEPARTMENTS_DATA: DepartmentData[] = [
   },
 ];
 
-// Historical monthly series 2024 to late 2026 for all 10 official potato varieties
+// Historical monthly series 2024 to late 2026 for all 10 official potato varieties and exogenous drivers
 export const HISTORICAL_PRICES: HistoricalPricePoint[] = [
-  { date: '2024-01-15', year: 2024, month: 1, canchán: 1.75, yungay: 1.68, amarilla: 2.85, blanca: 1.60, color: 1.85, huayro: 2.45, huamantanga: 2.40, negraAndina: 2.10, peruanita: 2.70, unica: 1.55, volumeTon: 2150, juninInflowTon: 810, dieselIndex: 136.2, ipcAlimentos: 121.5, tipoCambio: 3.72, senamhiMinTempJunin: 4.8, enfenAnomalyTSM: 1.8 },
-  { date: '2024-03-15', year: 2024, month: 3, canchán: 1.55, yungay: 1.48, amarilla: 2.50, blanca: 1.45, color: 1.70, huayro: 2.30, huamantanga: 2.15, negraAndina: 1.95, peruanita: 2.45, unica: 1.40, volumeTon: 2420, juninInflowTon: 940, dieselIndex: 137.1, ipcAlimentos: 122.3, tipoCambio: 3.70, senamhiMinTempJunin: 5.2, enfenAnomalyTSM: 1.4 },
-  { date: '2024-05-15', year: 2024, month: 5, canchán: 1.25, yungay: 1.20, amarilla: 2.10, blanca: 1.18, color: 1.40, huayro: 1.90, huamantanga: 1.85, negraAndina: 1.65, peruanita: 2.10, unica: 1.20, volumeTon: 3100, juninInflowTon: 1240, dieselIndex: 137.8, ipcAlimentos: 122.9, tipoCambio: 3.74, senamhiMinTempJunin: 0.8, enfenAnomalyTSM: 0.5 },
-  { date: '2024-06-15', year: 2024, month: 6, canchán: 1.15, yungay: 1.10, amarilla: 1.95, blanca: 1.10, color: 1.30, huayro: 1.80, huamantanga: 1.70, negraAndina: 1.55, peruanita: 1.98, unica: 1.12, volumeTon: 3350, juninInflowTon: 1380, dieselIndex: 138.5, ipcAlimentos: 123.4, tipoCambio: 3.77, senamhiMinTempJunin: -2.1, enfenAnomalyTSM: -0.2 },
-  { date: '2024-07-15', year: 2024, month: 7, canchán: 1.20, yungay: 1.15, amarilla: 2.05, blanca: 1.15, color: 1.35, huayro: 1.85, huamantanga: 1.75, negraAndina: 1.60, peruanita: 2.05, unica: 1.15, volumeTon: 3180, juninInflowTon: 1280, dieselIndex: 139.0, ipcAlimentos: 124.0, tipoCambio: 3.75, senamhiMinTempJunin: -3.4, enfenAnomalyTSM: -0.4 },
-  { date: '2024-09-15', year: 2024, month: 9, canchán: 1.48, yungay: 1.42, amarilla: 2.45, blanca: 1.38, color: 1.60, huayro: 2.20, huamantanga: 2.05, negraAndina: 1.80, peruanita: 2.35, unica: 1.35, volumeTon: 2510, juninInflowTon: 980, dieselIndex: 139.6, ipcAlimentos: 124.8, tipoCambio: 3.76, senamhiMinTempJunin: 3.1, enfenAnomalyTSM: -0.1 },
-  { date: '2024-11-15', year: 2024, month: 11, canchán: 1.85, yungay: 1.78, amarilla: 2.95, blanca: 1.72, color: 2.05, huayro: 2.65, huamantanga: 2.50, negraAndina: 2.25, peruanita: 2.85, unica: 1.68, volumeTon: 2080, juninInflowTon: 760, dieselIndex: 140.2, ipcAlimentos: 125.6, tipoCambio: 3.78, senamhiMinTempJunin: 4.5, enfenAnomalyTSM: 0.1 },
-  { date: '2025-01-15', year: 2025, month: 1, canchán: 1.80, yungay: 1.72, amarilla: 2.90, blanca: 1.68, color: 2.00, huayro: 2.60, huamantanga: 2.45, negraAndina: 2.20, peruanita: 2.80, unica: 1.65, volumeTon: 2200, juninInflowTon: 820, dieselIndex: 140.8, ipcAlimentos: 126.1, tipoCambio: 3.77, senamhiMinTempJunin: 4.9, enfenAnomalyTSM: 0.2 },
-  { date: '2025-03-15', year: 2025, month: 3, canchán: 1.58, yungay: 1.50, amarilla: 2.60, blanca: 1.48, color: 1.75, huayro: 2.35, huamantanga: 2.20, negraAndina: 1.95, peruanita: 2.50, unica: 1.42, volumeTon: 2500, juninInflowTon: 970, dieselIndex: 141.0, ipcAlimentos: 126.8, tipoCambio: 3.75, senamhiMinTempJunin: 5.0, enfenAnomalyTSM: 0.3 },
-  { date: '2025-05-15', year: 2025, month: 5, canchán: 1.28, yungay: 1.22, amarilla: 2.15, blanca: 1.20, color: 1.45, huayro: 1.95, huamantanga: 1.90, negraAndina: 1.70, peruanita: 2.15, unica: 1.22, volumeTon: 3200, juninInflowTon: 1290, dieselIndex: 141.4, ipcAlimentos: 127.2, tipoCambio: 3.76, senamhiMinTempJunin: 0.2, enfenAnomalyTSM: 0.1 },
-  { date: '2025-06-15', year: 2025, month: 6, canchán: 1.18, yungay: 1.12, amarilla: 2.00, blanca: 1.12, color: 1.35, huayro: 1.85, huamantanga: 1.75, negraAndina: 1.60, peruanita: 2.02, unica: 1.15, volumeTon: 3420, juninInflowTon: 1410, dieselIndex: 141.8, ipcAlimentos: 127.5, tipoCambio: 3.75, senamhiMinTempJunin: -2.8, enfenAnomalyTSM: 0.0 },
-  { date: '2025-07-15', year: 2025, month: 7, canchán: 1.22, yungay: 1.16, amarilla: 2.08, blanca: 1.16, color: 1.38, huayro: 1.90, huamantanga: 1.80, negraAndina: 1.65, peruanita: 2.08, unica: 1.18, volumeTon: 3250, juninInflowTon: 1310, dieselIndex: 142.0, ipcAlimentos: 127.8, tipoCambio: 3.74, senamhiMinTempJunin: -3.8, enfenAnomalyTSM: 0.0 },
-  { date: '2025-09-15', year: 2025, month: 9, canchán: 1.52, yungay: 1.45, amarilla: 2.50, blanca: 1.42, color: 1.65, huayro: 2.25, huamantanga: 2.10, negraAndina: 1.85, peruanita: 2.40, unica: 1.38, volumeTon: 2550, juninInflowTon: 990, dieselIndex: 142.3, ipcAlimentos: 128.2, tipoCambio: 3.75, senamhiMinTempJunin: 2.9, enfenAnomalyTSM: 0.2 },
-  { date: '2025-11-15', year: 2025, month: 11, canchán: 1.90, yungay: 1.82, amarilla: 3.05, blanca: 1.78, color: 2.10, huayro: 2.70, huamantanga: 2.55, negraAndina: 2.30, peruanita: 2.90, unica: 1.72, volumeTon: 2020, juninInflowTon: 740, dieselIndex: 142.5, ipcAlimentos: 128.7, tipoCambio: 3.78, senamhiMinTempJunin: 4.6, enfenAnomalyTSM: 0.4 },
-  { date: '2026-01-15', year: 2026, month: 1, canchán: 1.82, yungay: 1.75, amarilla: 2.95, blanca: 1.70, color: 2.02, huayro: 2.65, huamantanga: 2.48, negraAndina: 2.25, peruanita: 2.85, unica: 1.66, volumeTon: 2240, juninInflowTon: 840, dieselIndex: 142.8, ipcAlimentos: 129.1, tipoCambio: 3.77, senamhiMinTempJunin: 5.1, enfenAnomalyTSM: 0.5 },
-  { date: '2026-03-15', year: 2026, month: 3, canchán: 1.60, yungay: 1.52, amarilla: 2.65, blanca: 1.50, color: 1.78, huayro: 2.38, huamantanga: 2.22, negraAndina: 1.98, peruanita: 2.55, unica: 1.45, volumeTon: 2540, juninInflowTon: 980, dieselIndex: 142.6, ipcAlimentos: 129.5, tipoCambio: 3.75, senamhiMinTempJunin: 5.3, enfenAnomalyTSM: 0.5 },
-  { date: '2026-05-15', year: 2026, month: 5, canchán: 1.30, yungay: 1.25, amarilla: 2.20, blanca: 1.22, color: 1.48, huayro: 1.98, huamantanga: 1.92, negraAndina: 1.72, peruanita: 2.20, unica: 1.24, volumeTon: 3260, juninInflowTon: 1310, dieselIndex: 142.4, ipcAlimentos: 129.8, tipoCambio: 3.74, senamhiMinTempJunin: 0.5, enfenAnomalyTSM: 0.4 },
-  { date: '2026-06-15', year: 2026, month: 6, canchán: 1.20, yungay: 1.15, amarilla: 2.05, blanca: 1.14, color: 1.38, huayro: 1.88, huamantanga: 1.78, negraAndina: 1.62, peruanita: 2.05, unica: 1.16, volumeTon: 3480, juninInflowTon: 1420, dieselIndex: 142.2, ipcAlimentos: 130.0, tipoCambio: 3.75, senamhiMinTempJunin: -2.5, enfenAnomalyTSM: 0.3 },
-  { date: '2026-07-15', year: 2026, month: 7, canchán: 1.25, yungay: 1.18, amarilla: 2.12, blanca: 1.18, color: 1.42, huayro: 1.92, huamantanga: 1.82, negraAndina: 1.68, peruanita: 2.12, unica: 1.20, volumeTon: 3310, juninInflowTon: 1320, dieselIndex: 142.1, ipcAlimentos: 130.2, tipoCambio: 3.76, senamhiMinTempJunin: -3.2, enfenAnomalyTSM: 0.4 },
-  { date: '2026-08-15', year: 2026, month: 8, canchán: 1.38, yungay: 1.30, amarilla: 2.30, blanca: 1.30, color: 1.52, huayro: 2.08, huamantanga: 1.95, negraAndina: 1.75, peruanita: 2.25, unica: 1.28, volumeTon: 2890, juninInflowTon: 1120, dieselIndex: 142.3, ipcAlimentos: 130.5, tipoCambio: 3.76, senamhiMinTempJunin: 1.2, enfenAnomalyTSM: 0.5 },
-  { date: '2026-09-15', year: 2026, month: 9, canchán: 1.45, yungay: 1.38, amarilla: 2.45, blanca: 1.35, color: 1.58, huayro: 2.18, huamantanga: 2.05, negraAndina: 1.80, peruanita: 2.32, unica: 1.32, volumeTon: 2620, juninInflowTon: 1010, dieselIndex: 142.5, ipcAlimentos: 130.8, tipoCambio: 3.76, senamhiMinTempJunin: 3.4, enfenAnomalyTSM: 0.6 },
-  { date: '2026-10-15', year: 2026, month: 10, canchán: 1.48, yungay: 1.42, amarilla: 2.52, blanca: 1.38, color: 1.62, huayro: 2.25, huamantanga: 2.10, negraAndina: 1.85, peruanita: 2.38, unica: 1.35, volumeTon: 2480, juninInflowTon: 950, dieselIndex: 142.7, ipcAlimentos: 131.0, tipoCambio: 3.76, senamhiMinTempJunin: 4.2, enfenAnomalyTSM: 0.6 },
+  { date: '2024-01-15', year: 2024, month: 1, canchán: 1.75, yungay: 1.68, amarilla: 2.85, blanca: 1.60, color: 1.85, huayro: 2.45, huamantanga: 2.40, negraAndina: 2.10, peruanita: 2.70, unica: 1.55, volumeTon: 2150, juninInflowTon: 810, arequipaInflowTon: 95, costaSurInflowTon: 80, dieselIndex: 136.2, ipcAlimentos: 121.5, tipoCambio: 3.72, senamhiMinTempJunin: 4.8, enfenAnomalyTSM: 1.8, predictedLightGBM: 1.72, predictedSARIMAX: 1.69, predictedHoltWinters: 1.65, predictedRidge: 1.63, residualLightGBM: 0.03 },
+  { date: '2024-03-15', year: 2024, month: 3, canchán: 1.55, yungay: 1.48, amarilla: 2.50, blanca: 1.45, color: 1.70, huayro: 2.30, huamantanga: 2.15, negraAndina: 1.95, peruanita: 2.45, unica: 1.40, volumeTon: 2420, juninInflowTon: 940, arequipaInflowTon: 110, costaSurInflowTon: 90, dieselIndex: 137.1, ipcAlimentos: 122.3, tipoCambio: 3.70, senamhiMinTempJunin: 5.2, enfenAnomalyTSM: 1.4, predictedLightGBM: 1.58, predictedSARIMAX: 1.52, predictedHoltWinters: 1.50, predictedRidge: 1.48, residualLightGBM: -0.03 },
+  { date: '2024-05-15', year: 2024, month: 5, canchán: 1.25, yungay: 1.20, amarilla: 2.10, blanca: 1.18, color: 1.40, huayro: 1.90, huamantanga: 1.85, negraAndina: 1.65, peruanita: 2.10, unica: 1.20, volumeTon: 3100, juninInflowTon: 1240, arequipaInflowTon: 130, costaSurInflowTon: 115, dieselIndex: 137.8, ipcAlimentos: 122.9, tipoCambio: 3.74, senamhiMinTempJunin: 0.8, enfenAnomalyTSM: 0.5, predictedLightGBM: 1.28, predictedSARIMAX: 1.32, predictedHoltWinters: 1.34, predictedRidge: 1.35, residualLightGBM: -0.03 },
+  { date: '2024-06-15', year: 2024, month: 6, canchán: 1.15, yungay: 1.10, amarilla: 1.95, blanca: 1.10, color: 1.30, huayro: 1.80, huamantanga: 1.70, negraAndina: 1.55, peruanita: 1.98, unica: 1.12, volumeTon: 3350, juninInflowTon: 1380, arequipaInflowTon: 145, costaSurInflowTon: 130, dieselIndex: 138.5, ipcAlimentos: 123.4, tipoCambio: 3.77, senamhiMinTempJunin: -2.1, enfenAnomalyTSM: -0.2, predictedLightGBM: 1.18, predictedSARIMAX: 1.22, predictedHoltWinters: 1.25, predictedRidge: 1.26, residualLightGBM: -0.03 },
+  { date: '2024-07-15', year: 2024, month: 7, canchán: 1.20, yungay: 1.15, amarilla: 2.05, blanca: 1.15, color: 1.35, huayro: 1.85, huamantanga: 1.75, negraAndina: 1.60, peruanita: 2.05, unica: 1.15, volumeTon: 3180, juninInflowTon: 1280, arequipaInflowTon: 135, costaSurInflowTon: 120, dieselIndex: 139.0, ipcAlimentos: 124.0, tipoCambio: 3.75, senamhiMinTempJunin: -3.4, enfenAnomalyTSM: -0.4, predictedLightGBM: 1.22, predictedSARIMAX: 1.25, predictedHoltWinters: 1.28, predictedRidge: 1.29, residualLightGBM: -0.02 },
+  { date: '2024-09-15', year: 2024, month: 9, canchán: 1.48, yungay: 1.42, amarilla: 2.45, blanca: 1.38, color: 1.60, huayro: 2.20, huamantanga: 2.05, negraAndina: 1.80, peruanita: 2.35, unica: 1.35, volumeTon: 2510, juninInflowTon: 980, arequipaInflowTon: 120, costaSurInflowTon: 105, dieselIndex: 139.6, ipcAlimentos: 124.8, tipoCambio: 3.76, senamhiMinTempJunin: 3.1, enfenAnomalyTSM: -0.1, predictedLightGBM: 1.45, predictedSARIMAX: 1.41, predictedHoltWinters: 1.39, predictedRidge: 1.42, residualLightGBM: 0.03 },
+  { date: '2024-11-15', year: 2024, month: 11, canchán: 1.85, yungay: 1.78, amarilla: 2.95, blanca: 1.72, color: 2.05, huayro: 2.65, huamantanga: 2.50, negraAndina: 2.25, peruanita: 2.85, unica: 1.68, volumeTon: 2080, juninInflowTon: 760, arequipaInflowTon: 105, costaSurInflowTon: 95, dieselIndex: 140.2, ipcAlimentos: 125.6, tipoCambio: 3.78, senamhiMinTempJunin: 4.5, enfenAnomalyTSM: 0.1, predictedLightGBM: 1.81, predictedSARIMAX: 1.75, predictedHoltWinters: 1.72, predictedRidge: 1.70, residualLightGBM: 0.04 },
+  { date: '2025-01-15', year: 2025, month: 1, canchán: 1.80, yungay: 1.72, amarilla: 2.90, blanca: 1.68, color: 2.00, huayro: 2.60, huamantanga: 2.45, negraAndina: 2.20, peruanita: 2.80, unica: 1.65, volumeTon: 2200, juninInflowTon: 820, arequipaInflowTon: 110, costaSurInflowTon: 100, dieselIndex: 140.8, ipcAlimentos: 126.1, tipoCambio: 3.77, senamhiMinTempJunin: 4.9, enfenAnomalyTSM: 0.2, predictedLightGBM: 1.77, predictedSARIMAX: 1.73, predictedHoltWinters: 1.69, predictedRidge: 1.68, residualLightGBM: 0.03 },
+  { date: '2025-03-15', year: 2025, month: 3, canchán: 1.58, yungay: 1.50, amarilla: 2.60, blanca: 1.48, color: 1.75, huayro: 2.35, huamantanga: 2.20, negraAndina: 1.95, peruanita: 2.50, unica: 1.42, volumeTon: 2500, juninInflowTon: 970, arequipaInflowTon: 125, costaSurInflowTon: 110, dieselIndex: 141.0, ipcAlimentos: 126.8, tipoCambio: 3.75, senamhiMinTempJunin: 5.0, enfenAnomalyTSM: 0.3, predictedLightGBM: 1.55, predictedSARIMAX: 1.50, predictedHoltWinters: 1.47, predictedRidge: 1.46, residualLightGBM: 0.03 },
+  { date: '2025-05-15', year: 2025, month: 5, canchán: 1.28, yungay: 1.22, amarilla: 2.15, blanca: 1.20, color: 1.45, huayro: 1.95, huamantanga: 1.90, negraAndina: 1.70, peruanita: 2.15, unica: 1.22, volumeTon: 3200, juninInflowTon: 1290, arequipaInflowTon: 140, costaSurInflowTon: 125, dieselIndex: 141.4, ipcAlimentos: 127.2, tipoCambio: 3.76, senamhiMinTempJunin: 0.2, enfenAnomalyTSM: 0.1, predictedLightGBM: 1.30, predictedSARIMAX: 1.34, predictedHoltWinters: 1.36, predictedRidge: 1.37, residualLightGBM: -0.02 },
+  { date: '2025-06-15', year: 2025, month: 6, canchán: 1.18, yungay: 1.12, amarilla: 2.00, blanca: 1.12, color: 1.35, huayro: 1.85, huamantanga: 1.75, negraAndina: 1.60, peruanita: 2.02, unica: 1.15, volumeTon: 3420, juninInflowTon: 1410, arequipaInflowTon: 150, costaSurInflowTon: 135, dieselIndex: 141.8, ipcAlimentos: 127.5, tipoCambio: 3.75, senamhiMinTempJunin: -2.8, enfenAnomalyTSM: 0.0, predictedLightGBM: 1.21, predictedSARIMAX: 1.25, predictedHoltWinters: 1.28, predictedRidge: 1.29, residualLightGBM: -0.03 },
+  { date: '2025-07-15', year: 2025, month: 7, canchán: 1.22, yungay: 1.16, amarilla: 2.08, blanca: 1.16, color: 1.38, huayro: 1.90, huamantanga: 1.80, negraAndina: 1.65, peruanita: 2.08, unica: 1.18, volumeTon: 3250, juninInflowTon: 1310, arequipaInflowTon: 145, costaSurInflowTon: 130, dieselIndex: 142.0, ipcAlimentos: 127.8, tipoCambio: 3.74, senamhiMinTempJunin: -3.8, enfenAnomalyTSM: 0.0, predictedLightGBM: 1.24, predictedSARIMAX: 1.27, predictedHoltWinters: 1.30, predictedRidge: 1.31, residualLightGBM: -0.02 },
+  { date: '2025-09-15', year: 2025, month: 9, canchán: 1.52, yungay: 1.45, amarilla: 2.50, blanca: 1.42, color: 1.65, huayro: 2.25, huamantanga: 2.10, negraAndina: 1.85, peruanita: 2.40, unica: 1.38, volumeTon: 2550, juninInflowTon: 990, arequipaInflowTon: 130, costaSurInflowTon: 115, dieselIndex: 142.3, ipcAlimentos: 128.2, tipoCambio: 3.75, senamhiMinTempJunin: 2.9, enfenAnomalyTSM: 0.2, predictedLightGBM: 1.50, predictedSARIMAX: 1.45, predictedHoltWinters: 1.42, predictedRidge: 1.44, residualLightGBM: 0.02 },
+  { date: '2025-11-15', year: 2025, month: 11, canchán: 1.90, yungay: 1.82, amarilla: 3.05, blanca: 1.78, color: 2.10, huayro: 2.70, huamantanga: 2.55, negraAndina: 2.30, peruanita: 2.90, unica: 1.72, volumeTon: 2020, juninInflowTon: 740, arequipaInflowTon: 110, costaSurInflowTon: 100, dieselIndex: 142.5, ipcAlimentos: 128.7, tipoCambio: 3.78, senamhiMinTempJunin: 4.6, enfenAnomalyTSM: 0.4, predictedLightGBM: 1.87, predictedSARIMAX: 1.81, predictedHoltWinters: 1.78, predictedRidge: 1.76, residualLightGBM: 0.03 },
+  { date: '2026-01-15', year: 2026, month: 1, canchán: 1.82, yungay: 1.75, amarilla: 2.95, blanca: 1.70, color: 2.02, huayro: 2.65, huamantanga: 2.48, negraAndina: 2.25, peruanita: 2.85, unica: 1.66, volumeTon: 2240, juninInflowTon: 840, arequipaInflowTon: 120, costaSurInflowTon: 110, dieselIndex: 142.8, ipcAlimentos: 129.1, tipoCambio: 3.77, senamhiMinTempJunin: 5.1, enfenAnomalyTSM: 0.5, predictedLightGBM: 1.80, predictedSARIMAX: 1.74, predictedHoltWinters: 1.70, predictedRidge: 1.69, residualLightGBM: 0.02 },
+  { date: '2026-03-15', year: 2026, month: 3, canchán: 1.60, yungay: 1.52, amarilla: 2.65, blanca: 1.50, color: 1.78, huayro: 2.38, huamantanga: 2.22, negraAndina: 1.98, peruanita: 2.55, unica: 1.45, volumeTon: 2540, juninInflowTon: 980, arequipaInflowTon: 135, costaSurInflowTon: 120, dieselIndex: 142.6, ipcAlimentos: 129.5, tipoCambio: 3.75, senamhiMinTempJunin: 5.3, enfenAnomalyTSM: 0.5, predictedLightGBM: 1.58, predictedSARIMAX: 1.53, predictedHoltWinters: 1.49, predictedRidge: 1.48, residualLightGBM: 0.02 },
+  { date: '2026-05-15', year: 2026, month: 5, canchán: 1.30, yungay: 1.25, amarilla: 2.20, blanca: 1.22, color: 1.48, huayro: 1.98, huamantanga: 1.92, negraAndina: 1.72, peruanita: 2.20, unica: 1.24, volumeTon: 3260, juninInflowTon: 1310, arequipaInflowTon: 148, costaSurInflowTon: 135, dieselIndex: 142.4, ipcAlimentos: 129.8, tipoCambio: 3.74, senamhiMinTempJunin: 0.5, enfenAnomalyTSM: 0.4, predictedLightGBM: 1.33, predictedSARIMAX: 1.36, predictedHoltWinters: 1.38, predictedRidge: 1.39, residualLightGBM: -0.03 },
+  { date: '2026-06-15', year: 2026, month: 6, canchán: 1.20, yungay: 1.15, amarilla: 2.05, blanca: 1.14, color: 1.38, huayro: 1.88, huamantanga: 1.78, negraAndina: 1.62, peruanita: 2.05, unica: 1.16, volumeTon: 3480, juninInflowTon: 1420, arequipaInflowTon: 155, costaSurInflowTon: 140, dieselIndex: 142.2, ipcAlimentos: 130.0, tipoCambio: 3.75, senamhiMinTempJunin: -2.5, enfenAnomalyTSM: 0.3, predictedLightGBM: 1.22, predictedSARIMAX: 1.26, predictedHoltWinters: 1.29, predictedRidge: 1.30, residualLightGBM: -0.02 },
+  { date: '2026-07-15', year: 2026, month: 7, canchán: 1.25, yungay: 1.18, amarilla: 2.12, blanca: 1.18, color: 1.42, huayro: 1.92, huamantanga: 1.82, negraAndina: 1.68, peruanita: 2.12, unica: 1.20, volumeTon: 3310, juninInflowTon: 1320, arequipaInflowTon: 150, costaSurInflowTon: 135, dieselIndex: 142.1, ipcAlimentos: 130.2, tipoCambio: 3.76, senamhiMinTempJunin: -3.2, enfenAnomalyTSM: 0.4, predictedLightGBM: 1.27, predictedSARIMAX: 1.29, predictedHoltWinters: 1.32, predictedRidge: 1.33, residualLightGBM: -0.02 },
+  { date: '2026-08-15', year: 2026, month: 8, canchán: 1.38, yungay: 1.30, amarilla: 2.30, blanca: 1.30, color: 1.52, huayro: 2.08, huamantanga: 1.95, negraAndina: 1.75, peruanita: 2.25, unica: 1.28, volumeTon: 2890, juninInflowTon: 1120, arequipaInflowTon: 140, costaSurInflowTon: 125, dieselIndex: 142.3, ipcAlimentos: 130.5, tipoCambio: 3.76, senamhiMinTempJunin: 1.2, enfenAnomalyTSM: 0.5, predictedLightGBM: 1.36, predictedSARIMAX: 1.33, predictedHoltWinters: 1.31, predictedRidge: 1.34, residualLightGBM: 0.02 },
+  { date: '2026-09-15', year: 2026, month: 9, canchán: 1.45, yungay: 1.38, amarilla: 2.45, blanca: 1.35, color: 1.58, huayro: 2.18, huamantanga: 2.05, negraAndina: 1.80, peruanita: 2.32, unica: 1.32, volumeTon: 2620, juninInflowTon: 1010, arequipaInflowTon: 132, costaSurInflowTon: 118, dieselIndex: 142.5, ipcAlimentos: 130.8, tipoCambio: 3.76, senamhiMinTempJunin: 3.4, enfenAnomalyTSM: 0.6, predictedLightGBM: 1.43, predictedSARIMAX: 1.39, predictedHoltWinters: 1.37, predictedRidge: 1.39, residualLightGBM: 0.02 },
+  { date: '2026-10-15', year: 2026, month: 10, canchán: 1.48, yungay: 1.42, amarilla: 2.52, blanca: 1.38, color: 1.62, huayro: 2.25, huamantanga: 2.10, negraAndina: 1.85, peruanita: 2.38, unica: 1.35, volumeTon: 2480, juninInflowTon: 950, arequipaInflowTon: 125, costaSurInflowTon: 112, dieselIndex: 142.7, ipcAlimentos: 131.0, tipoCambio: 3.76, senamhiMinTempJunin: 4.2, enfenAnomalyTSM: 0.6, predictedLightGBM: 1.47, predictedSARIMAX: 1.42, predictedHoltWinters: 1.40, predictedRidge: 1.41, residualLightGBM: 0.01 },
 ];
 
 export const RAW_STAGING_MASTER_STATS = {
@@ -597,12 +597,19 @@ export const ENFEN_OFFICIAL_REPORT = {
       rainfallAnomaly: '-10% a Normal (Posibles veranillos)',
       impactOnPotato: 'Probabilidad de veranillos cortos en floración. Variedades nativas rústicas como Yungay y Huayro muestran alta resistencia.',
       riskLevel: 'Bajo-Moderado'
+    },
+    {
+      region: 'Costa Sur (Nazca, Palpa, Ica, Arequipa: Majes / Tambo)',
+      temperatureAnomaly: '+0.4 °C a +0.8 °C',
+      rainfallAnomaly: 'Árido / Riego tecnificado regulado',
+      impactOnPotato: 'En los valles de Nazca, Palpa y las irrigaciones de Majes y Valle de Tambo en Arequipa, la siembra bajo riego de invierno y primavera aprovecha ventanas de altos precios en Lima cuando la sierra no cosecha. Anomalías térmicas cálidas aceleran la tuberización en Papa Única y Canchán.',
+      riskLevel: 'Bajo-Moderado'
     }
   ],
   logisticsSupplyRisk: {
-    transportAlert: 'Alerta por transitabilidad en Carretera Central (Ruta PE-22 Ticlio - Huarochirí - Chosica)',
+    transportAlert: 'Alerta por transitabilidad en Carretera Central (Ruta PE-22) y Panamericana Sur (Ruta PE-1S)',
     historicalPriceShockPct: 22.4, // Average GMML price spike during major traffic interruption
-    description: 'El 85% de la papa que ingresa al GMML de Santa Anita proviene de la sierra central por la Carretera Central. Deslizamientos o huaicos por lluvias intensas provocan desabastecimiento inmediato de 2 a 3 días y saltos de precio de hasta +35% en Papa Canchán y Amarilla.'
+    description: 'El 85% de la papa que ingresa al GMML de Santa Anita proviene de la sierra central por la Carretera Central y un 10% adicional ingresa desde la Costa Sur (Ica, Nazca, Arequipa) por la Panamericana Sur. Deslizamientos o cortes viales provocan desabastecimiento inmediato y saltos de precio de hasta +35% en Papa Canchán y Amarilla.'
   },
   officialSources: [
     {
@@ -634,6 +641,8 @@ export const SENAMHI_STATIONS_DATA = [
   { station: 'Viques (Huancayo - Junín)', altitude: 3190, tempMin: 4.8, tempMax: 19.5, rainMm: 42.1, frostDays30d: 1, condition: 'Óptimo para floración' },
   { station: 'Chinchao (Huánuco)', altitude: 2180, tempMin: 12.4, tempMax: 24.2, rainMm: 85.0, frostDays30d: 0, condition: 'Alerta de humedad para Papa Amarilla' },
   { station: 'Lircay (Angaraes - Huancavelica)', altitude: 3270, tempMin: 3.9, tempMax: 18.2, rainMm: 39.0, frostDays30d: 2, condition: 'Favorable para papa nativa' },
-  { station: 'Cañete (Costa Lima)', altitude: 140, tempMin: 16.5, tempMax: 25.8, rainMm: 0.2, frostDays30d: 0, condition: 'Cosecha de papa blanca y única' }
+  { station: 'Cañete (Costa Lima)', altitude: 140, tempMin: 16.5, tempMax: 25.8, rainMm: 0.2, frostDays30d: 0, condition: 'Cosecha de papa blanca y única' },
+  { station: 'Nazca - Ingenio (Costa Sur - Ica)', altitude: 520, tempMin: 14.8, tempMax: 29.5, rainMm: 0.0, frostDays30d: 0, condition: 'Cosecha de Papa Única y Canchán con riego tecnificado' },
+  { station: 'Majes - La Joya (Costa Sur - Arequipa)', altitude: 1420, tempMin: 11.2, tempMax: 26.4, rainMm: 0.1, frostDays30d: 0, condition: 'Campañas de invierno y primavera óptimas con fertirriego' }
 ];
 

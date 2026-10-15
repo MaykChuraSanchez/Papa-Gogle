@@ -19,7 +19,14 @@ export const VARIETIES_CATALOG: VarietyInfo[] = [
     change30d: 5.7,
     dailyVolumeTon: 1120,
     gmmlSharePct: 45.1,
-    mainRegions: ['Junín (Tarma, Mantaro)', 'Huánuco', 'Pasco', 'Lima Provincias (Barranca, Cañete)'],
+    mainRegions: [
+      'Junín (Tarma, Valle del Mantaro)',
+      'Huánuco (Ambo, Pachitea)',
+      'Pasco (Paucartambo)',
+      'Lima Provincias (Barranca, Cañete)',
+      'Costa Sur: Nazca, Palpa e Ica (Cosechas de Invierno-Primavera)',
+      'Costa Sur: Arequipa (Majes y Valle de Tambo)'
+    ],
     frostResistance: 'Media',
     blightResistance: 'Media',
     enfenSensitivity: 'Media',
@@ -280,7 +287,11 @@ export const VARIETIES_CATALOG: VarietyInfo[] = [
     change30d: 2.5,
     dailyVolumeTon: 35,
     gmmlSharePct: 1.4,
-    mainRegions: ['Lima Provincias (Cañete, Huaral, Barranca)', 'Ica (Chincha)', 'Arequipa'],
+    mainRegions: [
+      'Costa Sur: Nazca, Palpa e Ica (Zona líder en siembra tecnificada por goteo)',
+      'Costa Sur: Arequipa (Irrigación Majes, Valle de Tambo y Santa Rita de Siguas)',
+      'Lima Provincias (Cañete, Huaral, Barranca)'
+    ],
     frostResistance: 'Media',
     blightResistance: 'Alta',
     enfenSensitivity: 'Media',
