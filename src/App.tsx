@@ -1,156 +1,37 @@
-import React, { useState } from 'react';
-import { ViewTab } from './types/agro';
+import React, { useEffect, useState } from 'react';
+import { Sprout } from 'lucide-react';
+import { DataProvider } from './data/DataProvider';
+import { useData } from './data/DataContext';
 import { Navbar } from './components/Navbar';
-import { HomeView } from './components/views/HomeView';
-import { DataSyncView } from './components/views/DataSyncView';
-import { VarietiesBreakdownView } from './components/views/VarietiesBreakdownView';
-import { MarketView } from './components/views/MarketView';
-import { EnfenSenamhiView } from './components/views/EnfenSenamhiView';
-import { PlantingSimulatorView } from './components/views/PlantingSimulatorView';
-import { HarvestDecisionView } from './components/views/HarvestDecisionView';
-import { ModelLabView } from './components/views/ModelLabView';
-import { ArchitectureAssistantView } from './components/views/ArchitectureAssistantView';
-import { Sprout, ExternalLink } from 'lucide-react';
-
-export default function App() {
-  const [currentTab, setCurrentTab] = useState<ViewTab>('home');
-  const [selectedVarietyForPlanting, setSelectedVarietyForPlanting] = useState<string>('canchan');
-
-  const handleOpenAssistant = () => {
-    setCurrentTab('architecture');
-  };
-
-  const handleSelectVariety = (varId: string) => {
-    setSelectedVarietyForPlanting(varId);
-    setCurrentTab('varieties');
-  };
-
-  const handleVarietyChosenForPlanting = (varId: string) => {
-    setSelectedVarietyForPlanting(varId);
-    setCurrentTab('planting');
-  };
-
-  return (
-    <div className="min-h-screen bg-[#F8FAF8] text-[#14211C] flex flex-col font-['Plus_Jakarta_Sans',sans-serif] selection:bg-[#20C77A]/30">
-      {/* Top Navbar */}
-      <Navbar
-        currentTab={currentTab}
-        onSelectTab={setCurrentTab}
-        onOpenAssistant={handleOpenAssistant}
-        onSelectVariety={handleSelectVariety}
-      />
-
-      {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 pt-6 sm:pt-8">
-        {currentTab === 'home' && (
-          <HomeView
-            onNavigate={(tab) => setCurrentTab(tab)}
-            onOpenAssistant={handleOpenAssistant}
-          />
-        )}
-        {currentTab === 'sync' && <DataSyncView />}
-        {currentTab === 'varieties' && (
-          <VarietiesBreakdownView
-            onNavigateTab={setCurrentTab}
-            onSelectVarietyForPlanting={handleVarietyChosenForPlanting}
-          />
-        )}
-        {currentTab === 'market' && <MarketView />}
-        {currentTab === 'enfen' && (
-          <EnfenSenamhiView
-            onNavigateTab={setCurrentTab}
-            onSelectVarietyForPlanting={handleVarietyChosenForPlanting}
-          />
-        )}
-        {currentTab === 'planting' && (
-          <PlantingSimulatorView initialVarietyId={selectedVarietyForPlanting} />
-        )}
-        {currentTab === 'harvest' && <HarvestDecisionView />}
-        {currentTab === 'modellab' && <ModelLabView />}
-        {currentTab === 'architecture' && <ArchitectureAssistantView />}
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-[#0B3025] text-white border-t border-[#174436] py-10 px-4 sm:px-6 mt-12 text-xs">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#20C77A] to-[#0E6845] flex items-center justify-center text-white font-bold">
-              <Sprout className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <div className="font-extrabold text-base tracking-tight text-white flex items-center gap-2">
-                AgroDecide AI
-                <span className="text-[10px] px-2 py-0.5 bg-[#20C77A]/20 border border-[#20C77A]/40 rounded-full text-[#B7F36B] font-bold">
-                  Piloto Papa Canchán
-                </span>
-              </div>
-              <p className="text-[11px] text-[#A2C7B8] mt-0.5">
-                Siembra con información. Cosecha con mejores decisiones.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-4 text-slate-300 text-[11px]">
-            <a
-              href="https://www.emmsa.com.pe/index.php/precios-diarios/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#B7F36B] transition-colors flex items-center gap-1"
-            >
-              EMMSA <ExternalLink className="w-3 h-3" />
-            </a>
-            <span>•</span>
-            <a
-              href="http://sistemas.midagri.gob.pe/sisap/portal2/mayorista/resumenes/consultar/#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#B7F36B] transition-colors flex items-center gap-1"
-            >
-              MIDAGRI SISAP <ExternalLink className="w-3 h-3" />
-            </a>
-            <span>•</span>
-            <a
-              href="https://siea.midagri.gob.pe/index.php"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#B7F36B] transition-colors flex items-center gap-1"
-            >
-              MIDAGRI SIEA <ExternalLink className="w-3 h-3" />
-            </a>
-            <span>•</span>
-            <a
-              href="https://www.senamhi.gob.pe"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#B7F36B] transition-colors flex items-center gap-1"
-            >
-              SENAMHI <ExternalLink className="w-3 h-3" />
-            </a>
-            <span>•</span>
-            <a
-              href="https://www.bcrp.gob.pe"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#B7F36B] transition-colors flex items-center gap-1"
-            >
-              BCRP <ExternalLink className="w-3 h-3" />
-            </a>
-            <span>•</span>
-            <a
-              href="https://www.gob.pe/inia"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#B7F36B] transition-colors flex items-center gap-1"
-            >
-              INIA <ExternalLink className="w-3 h-3" />
-            </a>
-          </div>
-
-          <div className="text-[11px] text-slate-400 font-mono text-center md:text-right">
-            NAUFEST 2026 Challenge • Datos Reales • Modelos Auditables
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
+import { Card, Home, Varieties, Planting, Harvest, ModelLab, Sources, Climate, Market, Assistant } from './components/ConnectedViews';
+import { freshness } from './utils/forecast';
+import type { ViewTab } from './types/agro';
+const tabs: ViewTab[] = ['home','sync','varieties','market','enfen','planting','harvest','modellab','architecture'];
+function initialTab(): ViewTab {const hash=location.hash.slice(1) as ViewTab;return tabs.includes(hash)?hash:'home';}
+function Platform() {
+  const [tab,setTab]=useState<ViewTab>(initialTab);
+  const {index,series,select,cached,error,retry}=useData();
+  const navigate=(view:ViewTab)=>{setTab(view);location.hash=view;window.scrollTo({top:0,behavior:'instant'});};
+  useEffect(()=>{const onHash=()=>setTab(initialTab());window.addEventListener('hashchange',onHash);return()=>window.removeEventListener('hashchange',onHash);},[]);
+  const stale=series?freshness(series):'';
+  return <div className="min-h-screen bg-[#F8FAF8] text-[#14211C] flex flex-col selection:bg-[#20C77A]/30">
+    <a className="skip-link" href="#main">Ir al contenido</a>
+    <Navbar currentTab={tab} onSelectTab={navigate} onOpenAssistant={()=>navigate('architecture')} onSelectVariety={v=>{select(v);navigate('varieties');}}/>
+    <main id="main" className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
+      {(cached||stale)&&<div className="rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-sm p-4 mb-6" role="status">{cached?'Estás viendo la última publicación guardada en este dispositivo. ':''}{stale}</div>}
+      {error ? <Card><p role="alert">{error}</p><button className="primary mt-4" onClick={retry}>Reintentar</button></Card> : !index ? <Card><p role="status">Cargando publicación de datos…</p></Card> : <>
+        {tab==='home'&&(series?<Home navigate={navigate}/>:<Card>Cargando variedad…</Card>)}
+        {tab==='varieties'&&<Varieties plant={v=>{select(v);navigate('planting');}}/>}
+        {tab==='planting'&&<Planting/>}
+        {tab==='harvest'&&(series?<Harvest/>:<Card>Cargando variedad…</Card>)}
+        {tab==='modellab'&&(series?<ModelLab/>:<Card>Cargando variedad…</Card>)}
+        {tab==='sync'&&<Sources/>}
+        {tab==='enfen'&&<Climate/>}
+        {tab==='market'&&(series?<Market/>:<Card>Cargando variedad…</Card>)}
+        {tab==='architecture'&&<Assistant navigate={navigate}/>}
+      </>}
+    </main>
+    <footer className="bg-[#0B3025] text-white border-t border-[#174436] py-8 px-4 sm:px-6 mt-10"><div className="max-w-7xl mx-auto flex flex-wrap justify-between gap-5 items-center"><div className="flex gap-3 items-center"><div className="p-3 bg-[#20C77A]/20 rounded-xl"><Sprout className="text-[#B7F36B]"/></div><div><p className="font-extrabold">AgroDecide AI <span className="text-[#B7F36B] text-xs">· Piloto papa</span></p><p className="text-xs text-[#A2C7B8] mt-1">Siembra con información. Cosecha con mejores decisiones.</p></div></div><div className="text-xs text-[#A2C7B8] max-w-md leading-relaxed">Precios mayoristas de Lima. Escenarios orientativos, con errores y limitaciones visibles. Diseño basado en tu plataforma Papa-Gogle · v4.1.</div></div></footer>
+  </div>;
 }
+export default function App(){return <DataProvider><Platform/></DataProvider>;}

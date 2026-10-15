@@ -1,0 +1,69 @@
+name: AgroDecide · datos, modelos y aplicación
+on:
+  workflow_dispatch:
+    inputs:
+      retrain:
+        description: Repetir selección, calibración y auditoría de modelos
+        type: boolean
+        default: false
+  schedule:
+    - cron: '0 8 * * *' # 03:00 en Perú; el proveedor puede demorar el inicio.
+permissions:
+  contents: read
+concurrency:
+  group: agrodecide-publication
+  cancel-in-progress: false
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: actions/cache@v4
+        with:
+          path: data/v4
+          key: agrodecide-v41-${{ github.run_id }}
+          restore-keys: agrodecide-v41-
+      - run: pip install -r requirements-v4.txt
+      - run: npm ci
+      - name: Descargar, validar y generar pronósticos
+        env:
+          RETRAIN: ${{ inputs.retrain }}
+        run: |
+          if [ ! -f data/v4/warehouse.duckdb ]; then
+            python -m agrodecide.v4.pipeline --bootstrap --retrain
+          elif [ "$RETRAIN" = "true" ]; then
+            python -m agrodecide.v4.pipeline --retrain
+          else
+            python -m agrodecide.v4.pipeline
+          fi
+      - name: Verificar publicación y construir interfaz
+        run: |
+          python -m unittest discover -s tests -p 'test_*.py'
+          npm test
+          npm run build
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: agrodecide-${{ github.run_id }}
+          path: |
+            data/v4
+            public/data
+            dist
+          retention-days: 30
+      - name: Publicar versión verificada en Vercel
+        if: ${{ success() && env.VERCEL_TOKEN != '' && env.VERCEL_ORG_ID != '' && env.VERCEL_PROJECT_ID != '' }}
+        run: npx --yes vercel deploy --prod --yes --token "$VERCEL_TOKEN"

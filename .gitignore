@@ -6,3 +6,9 @@ coverage/
 *.log
 .env*
 !.env.example
+
+/data/
+.venv/
+__pycache__/
+*.pyc
+*.zip

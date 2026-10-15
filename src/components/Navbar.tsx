@@ -1,4 +1,6 @@
 import React from 'react';
+import { useData } from '../data/DataContext';
+import { money } from '../utils/forecast';
 import { ViewTab } from '../types/agro';
 import {
   Sprout,
@@ -25,6 +27,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenAssistant,
   onSelectVariety,
 }) => {
+  const {index} = useData();
   const navItems: { id: ViewTab; label: string; icon: React.ReactNode; shortLabel: string }[] = [
     { id: 'home', label: '01. Inicio', shortLabel: 'Inicio', icon: <Sprout className="w-3.5 h-3.5" /> },
     { id: 'sync', label: '02. Conectores', shortLabel: 'Datos', icon: <Database className="w-3.5 h-3.5" /> },
@@ -34,80 +37,21 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'planting', label: '06. Quiero Sembrar', shortLabel: 'Sembrar', icon: <CalendarDays className="w-3.5 h-3.5" /> },
     { id: 'harvest', label: '07. Ya Coseché', shortLabel: 'Coseché', icon: <Truck className="w-3.5 h-3.5" /> },
     { id: 'modellab', label: '08. Model Lab', shortLabel: 'Model Lab', icon: <Cpu className="w-3.5 h-3.5" /> },
-    { id: 'architecture', label: '09. Arquitectura', shortLabel: 'IA & Arq', icon: <Workflow className="w-3.5 h-3.5" /> },
+    { id: 'architecture', label: '09. Asistente', shortLabel: 'Asistente', icon: <Workflow className="w-3.5 h-3.5" /> },
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0B3025] text-white border-b border-[#1A4537] shadow-lg">
-      {/* Top Ticker: Live Market Status & ENFEN Alert */}
-      <div className="bg-[#07241C] text-xs py-1.5 px-4 border-b border-[#143B2E] text-slate-300 flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-3 overflow-x-auto whitespace-nowrap">
-          <button
-            onClick={() => onSelectTab('varieties')}
-            className="flex items-center gap-1.5 font-semibold text-[#20C77A] hover:underline cursor-pointer"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#20C77A] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#20C77A]"></span>
-            </span>
-            GMML HOY:
-          </button>
-          <button onClick={() => onSelectTab('varieties')} className="text-white hover:text-[#B7F36B] transition-colors cursor-pointer">
-            Canchán: <strong className="text-[#B7F36B]">S/ 1.48</strong>
-          </button>
-          <span className="text-slate-400">•</span>
-          <button onClick={() => onSelectTab('varieties')} className="text-white hover:text-amber-300 transition-colors cursor-pointer">
-            Amarilla: <strong className="text-amber-300">S/ 2.52</strong>
-          </button>
-          <span className="text-slate-400">•</span>
-          <button onClick={() => onSelectTab('varieties')} className="text-white hover:text-purple-300 transition-colors cursor-pointer">
-            Huayro: <strong className="text-purple-300">S/ 2.25</strong>
-          </button>
-          <span className="text-slate-400">•</span>
-          <button onClick={() => onSelectTab('varieties')} className="text-white hover:text-rose-300 transition-colors cursor-pointer">
-            Peruanita: <strong className="text-rose-300">S/ 2.38</strong>
-          </button>
-          <span className="text-slate-400">•</span>
-          <button onClick={() => onSelectTab('varieties')} className="text-white hover:text-slate-200 transition-colors cursor-pointer">
-            Huamantanga: <strong className="text-white">S/ 2.10</strong>
-          </button>
-          <span className="text-slate-400">•</span>
-          <button onClick={() => onSelectTab('varieties')} className="text-white hover:text-slate-200 transition-colors cursor-pointer">
-            Negra Andina: <strong className="text-slate-200">S/ 1.85</strong>
-          </button>
-          <span className="text-slate-400">•</span>
-          <button onClick={() => onSelectTab('varieties')} className="text-white hover:text-slate-200 transition-colors cursor-pointer">
-            Yungay: <strong className="text-white">S/ 1.42</strong>
-          </button>
-          <span className="text-slate-400">•</span>
-          <button onClick={() => onSelectTab('varieties')} className="text-white hover:text-slate-200 transition-colors cursor-pointer">
-            Color: <strong className="text-white">S/ 1.62</strong>
-          </button>
-          <span className="text-slate-400">•</span>
-          <button onClick={() => onSelectTab('varieties')} className="text-white hover:text-slate-200 transition-colors cursor-pointer">
-            Única: <strong className="text-white">S/ 1.35</strong>
-          </button>
-          <span className="text-slate-400">|</span>
-          <button
-            onClick={() => onSelectTab('enfen')}
-            className="text-amber-300 font-medium hover:underline flex items-center gap-1 cursor-pointer bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/30"
-          >
-            ENFEN: Vigilancia Niño Costero (+0.6°C)
-          </button>
-        </div>
-        <div className="flex items-center gap-2 text-[11px] text-slate-300 font-mono">
-          <button
-            onClick={() => onSelectTab('varieties')}
-            className="bg-[#124234] hover:bg-[#1a5543] px-2 py-0.5 rounded text-[#B7F36B] transition-colors cursor-pointer"
-          >
-            10 VARIEDADES SISAP
-          </button>
-          <span className="text-slate-400">EMMSA • MIDAGRI • ENFEN • BCRP</span>
+    <header className="top-0 z-50 bg-[#0B3025] text-white border-b border-[#1A4537] shadow-lg">
+      <div className="bg-[#07241C] text-xs py-2 px-4 border-b border-[#143B2E] text-slate-300">
+        <div className="max-w-7xl mx-auto flex gap-5 overflow-x-auto whitespace-nowrap nav-scroll">
+          <span className="text-[#20C77A] font-bold">GMML · SISAP</span>
+          {index?.series.map(s => <button key={s.variety} onClick={() => onSelectVariety?.(s.variety)} className="shrink-0">{s.variety}: <strong className="text-[#B7F36B]">{money(s.last_price)}</strong></button>)}
+          <span>Última fecha: {index?.series[0]?.last_date || 'Cargando…'}</span>
         </div>
       </div>
 
       {/* Main Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3">
         {/* Brand */}
         <button
           onClick={() => onSelectTab('home')}
@@ -129,27 +73,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </button>
 
-        {/* Navigation Tabs */}
-        <nav className="hidden xl:flex items-center gap-0.5 bg-[#09281F] p-1 rounded-xl border border-[#164134] overflow-x-auto">
-          {navItems.map((item) => {
-            const isActive = currentTab === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => onSelectTab(item.id)}
-                className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer whitespace-nowrap ${
-                  isActive
-                    ? 'bg-[#20C77A] text-[#07241C] shadow-sm font-bold'
-                    : 'text-[#D0E5DC] hover:text-white hover:bg-[#123C30]'
-                }`}
-              >
-                {item.icon}
-                <span>{item.label}</span>
-              </button>
-            );
-          })}
-        </nav>
-
         {/* Action Button: Open AI Assistant */}
         <div className="flex items-center gap-2 shrink-0">
           <button
@@ -164,11 +87,12 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Mobile/Tablet Nav Scroller */}
-      <div className="xl:hidden flex items-center gap-1 px-3 py-2 bg-[#09281F] border-t border-[#164134] overflow-x-auto whitespace-nowrap">
+      <div className="flex items-center gap-1 px-3 py-2 bg-[#09281F] border-t border-[#164134] overflow-x-auto whitespace-nowrap nav-scroll">
         {navItems.map((item) => {
           const isActive = currentTab === item.id;
           return (
             <button
+              aria-current={isActive ? 'page' : undefined}
               key={item.id}
               onClick={() => onSelectTab(item.id)}
               className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-medium shrink-0 cursor-pointer ${

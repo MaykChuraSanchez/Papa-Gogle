@@ -1,0 +1,143 @@
+{
+  "period": "enero–junio 2026",
+  "preliminary": true,
+  "unit": "toneladas",
+  "regions": [
+    {
+      "region": "Amazonas",
+      "production_t": 33459.2,
+      "cell": "AQ8"
+    },
+    {
+      "region": "Ancash",
+      "production_t": 139284.5,
+      "cell": "AQ10"
+    },
+    {
+      "region": "Apurímac",
+      "production_t": 339957.8,
+      "cell": "AQ12"
+    },
+    {
+      "region": "Arequipa",
+      "production_t": 119801.363,
+      "cell": "AQ14"
+    },
+    {
+      "region": "Ayacucho",
+      "production_t": 801220.0,
+      "cell": "AQ16"
+    },
+    {
+      "region": "Cajamarca",
+      "production_t": 236547.665,
+      "cell": "AQ18"
+    },
+    {
+      "region": "Callao",
+      "production_t": 0.0,
+      "cell": "AQ20"
+    },
+    {
+      "region": "Cusco",
+      "production_t": 509378.6,
+      "cell": "AQ22"
+    },
+    {
+      "region": "Huancavelica",
+      "production_t": 297317.3,
+      "cell": "AQ24"
+    },
+    {
+      "region": "Huánuco",
+      "production_t": 474795.312,
+      "cell": "AQ26"
+    },
+    {
+      "region": "Ica",
+      "production_t": 15134.73,
+      "cell": "AQ28"
+    },
+    {
+      "region": "Junín",
+      "production_t": 484988.83,
+      "cell": "AQ30"
+    },
+    {
+      "region": "La Libertad",
+      "production_t": 467440.15,
+      "cell": "AQ32"
+    },
+    {
+      "region": "Lambayeque",
+      "production_t": 1087.0,
+      "cell": "AQ34"
+    },
+    {
+      "region": "Lima",
+      "production_t": 40926.75,
+      "cell": "AQ36"
+    },
+    {
+      "region": "Lima Metropolitana",
+      "production_t": 0.0,
+      "cell": "AQ38"
+    },
+    {
+      "region": "Loreto",
+      "production_t": 0.0,
+      "cell": "AQ40"
+    },
+    {
+      "region": "Madre de Dios",
+      "production_t": 0.0,
+      "cell": "AQ42"
+    },
+    {
+      "region": "Moquegua",
+      "production_t": 9798.644,
+      "cell": "AQ44"
+    },
+    {
+      "region": "Pasco",
+      "production_t": 137519.343,
+      "cell": "AQ46"
+    },
+    {
+      "region": "Piura",
+      "production_t": 4848.9,
+      "cell": "AQ48"
+    },
+    {
+      "region": "Puno",
+      "production_t": 1089346.6,
+      "cell": "AQ50"
+    },
+    {
+      "region": "San Martín",
+      "production_t": 0.0,
+      "cell": "AQ52"
+    },
+    {
+      "region": "Tacna",
+      "production_t": 5231.0,
+      "cell": "AQ54"
+    },
+    {
+      "region": "Tumbes",
+      "production_t": 0.0,
+      "cell": "AQ56"
+    },
+    {
+      "region": "Ucayali",
+      "production_t": 0.0,
+      "cell": "AQ58"
+    }
+  ],
+  "total_t": 5208083.686999999,
+  "sheet": "c-18",
+  "file": "1.- AGRÍCOLA JUNIO 2026.xlsx",
+  "sha256": "4a61004d49714abc2d56e3fc833efc3c939ab2c827711498e7a56abcc4d6e260",
+  "source_url": "https://www.gob.pe/institucion/midagri/informes-publicaciones/7910469-boletin-estadistico-mensual-el-agro-en-cifras-2026",
+  "note": "Producción histórica preliminar; no es precio regional ni pronóstico. Snapshot del libro conservado en v3."
+}

@@ -1,0 +1,4635 @@
+{
+  "generated_at": "2026-10-15T12:42:04.066602-05:00",
+  "exported_at": "2026-10-15T12:42:05.014948-05:00",
+  "series": [
+    {
+      "variety": "Amarilla",
+      "market": "Gran Mercado Mayorista de Lima",
+      "market_id": "15011501",
+      "last_date": "2026-10-15",
+      "last_price": 3.6,
+      "observations": 2843,
+      "coverage": 0.9993,
+      "evaluations": [
+        {
+          "horizon": 7,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.16952380952380958,
+              "rmse": 0.23986107090008027,
+              "smape": 6.504412512562969,
+              "n": 21
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.20629332646596973,
+              "rmse": 0.2659921831859578,
+              "smape": 7.555688142457618,
+              "n": 21
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.31,
+              "rmse": 0.3785247051130909,
+              "smape": 11.750782710766291,
+              "n": 21
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.32059848298070964,
+              "rmse": 0.3571555052503492,
+              "smape": 11.286214933790754,
+              "n": 21
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.4246428571428575,
+              "rmse": 0.46273720705073634,
+              "smape": 16.544158961658095,
+              "n": 21
+            }
+          ],
+          "audit": {
+            "mae": 0.27071428571428585,
+            "rmse": 0.281615239035715,
+            "smape": 7.138472445501874,
+            "n": 14,
+            "coverage80": 0.42857142857142855
+          },
+          "baseline_audit": {
+            "mae": 0.27071428571428585,
+            "rmse": 0.281615239035715,
+            "smape": 7.138472445501874,
+            "n": 14
+          },
+          "skill": 0.0,
+          "band_width": 0.2999999999999998,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2026-08-20",
+            "2026-08-27",
+            "2026-09-03",
+            "2026-09-10",
+            "2026-09-17",
+            "2026-09-24",
+            "2026-10-01",
+            "2026-10-08"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 30,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.3062222222222221,
+              "rmse": 0.40861011027900696,
+              "smape": 10.742412729864373,
+              "n": 90
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.4354444444444446,
+              "rmse": 0.5254680453335547,
+              "smape": 15.826794789974883,
+              "n": 90
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.46224603174603174,
+              "rmse": 0.5601553224425981,
+              "smape": 16.581609337579014,
+              "n": 90
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.5138214282970278,
+              "rmse": 0.6574327998044049,
+              "smape": 19.01654534888157,
+              "n": 90
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.7000317670609387,
+              "rmse": 0.7940958623346703,
+              "smape": 27.561486801969988,
+              "n": 90
+            }
+          ],
+          "audit": {
+            "mae": 0.5565,
+            "rmse": 0.6298319881788581,
+            "smape": 19.385076593723262,
+            "n": 60,
+            "coverage80": 0.36666666666666664
+          },
+          "baseline_audit": {
+            "mae": 0.5565,
+            "rmse": 0.6298319881788581,
+            "smape": 19.385076593723262,
+            "n": 60
+          },
+          "skill": 0.0,
+          "band_width": 0.3999999999999999,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2026-02-17",
+            "2026-03-19",
+            "2026-04-18",
+            "2026-05-18",
+            "2026-06-17",
+            "2026-07-17",
+            "2026-08-16",
+            "2026-09-15"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 90,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.2914074074074074,
+              "rmse": 0.354794671971352,
+              "smape": 11.737548798557704,
+              "n": 270
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.3772380952380952,
+              "rmse": 0.4561855707311561,
+              "smape": 15.37827846219484,
+              "n": 270
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.49546783929491556,
+              "rmse": 0.5623076867185915,
+              "smape": 20.399225818338728,
+              "n": 270
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.6183024432381599,
+              "rmse": 0.7577664400440637,
+              "smape": 24.232138072003316,
+              "n": 270
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.9578148148148149,
+              "rmse": 1.1569943499974085,
+              "smape": 34.859516911218506,
+              "n": 270
+            }
+          ],
+          "audit": {
+            "mae": 0.6260555555555556,
+            "rmse": 0.8736999866468276,
+            "smape": 26.749821863674843,
+            "n": 180,
+            "coverage80": 0.6444444444444445
+          },
+          "baseline_audit": {
+            "mae": 0.6260555555555556,
+            "rmse": 0.8736999866468276,
+            "smape": 26.749821863674843,
+            "n": 180
+          },
+          "skill": 0.0,
+          "band_width": 0.52,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2024-10-25",
+            "2025-01-23",
+            "2025-04-23",
+            "2025-07-22",
+            "2025-10-20",
+            "2026-01-18",
+            "2026-04-18",
+            "2026-07-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 180,
+          "model": "Gradient Boosting directo",
+          "selection": [
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.8615512978679902,
+              "rmse": 1.1110317354579433,
+              "smape": 29.91409730812733,
+              "n": 538
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 1.043736059479554,
+              "rmse": 1.4621571501034056,
+              "smape": 34.89863699458956,
+              "n": 538
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 1.0508085501858737,
+              "rmse": 1.2375309151342673,
+              "smape": 34.90993306586349,
+              "n": 538
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 1.1527781749601962,
+              "rmse": 1.4447599941575109,
+              "smape": 47.241990104010846,
+              "n": 538
+            },
+            {
+              "model": "Último precio",
+              "mae": 1.1845539033457249,
+              "rmse": 1.436618098639402,
+              "smape": 38.76127447346139,
+              "n": 538
+            }
+          ],
+          "audit": {
+            "mae": 0.6253481785354479,
+            "rmse": 0.8056984227532125,
+            "smape": 22.96886476964535,
+            "n": 360,
+            "coverage80": 0.8611111111111112
+          },
+          "baseline_audit": {
+            "mae": 0.521638888888889,
+            "rmse": 0.6671317127990711,
+            "smape": 20.642781307438216,
+            "n": 360
+          },
+          "skill": -0.19881433661409664,
+          "band_width": 1.2136597729490948,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2022-11-05",
+            "2023-05-04",
+            "2023-10-31",
+            "2024-04-28",
+            "2024-10-25",
+            "2025-04-23",
+            "2025-10-20",
+            "2026-04-18"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 240,
+          "model": "Media 28 días",
+          "selection": [
+            {
+              "model": "Media 28 días",
+              "mae": 0.9428105158730159,
+              "rmse": 1.2204099280871556,
+              "smape": 34.7305079202338,
+              "n": 720
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.9706750724449544,
+              "rmse": 1.2473580814853722,
+              "smape": 37.46474957071634,
+              "n": 720
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 1.0354831992640365,
+              "rmse": 1.320033589676837,
+              "smape": 40.52216754827838,
+              "n": 720
+            },
+            {
+              "model": "Último precio",
+              "mae": 1.045375,
+              "rmse": 1.409710716975492,
+              "smape": 36.09397598217115,
+              "n": 720
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 1.0748888888888888,
+              "rmse": 1.5574143457809948,
+              "smape": 42.604813389768736,
+              "n": 720
+            }
+          ],
+          "audit": {
+            "mae": 0.436294642857143,
+            "rmse": 0.5183234599973974,
+            "smape": 17.229219046424962,
+            "n": 480,
+            "coverage80": 1.0
+          },
+          "baseline_audit": {
+            "mae": 0.44460416666666674,
+            "rmse": 0.5231891388398655,
+            "smape": 17.54671422919687,
+            "n": 480
+          },
+          "skill": 0.018689711956194177,
+          "band_width": 1.7492857142857148,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2021-07-13",
+            "2022-03-10",
+            "2022-11-05",
+            "2023-07-03",
+            "2024-02-28",
+            "2024-10-25",
+            "2025-06-22",
+            "2026-02-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        }
+      ],
+      "run_id": "20261015T114246_d9d9f6f75d",
+      "model_version": "4.0.0",
+      "file": "31a3039a788f3f0e9c8b.json",
+      "evaluated_at": "2026-10-15T11:42:46.167651-05:00"
+    },
+    {
+      "variety": "Blanca",
+      "market": "Gran Mercado Mayorista de Lima",
+      "market_id": "15011501",
+      "last_date": "2026-10-15",
+      "last_price": 1.11,
+      "observations": 2843,
+      "coverage": 0.9993,
+      "evaluations": [
+        {
+          "horizon": 7,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.05000000000000001,
+              "rmse": 0.06350852961085884,
+              "smape": 5.084540072095294,
+              "n": 21
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.0675340136054422,
+              "rmse": 0.07403718729152814,
+              "smape": 6.899989328537977,
+              "n": 21
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.18365399055826098,
+              "rmse": 0.20787393904222573,
+              "smape": 16.988326449547557,
+              "n": 21
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.21809523809523806,
+              "rmse": 0.23155787099351124,
+              "smape": 20.41617976080011,
+              "n": 21
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.37945756172452055,
+              "rmse": 0.38759713642157095,
+              "smape": 32.89602937591199,
+              "n": 21
+            }
+          ],
+          "audit": {
+            "mae": 0.04214285714285716,
+            "rmse": 0.059581876439064936,
+            "smape": 4.008370480572321,
+            "n": 14,
+            "coverage80": 0.9285714285714286
+          },
+          "baseline_audit": {
+            "mae": 0.04214285714285716,
+            "rmse": 0.059581876439064936,
+            "smape": 4.008370480572321,
+            "n": 14
+          },
+          "skill": 0.0,
+          "band_width": 0.10000000000000009,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2026-08-20",
+            "2026-08-27",
+            "2026-09-03",
+            "2026-09-10",
+            "2026-09-17",
+            "2026-09-24",
+            "2026-10-01",
+            "2026-10-08"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 30,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.3832222222222222,
+              "rmse": 0.49033661906898196,
+              "smape": 27.900649046572916,
+              "n": 90
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.4664761904761906,
+              "rmse": 0.5336517172546138,
+              "smape": 31.458904358803007,
+              "n": 90
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.5328671962477951,
+              "rmse": 0.6078208244131732,
+              "smape": 37.669640575944946,
+              "n": 90
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.5329523226840778,
+              "rmse": 0.5870007720267834,
+              "smape": 37.67704198025256,
+              "n": 90
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.7797777777777779,
+              "rmse": 0.8644882879484256,
+              "smape": 59.845201068759295,
+              "n": 90
+            }
+          ],
+          "audit": {
+            "mae": 0.10550000000000001,
+            "rmse": 0.13270895473428565,
+            "smape": 10.863047542863963,
+            "n": 60,
+            "coverage80": 0.6333333333333333
+          },
+          "baseline_audit": {
+            "mae": 0.10550000000000001,
+            "rmse": 0.13270895473428565,
+            "smape": 10.863047542863963,
+            "n": 60
+          },
+          "skill": 0.0,
+          "band_width": 0.14000000000000012,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2026-02-17",
+            "2026-03-19",
+            "2026-04-18",
+            "2026-05-18",
+            "2026-06-17",
+            "2026-07-17",
+            "2026-08-16",
+            "2026-09-15"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 90,
+          "model": "Estacional anual",
+          "selection": [
+            {
+              "model": "Estacional anual",
+              "mae": 0.19062962962962962,
+              "rmse": 0.24853422150532764,
+              "smape": 17.497222724394245,
+              "n": 270
+            },
+            {
+              "model": "Último precio",
+              "mae": 0.21040740740740743,
+              "rmse": 0.28519973507857416,
+              "smape": 20.002114243597976,
+              "n": 270
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.2315133775464557,
+              "rmse": 0.31299149871568643,
+              "smape": 21.136866674638206,
+              "n": 270
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.31257200304520366,
+              "rmse": 0.4647028918878814,
+              "smape": 26.395690840192497,
+              "n": 270
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.4189894179894179,
+              "rmse": 0.6147941379116931,
+              "smape": 30.489246931096257,
+              "n": 270
+            }
+          ],
+          "audit": {
+            "mae": 0.27499999999999997,
+            "rmse": 0.33714652271346024,
+            "smape": 23.75142432814942,
+            "n": 180,
+            "coverage80": 1.0
+          },
+          "baseline_audit": {
+            "mae": 0.13872222222222222,
+            "rmse": 0.1880912898922577,
+            "smape": 11.622515979283161,
+            "n": 180
+          },
+          "skill": -0.9823788546255505,
+          "band_width": 1.06,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2024-10-25",
+            "2025-01-23",
+            "2025-04-23",
+            "2025-07-22",
+            "2025-10-20",
+            "2026-01-18",
+            "2026-04-18",
+            "2026-07-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 180,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.2577509293680298,
+              "rmse": 0.3537475944720975,
+              "smape": 20.761824707891705,
+              "n": 538
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.25821295804567174,
+              "rmse": 0.35831833639234484,
+              "smape": 20.729889368892575,
+              "n": 538
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.2682470542496041,
+              "rmse": 0.3647015452023779,
+              "smape": 22.284821442826647,
+              "n": 538
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.2936243878360307,
+              "rmse": 0.4005975232349803,
+              "smape": 23.931151836842613,
+              "n": 538
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.6086431226765799,
+              "rmse": 0.7344356506237038,
+              "smape": 44.707529481922464,
+              "n": 538
+            }
+          ],
+          "audit": {
+            "mae": 0.30572222222222223,
+            "rmse": 0.43253580455520935,
+            "smape": 25.692109781353963,
+            "n": 360,
+            "coverage80": 0.9027777777777778
+          },
+          "baseline_audit": {
+            "mae": 0.30572222222222223,
+            "rmse": 0.43253580455520935,
+            "smape": 25.692109781353963,
+            "n": 360
+          },
+          "skill": 0.0,
+          "band_width": 0.69,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2022-11-05",
+            "2023-05-04",
+            "2023-10-31",
+            "2024-04-28",
+            "2024-10-25",
+            "2025-04-23",
+            "2025-10-20",
+            "2026-04-18"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 240,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.35123611111111114,
+              "rmse": 0.4615594039052106,
+              "smape": 26.461618725580042,
+              "n": 720
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.3630595238095238,
+              "rmse": 0.45676872866392765,
+              "smape": 27.935889593587955,
+              "n": 720
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.39005274081119695,
+              "rmse": 0.48724513813216663,
+              "smape": 29.90818626334138,
+              "n": 720
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.5173333333333333,
+              "rmse": 0.594159537124126,
+              "smape": 46.786443042521064,
+              "n": 720
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.5287451993224572,
+              "rmse": 0.6302274791803028,
+              "smape": 45.93271331366056,
+              "n": 720
+            }
+          ],
+          "audit": {
+            "mae": 0.3495208333333333,
+            "rmse": 0.4640269837699815,
+            "smape": 31.364049270400606,
+            "n": 480,
+            "coverage80": 0.8854166666666666
+          },
+          "baseline_audit": {
+            "mae": 0.3495208333333333,
+            "rmse": 0.4640269837699815,
+            "smape": 31.364049270400606,
+            "n": 480
+          },
+          "skill": 0.0,
+          "band_width": 0.6399999999999999,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2021-07-13",
+            "2022-03-10",
+            "2022-11-05",
+            "2023-07-03",
+            "2024-02-28",
+            "2024-10-25",
+            "2025-06-22",
+            "2026-02-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        }
+      ],
+      "run_id": "20261015T114301_a36b21701f",
+      "model_version": "4.0.0",
+      "file": "23f012d871d3c41b0b90.json",
+      "evaluated_at": "2026-10-15T11:43:01.615730-05:00"
+    },
+    {
+      "variety": "Canchán",
+      "market": "Gran Mercado Mayorista de Lima",
+      "market_id": "15011501",
+      "last_date": "2026-10-15",
+      "last_price": 2.23,
+      "observations": 2843,
+      "coverage": 0.9993,
+      "evaluations": [
+        {
+          "horizon": 7,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.048571428571428585,
+              "rmse": 0.06047431568147636,
+              "smape": 2.715683093096218,
+              "n": 21
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.15342812577306825,
+              "rmse": 0.19465089947329323,
+              "smape": 8.423537799713795,
+              "n": 21
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.20735683155069443,
+              "rmse": 0.21762719400238967,
+              "smape": 11.929388283574452,
+              "n": 21
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.37678571428571417,
+              "rmse": 0.38683045073914174,
+              "smape": 23.304866454885545,
+              "n": 21
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.7623809523809523,
+              "rmse": 0.7714951470390218,
+              "smape": 52.812085780086406,
+              "n": 21
+            }
+          ],
+          "audit": {
+            "mae": 0.07071428571428576,
+            "rmse": 0.08250541107795817,
+            "smape": 3.2763421347715336,
+            "n": 14,
+            "coverage80": 1.0
+          },
+          "baseline_audit": {
+            "mae": 0.07071428571428576,
+            "rmse": 0.08250541107795817,
+            "smape": 3.2763421347715336,
+            "n": 14
+          },
+          "skill": 0.0,
+          "band_width": 0.6299999999999999,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2026-08-20",
+            "2026-08-27",
+            "2026-09-03",
+            "2026-09-10",
+            "2026-09-17",
+            "2026-09-24",
+            "2026-10-01",
+            "2026-10-08"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 30,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.25833333333333336,
+              "rmse": 0.3532751524425874,
+              "smape": 14.84411574100036,
+              "n": 90
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.3431311876981434,
+              "rmse": 0.4092536323823288,
+              "smape": 20.783886395488476,
+              "n": 90
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.3832936507936509,
+              "rmse": 0.4236427474153686,
+              "smape": 22.0633225966576,
+              "n": 90
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.397784315758818,
+              "rmse": 0.44960912618158466,
+              "smape": 24.3042791243354,
+              "n": 90
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.5944444444444444,
+              "rmse": 0.7320777129361183,
+              "smape": 39.586526199636864,
+              "n": 90
+            }
+          ],
+          "audit": {
+            "mae": 0.28316666666666673,
+            "rmse": 0.33701384739107293,
+            "smape": 14.04979189643697,
+            "n": 60,
+            "coverage80": 0.8166666666666667
+          },
+          "baseline_audit": {
+            "mae": 0.28316666666666673,
+            "rmse": 0.33701384739107293,
+            "smape": 14.04979189643697,
+            "n": 60
+          },
+          "skill": 0.0,
+          "band_width": 0.42000000000000004,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2026-02-17",
+            "2026-03-19",
+            "2026-04-18",
+            "2026-05-18",
+            "2026-06-17",
+            "2026-07-17",
+            "2026-08-16",
+            "2026-09-15"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 90,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.19500000000000003,
+              "rmse": 0.2659803668610816,
+              "smape": 20.742033722741294,
+              "n": 270
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.22641788571100221,
+              "rmse": 0.3037272757243873,
+              "smape": 21.58483249130299,
+              "n": 270
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.23590117115956652,
+              "rmse": 0.29801566994842854,
+              "smape": 22.7051425344159,
+              "n": 270
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.27024074074074067,
+              "rmse": 0.3434725985081282,
+              "smape": 27.626446046932546,
+              "n": 270
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.3634444444444444,
+              "rmse": 0.4522613960646767,
+              "smape": 31.749476101240766,
+              "n": 270
+            }
+          ],
+          "audit": {
+            "mae": 0.5548333333333332,
+            "rmse": 0.7355621433071896,
+            "smape": 39.115390343813246,
+            "n": 180,
+            "coverage80": 0.5
+          },
+          "baseline_audit": {
+            "mae": 0.5548333333333332,
+            "rmse": 0.7355621433071896,
+            "smape": 39.115390343813246,
+            "n": 180
+          },
+          "skill": 0.0,
+          "band_width": 0.44999999999999996,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2024-10-25",
+            "2025-01-23",
+            "2025-04-23",
+            "2025-07-22",
+            "2025-10-20",
+            "2026-01-18",
+            "2026-04-18",
+            "2026-07-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 180,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.23479553903345723,
+              "rmse": 0.3062023045326655,
+              "smape": 17.227580508166874,
+              "n": 538
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.23950477960701003,
+              "rmse": 0.2805650108359269,
+              "smape": 17.722606553117856,
+              "n": 538
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.2899371790422107,
+              "rmse": 0.3458689216232882,
+              "smape": 21.020228843273763,
+              "n": 538
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.31211663796513434,
+              "rmse": 0.36343226184450955,
+              "smape": 22.468053456924455,
+              "n": 538
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.4993122676579926,
+              "rmse": 0.6054518420861413,
+              "smape": 34.09756809914359,
+              "n": 538
+            }
+          ],
+          "audit": {
+            "mae": 0.4077222222222222,
+            "rmse": 0.5233811018538764,
+            "smape": 28.319150451506975,
+            "n": 360,
+            "coverage80": 0.6694444444444444
+          },
+          "baseline_audit": {
+            "mae": 0.4077222222222222,
+            "rmse": 0.5233811018538764,
+            "smape": 28.319150451506975,
+            "n": 360
+          },
+          "skill": 0.0,
+          "band_width": 0.4600000000000001,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2022-11-05",
+            "2023-05-04",
+            "2023-10-31",
+            "2024-04-28",
+            "2024-10-25",
+            "2025-04-23",
+            "2025-10-20",
+            "2026-04-18"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 240,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.27794444444444444,
+              "rmse": 0.35521980675507264,
+              "smape": 19.349805984446707,
+              "n": 720
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.2874126984126984,
+              "rmse": 0.35321800116812613,
+              "smape": 20.077563135222743,
+              "n": 720
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.37220123757148793,
+              "rmse": 0.4503092617486922,
+              "smape": 27.163987695810224,
+              "n": 720
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.43691503517740965,
+              "rmse": 0.5461824452366681,
+              "smape": 37.01704337109281,
+              "n": 720
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.4429166666666666,
+              "rmse": 0.5532226294881454,
+              "smape": 38.3661433546386,
+              "n": 720
+            }
+          ],
+          "audit": {
+            "mae": 0.31420833333333337,
+            "rmse": 0.400595910280339,
+            "smape": 22.045664958316987,
+            "n": 480,
+            "coverage80": 0.8020833333333334
+          },
+          "baseline_audit": {
+            "mae": 0.31420833333333337,
+            "rmse": 0.400595910280339,
+            "smape": 22.045664958316987,
+            "n": 480
+          },
+          "skill": 0.0,
+          "band_width": 0.46999999999999986,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2021-07-13",
+            "2022-03-10",
+            "2022-11-05",
+            "2023-07-03",
+            "2024-02-28",
+            "2024-10-25",
+            "2025-06-22",
+            "2026-02-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        }
+      ],
+      "run_id": "20261015T114317_2a39d1c9a0",
+      "model_version": "4.0.0",
+      "file": "f5be7af00200451d8cc2.json",
+      "evaluated_at": "2026-10-15T11:43:17.473667-05:00"
+    },
+    {
+      "variety": "Color",
+      "market": "Gran Mercado Mayorista de Lima",
+      "market_id": "15011501",
+      "last_date": "2026-10-15",
+      "last_price": 2.02,
+      "observations": 2843,
+      "coverage": 0.9993,
+      "evaluations": [
+        {
+          "horizon": 7,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.030952380952380946,
+              "rmse": 0.04292851200376204,
+              "smape": 1.854535762860479,
+              "n": 21
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.09487490010903081,
+              "rmse": 0.1097449477208301,
+              "smape": 5.7568417208809395,
+              "n": 21
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.1578715704231299,
+              "rmse": 0.17041266037185349,
+              "smape": 9.711575059608279,
+              "n": 21
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.23940476190476181,
+              "rmse": 0.24518466246379067,
+              "smape": 15.354099148505286,
+              "n": 21
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.7495238095238095,
+              "rmse": 0.7522854068326285,
+              "smape": 56.97651641830453,
+              "n": 21
+            }
+          ],
+          "audit": {
+            "mae": 0.0835714285714286,
+            "rmse": 0.0976509820007679,
+            "smape": 4.093801634740202,
+            "n": 14,
+            "coverage80": 1.0
+          },
+          "baseline_audit": {
+            "mae": 0.0835714285714286,
+            "rmse": 0.0976509820007679,
+            "smape": 4.093801634740202,
+            "n": 14
+          },
+          "skill": 0.0,
+          "band_width": 0.5500000000000003,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2026-08-20",
+            "2026-08-27",
+            "2026-09-03",
+            "2026-09-10",
+            "2026-09-17",
+            "2026-09-24",
+            "2026-10-01",
+            "2026-10-08"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 30,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.2124444444444445,
+              "rmse": 0.2975604513745438,
+              "smape": 11.690809402529963,
+              "n": 90
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.3195538435821711,
+              "rmse": 0.3627371979156135,
+              "smape": 17.572878431151985,
+              "n": 90
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.3371269841269842,
+              "rmse": 0.37492565022585345,
+              "smape": 18.045273267585653,
+              "n": 90
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.40887765182049535,
+              "rmse": 0.44876338171525393,
+              "smape": 22.82381665643893,
+              "n": 90
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.6377777777777779,
+              "rmse": 0.6978474841332531,
+              "smape": 38.615803735325244,
+              "n": 90
+            }
+          ],
+          "audit": {
+            "mae": 0.27049999999999996,
+            "rmse": 0.33806557549288174,
+            "smape": 14.007809224161015,
+            "n": 60,
+            "coverage80": 0.8833333333333333
+          },
+          "baseline_audit": {
+            "mae": 0.27049999999999996,
+            "rmse": 0.33806557549288174,
+            "smape": 14.007809224161015,
+            "n": 60
+          },
+          "skill": 0.0,
+          "band_width": 0.6000000000000001,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2026-02-17",
+            "2026-03-19",
+            "2026-04-18",
+            "2026-05-18",
+            "2026-06-17",
+            "2026-07-17",
+            "2026-08-16",
+            "2026-09-15"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 90,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.21411111111111109,
+              "rmse": 0.3154778855899353,
+              "smape": 21.99330589152672,
+              "n": 270
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.21853796198120573,
+              "rmse": 0.28324425227878525,
+              "smape": 21.49735732071344,
+              "n": 270
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.24563760017533273,
+              "rmse": 0.3379175218615774,
+              "smape": 23.183881862136083,
+              "n": 270
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.30861111111111117,
+              "rmse": 0.38911853237457017,
+              "smape": 31.921663082165484,
+              "n": 270
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.34744444444444444,
+              "rmse": 0.42597035195039196,
+              "smape": 30.96911609832846,
+              "n": 270
+            }
+          ],
+          "audit": {
+            "mae": 0.43411111111111106,
+            "rmse": 0.5807935184823528,
+            "smape": 28.14536242716069,
+            "n": 180,
+            "coverage80": 0.65
+          },
+          "baseline_audit": {
+            "mae": 0.43411111111111106,
+            "rmse": 0.5807935184823528,
+            "smape": 28.14536242716069,
+            "n": 180
+          },
+          "skill": 0.0,
+          "band_width": 0.6100000000000001,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2024-10-25",
+            "2025-01-23",
+            "2025-04-23",
+            "2025-07-22",
+            "2025-10-20",
+            "2026-01-18",
+            "2026-04-18",
+            "2026-07-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 180,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.16410780669144984,
+              "rmse": 0.20865162798007605,
+              "smape": 11.457067705136323,
+              "n": 538
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.1752867764206055,
+              "rmse": 0.20984041817549898,
+              "smape": 12.219796953738381,
+              "n": 538
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.26491390850702246,
+              "rmse": 0.3086336006314882,
+              "smape": 18.418147299256635,
+              "n": 538
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.3432705444198365,
+              "rmse": 0.4016862802796983,
+              "smape": 23.268591295930154,
+              "n": 538
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.505910780669145,
+              "rmse": 0.6057141166243915,
+              "smape": 33.52646829916142,
+              "n": 538
+            }
+          ],
+          "audit": {
+            "mae": 0.41625,
+            "rmse": 0.5806995302602237,
+            "smape": 28.705233896879903,
+            "n": 360,
+            "coverage80": 0.625
+          },
+          "baseline_audit": {
+            "mae": 0.41625,
+            "rmse": 0.5806995302602237,
+            "smape": 28.705233896879903,
+            "n": 360
+          },
+          "skill": 0.0,
+          "band_width": 0.5099999999999999,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2022-11-05",
+            "2023-05-04",
+            "2023-10-31",
+            "2024-04-28",
+            "2024-10-25",
+            "2025-04-23",
+            "2025-10-20",
+            "2026-04-18"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 240,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.27808333333333335,
+              "rmse": 0.3431990028475543,
+              "smape": 19.28540772719348,
+              "n": 720
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.29725793650793647,
+              "rmse": 0.3497669291998669,
+              "smape": 20.537833768783432,
+              "n": 720
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.42244315846713426,
+              "rmse": 0.4825151932412808,
+              "smape": 30.914300025619823,
+              "n": 720
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.45581944444444444,
+              "rmse": 0.5688708357595578,
+              "smape": 40.2200930270423,
+              "n": 720
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.5058168065118996,
+              "rmse": 0.621028282845048,
+              "smape": 42.07870680548872,
+              "n": 720
+            }
+          ],
+          "audit": {
+            "mae": 0.38925,
+            "rmse": 0.4418200991353834,
+            "smape": 27.89630414739782,
+            "n": 480,
+            "coverage80": 0.68125
+          },
+          "baseline_audit": {
+            "mae": 0.38925,
+            "rmse": 0.4418200991353834,
+            "smape": 27.89630414739782,
+            "n": 480
+          },
+          "skill": 0.0,
+          "band_width": 0.5100000000000001,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2021-07-13",
+            "2022-03-10",
+            "2022-11-05",
+            "2023-07-03",
+            "2024-02-28",
+            "2024-10-25",
+            "2025-06-22",
+            "2026-02-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        }
+      ],
+      "run_id": "20261015T114332_84dba79637",
+      "model_version": "4.0.0",
+      "file": "40726b3b78e8e07af475.json",
+      "evaluated_at": "2026-10-15T11:43:32.841191-05:00"
+    },
+    {
+      "variety": "Huamantanga",
+      "market": "Gran Mercado Mayorista de Lima",
+      "market_id": "15011501",
+      "last_date": "2026-10-15",
+      "last_price": 2.0,
+      "observations": 2841,
+      "coverage": 0.9986,
+      "evaluations": [
+        {
+          "horizon": 7,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.08476190476190475,
+              "rmse": 0.11555250301218467,
+              "smape": 4.781108206111215,
+              "n": 21
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.12523809523809523,
+              "rmse": 0.16603212540549694,
+              "smape": 7.024881758723178,
+              "n": 21
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.128299319727891,
+              "rmse": 0.18807564696044976,
+              "smape": 7.322132437779038,
+              "n": 21
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.21914386349483228,
+              "rmse": 0.2615100265107835,
+              "smape": 11.78816177738565,
+              "n": 21
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.24143377365688654,
+              "rmse": 0.27600136018703136,
+              "smape": 13.100922703155302,
+              "n": 21
+            }
+          ],
+          "audit": {
+            "mae": 0.12428571428571437,
+            "rmse": 0.1348544188586874,
+            "smape": 6.215489185057957,
+            "n": 14,
+            "coverage80": 0.8571428571428571
+          },
+          "baseline_audit": {
+            "mae": 0.12428571428571437,
+            "rmse": 0.1348544188586874,
+            "smape": 6.215489185057957,
+            "n": 14
+          },
+          "skill": 0.0,
+          "band_width": 0.16999999999999993,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2026-08-20",
+            "2026-08-27",
+            "2026-09-03",
+            "2026-09-10",
+            "2026-09-17",
+            "2026-09-24",
+            "2026-10-01",
+            "2026-10-08"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 30,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.15922222222222218,
+              "rmse": 0.20728670429571158,
+              "smape": 8.714412979180123,
+              "n": 90
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.18853174603174594,
+              "rmse": 0.21520555880293266,
+              "smape": 10.116208696942428,
+              "n": 90
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.21499999999999997,
+              "rmse": 0.2597456020374123,
+              "smape": 11.499491157783728,
+              "n": 90
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.24111498251757799,
+              "rmse": 0.2855620117268376,
+              "smape": 13.483981338846418,
+              "n": 90
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.2704567219078668,
+              "rmse": 0.3047026063678391,
+              "smape": 15.271751787202836,
+              "n": 90
+            }
+          ],
+          "audit": {
+            "mae": 0.11616666666666661,
+            "rmse": 0.15570806016388483,
+            "smape": 6.474759747387749,
+            "n": 60,
+            "coverage80": 0.7666666666666667
+          },
+          "baseline_audit": {
+            "mae": 0.11616666666666661,
+            "rmse": 0.15570806016388483,
+            "smape": 6.474759747387749,
+            "n": 60
+          },
+          "skill": 0.0,
+          "band_width": 0.15999999999999992,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2026-02-17",
+            "2026-03-19",
+            "2026-04-18",
+            "2026-05-18",
+            "2026-06-17",
+            "2026-07-17",
+            "2026-08-16",
+            "2026-09-15"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 90,
+          "model": "Media 28 días",
+          "selection": [
+            {
+              "model": "Media 28 días",
+              "mae": 0.13911640211640208,
+              "rmse": 0.1882214314477388,
+              "smape": 7.2258122808391105,
+              "n": 270
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.19102659406505768,
+              "rmse": 0.24750793197309812,
+              "smape": 9.66141774487923,
+              "n": 270
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.20565470794346155,
+              "rmse": 0.23884393050936045,
+              "smape": 11.051848685960929,
+              "n": 270
+            },
+            {
+              "model": "Último precio",
+              "mae": 0.26299999999999996,
+              "rmse": 0.3315569332708938,
+              "smape": 13.13017315424623,
+              "n": 270
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.3901851851851852,
+              "rmse": 0.47475256713365965,
+              "smape": 20.221271237472894,
+              "n": 270
+            }
+          ],
+          "audit": {
+            "mae": 0.2935039682539683,
+            "rmse": 0.33082916085718533,
+            "smape": 16.964747561630787,
+            "n": 180,
+            "coverage80": 0.6
+          },
+          "baseline_audit": {
+            "mae": 0.17594444444444443,
+            "rmse": 0.23595785876107433,
+            "smape": 10.625386532125251,
+            "n": 180
+          },
+          "skill": -0.6681627497857372,
+          "band_width": 0.34785714285714264,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2024-10-25",
+            "2025-01-23",
+            "2025-04-23",
+            "2025-07-22",
+            "2025-10-20",
+            "2026-01-18",
+            "2026-04-18",
+            "2026-07-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 180,
+          "model": "Gradient Boosting directo",
+          "selection": [
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.48596971545447354,
+              "rmse": 0.6501465449025089,
+              "smape": 21.74705332680855,
+              "n": 538
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.5156779278129814,
+              "rmse": 0.662648670479062,
+              "smape": 23.496157525507854,
+              "n": 538
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.5601752522570367,
+              "rmse": 0.71969685367282,
+              "smape": 25.00317907020561,
+              "n": 538
+            },
+            {
+              "model": "Último precio",
+              "mae": 0.6370631970260223,
+              "rmse": 0.8430983749767733,
+              "smape": 27.778781861371815,
+              "n": 538
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.8253159851301115,
+              "rmse": 1.0372427347088626,
+              "smape": 36.65112755365675,
+              "n": 538
+            }
+          ],
+          "audit": {
+            "mae": 0.3677280438678249,
+            "rmse": 0.44161427135651554,
+            "smape": 19.36012150812487,
+            "n": 360,
+            "coverage80": 0.6527777777777778
+          },
+          "baseline_audit": {
+            "mae": 0.1908333333333333,
+            "rmse": 0.2588832855855232,
+            "smape": 10.757355152988879,
+            "n": 360
+          },
+          "skill": -0.926959181840131,
+          "band_width": 0.47912661926843625,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2022-11-05",
+            "2023-05-04",
+            "2023-10-31",
+            "2024-04-28",
+            "2024-10-25",
+            "2025-04-23",
+            "2025-10-20",
+            "2026-04-18"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 240,
+          "model": "Media 28 días",
+          "selection": [
+            {
+              "model": "Media 28 días",
+              "mae": 0.4833253968253969,
+              "rmse": 0.6733774948473504,
+              "smape": 22.792466046269357,
+              "n": 720
+            },
+            {
+              "model": "Último precio",
+              "mae": 0.5425000000000001,
+              "rmse": 0.7499796293529876,
+              "smape": 26.383054598558473,
+              "n": 720
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.5775496670351195,
+              "rmse": 0.7958619776951075,
+              "smape": 29.47654167188276,
+              "n": 720
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.6464732085676221,
+              "rmse": 0.817555352658627,
+              "smape": 32.502735095051314,
+              "n": 720
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.6476527777777777,
+              "rmse": 0.9339396096346082,
+              "smape": 32.81218235141797,
+              "n": 720
+            }
+          ],
+          "audit": {
+            "mae": 0.16792857142857143,
+            "rmse": 0.20892399262381892,
+            "smape": 9.449549874817649,
+            "n": 480,
+            "coverage80": 0.98125
+          },
+          "baseline_audit": {
+            "mae": 0.1585625,
+            "rmse": 0.20689419598754658,
+            "smape": 8.917910293166994,
+            "n": 480
+          },
+          "skill": -0.059068641252322696,
+          "band_width": 0.5235714285714284,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2021-07-13",
+            "2022-03-10",
+            "2022-11-05",
+            "2023-07-03",
+            "2024-02-28",
+            "2024-10-25",
+            "2025-06-22",
+            "2026-02-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        }
+      ],
+      "run_id": "20261015T114347_864da82a26",
+      "model_version": "4.0.0",
+      "file": "2c446f05f86b12184ad1.json",
+      "evaluated_at": "2026-10-15T11:43:47.728893-05:00"
+    },
+    {
+      "variety": "Huayro",
+      "market": "Gran Mercado Mayorista de Lima",
+      "market_id": "15011501",
+      "last_date": "2026-10-15",
+      "last_price": 2.08,
+      "observations": 2843,
+      "coverage": 0.9993,
+      "evaluations": [
+        {
+          "horizon": 7,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.09523809523809523,
+              "rmse": 0.11751393027860062,
+              "smape": 5.1547313489909,
+              "n": 21
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.10140050755461909,
+              "rmse": 0.12669884344115184,
+              "smape": 5.444488777748082,
+              "n": 21
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.18643506070751303,
+              "rmse": 0.22575846018313747,
+              "smape": 9.400886463924389,
+              "n": 21
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.22083333333333344,
+              "rmse": 0.23946981191024178,
+              "smape": 12.362436134006051,
+              "n": 21
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.32809523809523805,
+              "rmse": 0.34923726414382916,
+              "smape": 19.169337113120875,
+              "n": 21
+            }
+          ],
+          "audit": {
+            "mae": 0.09642857142857131,
+            "rmse": 0.13661729654141785,
+            "smape": 4.30293716385367,
+            "n": 14,
+            "coverage80": 0.7857142857142857
+          },
+          "baseline_audit": {
+            "mae": 0.09642857142857131,
+            "rmse": 0.13661729654141785,
+            "smape": 4.30293716385367,
+            "n": 14
+          },
+          "skill": 0.0,
+          "band_width": 0.21999999999999997,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2026-08-20",
+            "2026-08-27",
+            "2026-09-03",
+            "2026-09-10",
+            "2026-09-17",
+            "2026-09-24",
+            "2026-10-01",
+            "2026-10-08"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 30,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.13133333333333333,
+              "rmse": 0.17080853478545957,
+              "smape": 7.425858277252376,
+              "n": 90
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.14500000000000002,
+              "rmse": 0.20092840073574025,
+              "smape": 8.105754657573321,
+              "n": 90
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.16592857142857137,
+              "rmse": 0.23548983421400707,
+              "smape": 9.283761446183009,
+              "n": 90
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.3429288072913322,
+              "rmse": 0.37368452400842206,
+              "smape": 20.117465439973913,
+              "n": 90
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.47485573629784117,
+              "rmse": 0.509666625552586,
+              "smape": 29.13424570139535,
+              "n": 90
+            }
+          ],
+          "audit": {
+            "mae": 0.1408333333333333,
+            "rmse": 0.168804620789835,
+            "smape": 7.2253713830976505,
+            "n": 60,
+            "coverage80": 0.9333333333333333
+          },
+          "baseline_audit": {
+            "mae": 0.1408333333333333,
+            "rmse": 0.168804620789835,
+            "smape": 7.2253713830976505,
+            "n": 60
+          },
+          "skill": 0.0,
+          "band_width": 0.28,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2026-02-17",
+            "2026-03-19",
+            "2026-04-18",
+            "2026-05-18",
+            "2026-06-17",
+            "2026-07-17",
+            "2026-08-16",
+            "2026-09-15"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 90,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.21881481481481482,
+              "rmse": 0.2741181145797204,
+              "smape": 10.878521636337068,
+              "n": 270
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.22441798941798952,
+              "rmse": 0.28731429968367594,
+              "smape": 11.024497239509728,
+              "n": 270
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.3382701723066784,
+              "rmse": 0.46970638722597846,
+              "smape": 15.929441080524823,
+              "n": 270
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.3628699262392053,
+              "rmse": 0.4219337678486511,
+              "smape": 19.860168105679293,
+              "n": 270
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.48718518518518517,
+              "rmse": 0.6114863494433507,
+              "smape": 24.845993085128374,
+              "n": 270
+            }
+          ],
+          "audit": {
+            "mae": 0.32027777777777783,
+            "rmse": 0.39478193699532127,
+            "smape": 19.37938245081226,
+            "n": 180,
+            "coverage80": 0.8555555555555555
+          },
+          "baseline_audit": {
+            "mae": 0.32027777777777783,
+            "rmse": 0.39478193699532127,
+            "smape": 19.37938245081226,
+            "n": 180
+          },
+          "skill": 0.0,
+          "band_width": 0.6200000000000001,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2024-10-25",
+            "2025-01-23",
+            "2025-04-23",
+            "2025-07-22",
+            "2025-10-20",
+            "2026-01-18",
+            "2026-04-18",
+            "2026-07-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 180,
+          "model": "Gradient Boosting directo",
+          "selection": [
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.6997017890893475,
+              "rmse": 0.914507158022234,
+              "smape": 28.180222771785505,
+              "n": 538
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.9146282527881041,
+              "rmse": 1.3860017782701541,
+              "smape": 35.25815626308004,
+              "n": 538
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.9416695871025644,
+              "rmse": 1.1344034333940232,
+              "smape": 52.4603614939121,
+              "n": 538
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 1.025343866171004,
+              "rmse": 1.224919717931831,
+              "smape": 43.08325228028167,
+              "n": 538
+            },
+            {
+              "model": "Último precio",
+              "mae": 1.0465799256505575,
+              "rmse": 1.262239556853119,
+              "smape": 43.220230840899944,
+              "n": 538
+            }
+          ],
+          "audit": {
+            "mae": 0.4201375609231027,
+            "rmse": 0.5181925963571374,
+            "smape": 21.344647831791434,
+            "n": 360,
+            "coverage80": 0.8972222222222223
+          },
+          "baseline_audit": {
+            "mae": 0.3074722222222222,
+            "rmse": 0.4036345294116118,
+            "smape": 16.094703138428777,
+            "n": 360
+          },
+          "skill": -0.3664244460413497,
+          "band_width": 0.7706799245488096,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2022-11-05",
+            "2023-05-04",
+            "2023-10-31",
+            "2024-04-28",
+            "2024-10-25",
+            "2025-04-23",
+            "2025-10-20",
+            "2026-04-18"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 240,
+          "model": "Ridge directo",
+          "selection": [
+            {
+              "model": "Ridge directo",
+              "mae": 0.7374746080138882,
+              "rmse": 0.9661100287415256,
+              "smape": 37.60958264992101,
+              "n": 720
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.8201220238095238,
+              "rmse": 1.1605220561211942,
+              "smape": 35.39746264989891,
+              "n": 720
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.8318893136729855,
+              "rmse": 1.0388224285646859,
+              "smape": 41.11071816770698,
+              "n": 720
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.8560555555555556,
+              "rmse": 1.2959735722614099,
+              "smape": 42.55115368900627,
+              "n": 720
+            },
+            {
+              "model": "Último precio",
+              "mae": 0.8627222222222221,
+              "rmse": 1.1837803146417554,
+              "smape": 39.11365521443099,
+              "n": 720
+            }
+          ],
+          "audit": {
+            "mae": 0.38421093697228664,
+            "rmse": 0.4655397639808009,
+            "smape": 19.73846913660931,
+            "n": 480,
+            "coverage80": 1.0
+          },
+          "baseline_audit": {
+            "mae": 0.2685416666666667,
+            "rmse": 0.3739379404838901,
+            "smape": 14.297464627453156,
+            "n": 480
+          },
+          "skill": -0.43073118500153273,
+          "band_width": 1.1592259176270474,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2021-07-13",
+            "2022-03-10",
+            "2022-11-05",
+            "2023-07-03",
+            "2024-02-28",
+            "2024-10-25",
+            "2025-06-22",
+            "2026-02-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        }
+      ],
+      "run_id": "20261015T114401_a9467d972c",
+      "model_version": "4.0.0",
+      "file": "6dee05df676eb1bb3b18.json",
+      "evaluated_at": "2026-10-15T11:44:01.929673-05:00"
+    },
+    {
+      "variety": "Negra Andina",
+      "market": "Gran Mercado Mayorista de Lima",
+      "market_id": "15011501",
+      "last_date": "2026-10-15",
+      "last_price": 1.48,
+      "observations": 2843,
+      "coverage": 0.9993,
+      "evaluations": [
+        {
+          "horizon": 7,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.03380952380952383,
+              "rmse": 0.04336994790119518,
+              "smape": 2.8139189086167717,
+              "n": 21
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.09833333333333331,
+              "rmse": 0.10354227832803634,
+              "smape": 8.495706984522196,
+              "n": 21
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.11238095238095241,
+              "rmse": 0.14326133296814436,
+              "smape": 8.89513223342433,
+              "n": 21
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.3128315023383361,
+              "rmse": 0.3933872749477515,
+              "smape": 21.87640291213274,
+              "n": 21
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.3476139840968407,
+              "rmse": 0.3493204394610823,
+              "smape": 25.317644388161142,
+              "n": 21
+            }
+          ],
+          "audit": {
+            "mae": 0.05071428571428576,
+            "rmse": 0.07156415703009839,
+            "smape": 3.4212950398303006,
+            "n": 14,
+            "coverage80": 0.7857142857142857
+          },
+          "baseline_audit": {
+            "mae": 0.05071428571428576,
+            "rmse": 0.07156415703009839,
+            "smape": 3.4212950398303006,
+            "n": 14
+          },
+          "skill": 0.0,
+          "band_width": 0.10000000000000009,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2026-08-20",
+            "2026-08-27",
+            "2026-09-03",
+            "2026-09-10",
+            "2026-09-17",
+            "2026-09-24",
+            "2026-10-01",
+            "2026-10-08"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 30,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.22577777777777774,
+              "rmse": 0.28529127415872907,
+              "smape": 13.819026789803797,
+              "n": 90
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.3141031746031747,
+              "rmse": 0.3501565814307571,
+              "smape": 18.82661657713635,
+              "n": 90
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.46467172191425915,
+              "rmse": 0.5077855772026288,
+              "smape": 30.02951675350975,
+              "n": 90
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.5134485430077537,
+              "rmse": 0.5435828288104608,
+              "smape": 33.06467952197042,
+              "n": 90
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.8129999999999998,
+              "rmse": 0.8433247693899822,
+              "smape": 58.561748867021734,
+              "n": 90
+            }
+          ],
+          "audit": {
+            "mae": 0.18533333333333335,
+            "rmse": 0.22945587811167534,
+            "smape": 13.990842683508694,
+            "n": 60,
+            "coverage80": 0.5833333333333334
+          },
+          "baseline_audit": {
+            "mae": 0.18533333333333335,
+            "rmse": 0.22945587811167534,
+            "smape": 13.990842683508694,
+            "n": 60
+          },
+          "skill": 0.0,
+          "band_width": 0.27,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2026-02-17",
+            "2026-03-19",
+            "2026-04-18",
+            "2026-05-18",
+            "2026-06-17",
+            "2026-07-17",
+            "2026-08-16",
+            "2026-09-15"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 90,
+          "model": "Estacional anual",
+          "selection": [
+            {
+              "model": "Estacional anual",
+              "mae": 0.15222222222222223,
+              "rmse": 0.20292308340299234,
+              "smape": 12.770943038934217,
+              "n": 270
+            },
+            {
+              "model": "Último precio",
+              "mae": 0.20922222222222223,
+              "rmse": 0.3323045234364051,
+              "smape": 15.535854176282394,
+              "n": 270
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.2523459362901157,
+              "rmse": 0.34440970615946725,
+              "smape": 19.778870446854366,
+              "n": 270
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.34026533541030834,
+              "rmse": 0.5472729621050227,
+              "smape": 22.22391118173406,
+              "n": 270
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.3597936507936508,
+              "rmse": 0.5302222665330432,
+              "smape": 24.33647746698013,
+              "n": 270
+            }
+          ],
+          "audit": {
+            "mae": 0.2563333333333333,
+            "rmse": 0.3458018057918277,
+            "smape": 19.715733338213642,
+            "n": 180,
+            "coverage80": 1.0
+          },
+          "baseline_audit": {
+            "mae": 0.2947222222222222,
+            "rmse": 0.36820812351470766,
+            "smape": 21.786084970182785,
+            "n": 180
+          },
+          "skill": 0.13025447690857694,
+          "band_width": 0.8999999999999999,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2024-10-25",
+            "2025-01-23",
+            "2025-04-23",
+            "2025-07-22",
+            "2025-10-20",
+            "2026-01-18",
+            "2026-04-18",
+            "2026-07-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 180,
+          "model": "Media 28 días",
+          "selection": [
+            {
+              "model": "Media 28 días",
+              "mae": 0.22245618693574085,
+              "rmse": 0.32621264419196083,
+              "smape": 15.928976406851074,
+              "n": 538
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.2360197367468406,
+              "rmse": 0.330136137182919,
+              "smape": 16.69366110734233,
+              "n": 538
+            },
+            {
+              "model": "Último precio",
+              "mae": 0.27918215613382896,
+              "rmse": 0.34545535920645515,
+              "smape": 21.662942156606356,
+              "n": 538
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.4322686651965145,
+              "rmse": 0.5061215037589591,
+              "smape": 33.9836405136692,
+              "n": 538
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.6542936802973978,
+              "rmse": 0.7491783603477765,
+              "smape": 41.595882030909195,
+              "n": 538
+            }
+          ],
+          "audit": {
+            "mae": 0.47474801587301585,
+            "rmse": 0.562082131257445,
+            "smape": 31.073363705903432,
+            "n": 360,
+            "coverage80": 1.0
+          },
+          "baseline_audit": {
+            "mae": 0.34080555555555553,
+            "rmse": 0.4249741822223505,
+            "smape": 23.89562168249338,
+            "n": 360
+          },
+          "skill": -0.3930172443906246,
+          "band_width": 1.2425,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2022-11-05",
+            "2023-05-04",
+            "2023-10-31",
+            "2024-04-28",
+            "2024-10-25",
+            "2025-04-23",
+            "2025-10-20",
+            "2026-04-18"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 240,
+          "model": "Media 28 días",
+          "selection": [
+            {
+              "model": "Media 28 días",
+              "mae": 0.3209742063492063,
+              "rmse": 0.4672319371645905,
+              "smape": 20.37801024817615,
+              "n": 720
+            },
+            {
+              "model": "Último precio",
+              "mae": 0.3397916666666667,
+              "rmse": 0.4783270905515969,
+              "smape": 21.80771008282218,
+              "n": 720
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.3733970017387887,
+              "rmse": 0.5208194717687987,
+              "smape": 23.991980017171915,
+              "n": 720
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.5042222222222221,
+              "rmse": 0.5895523254507987,
+              "smape": 38.53496864426638,
+              "n": 720
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.538704978045574,
+              "rmse": 0.649817928489533,
+              "smape": 41.728430892795195,
+              "n": 720
+            }
+          ],
+          "audit": {
+            "mae": 0.2251220238095237,
+            "rmse": 0.29890366568602694,
+            "smape": 16.967784800847124,
+            "n": 480,
+            "coverage80": 1.0
+          },
+          "baseline_audit": {
+            "mae": 0.19749999999999998,
+            "rmse": 0.27872925931807013,
+            "smape": 14.531278647907248,
+            "n": 480
+          },
+          "skill": -0.13985834840265188,
+          "band_width": 1.1439285714285712,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2021-07-13",
+            "2022-03-10",
+            "2022-11-05",
+            "2023-07-03",
+            "2024-02-28",
+            "2024-10-25",
+            "2025-06-22",
+            "2026-02-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        }
+      ],
+      "run_id": "20261015T114417_81a0e4518a",
+      "model_version": "4.0.0",
+      "file": "1e8aff89993240b0afb1.json",
+      "evaluated_at": "2026-10-15T11:44:17.339347-05:00"
+    },
+    {
+      "variety": "Peruanita",
+      "market": "Gran Mercado Mayorista de Lima",
+      "market_id": "15011501",
+      "last_date": "2026-10-15",
+      "last_price": 2.38,
+      "observations": 2843,
+      "coverage": 0.9993,
+      "evaluations": [
+        {
+          "horizon": 7,
+          "model": "Media 28 días",
+          "selection": [
+            {
+              "model": "Media 28 días",
+              "mae": 0.11806122448979597,
+              "rmse": 0.13953305267611565,
+              "smape": 6.532135404615893,
+              "n": 21
+            },
+            {
+              "model": "Último precio",
+              "mae": 0.12428571428571426,
+              "rmse": 0.1393009759648578,
+              "smape": 6.790500488551449,
+              "n": 21
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.16968642272444515,
+              "rmse": 0.18944240527514433,
+              "smape": 8.905275994206043,
+              "n": 21
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.19,
+              "rmse": 0.21717888172349234,
+              "smape": 9.79697998193426,
+              "n": 21
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.23598782606088545,
+              "rmse": 0.2639259381249907,
+              "smape": 12.095622257867554,
+              "n": 21
+            }
+          ],
+          "audit": {
+            "mae": 0.2514795918367347,
+            "rmse": 0.28559930722204896,
+            "smape": 12.416254364401018,
+            "n": 14,
+            "coverage80": 0.35714285714285715
+          },
+          "baseline_audit": {
+            "mae": 0.1492857142857144,
+            "rmse": 0.19016909768489137,
+            "smape": 7.15983382150825,
+            "n": 14
+          },
+          "skill": -0.6845522898154461,
+          "band_width": 0.1667857142857141,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2026-08-20",
+            "2026-08-27",
+            "2026-09-03",
+            "2026-09-10",
+            "2026-09-17",
+            "2026-09-24",
+            "2026-10-01",
+            "2026-10-08"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 30,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.12944444444444447,
+              "rmse": 0.18015733864227315,
+              "smape": 5.665713768860381,
+              "n": 90
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.22393650793650816,
+              "rmse": 0.259034762023378,
+              "smape": 9.83010419521971,
+              "n": 90
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.32177777777777783,
+              "rmse": 0.3893042226559812,
+              "smape": 14.875138824796977,
+              "n": 90
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.4168681851723848,
+              "rmse": 0.44758654474650283,
+              "smape": 19.960459524087618,
+              "n": 90
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.5065632517531046,
+              "rmse": 0.5330848840566327,
+              "smape": 25.03254709045072,
+              "n": 90
+            }
+          ],
+          "audit": {
+            "mae": 0.13833333333333334,
+            "rmse": 0.17139622710744443,
+            "smape": 7.2829034276440705,
+            "n": 60,
+            "coverage80": 1.0
+          },
+          "baseline_audit": {
+            "mae": 0.13833333333333334,
+            "rmse": 0.17139622710744443,
+            "smape": 7.2829034276440705,
+            "n": 60
+          },
+          "skill": 0.0,
+          "band_width": 0.3999999999999999,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2026-02-17",
+            "2026-03-19",
+            "2026-04-18",
+            "2026-05-18",
+            "2026-06-17",
+            "2026-07-17",
+            "2026-08-16",
+            "2026-09-15"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 90,
+          "model": "Media 28 días",
+          "selection": [
+            {
+              "model": "Media 28 días",
+              "mae": 0.2525767195767195,
+              "rmse": 0.351787247868169,
+              "smape": 11.933321459085025,
+              "n": 270
+            },
+            {
+              "model": "Último precio",
+              "mae": 0.2712592592592592,
+              "rmse": 0.32119798901635127,
+              "smape": 13.006630360058322,
+              "n": 270
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.3888345054534349,
+              "rmse": 0.45594153920108366,
+              "smape": 19.503791808544104,
+              "n": 270
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.5366866237626278,
+              "rmse": 0.7426253956989597,
+              "smape": 22.998813746597126,
+              "n": 270
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.6421111111111111,
+              "rmse": 0.8023767933574092,
+              "smape": 28.856616326336237,
+              "n": 270
+            }
+          ],
+          "audit": {
+            "mae": 0.4483174603174606,
+            "rmse": 0.5158144057059546,
+            "smape": 23.520181184179517,
+            "n": 180,
+            "coverage80": 0.42777777777777776
+          },
+          "baseline_audit": {
+            "mae": 0.4116666666666666,
+            "rmse": 0.4860795545312858,
+            "smape": 24.457075376450753,
+            "n": 180
+          },
+          "skill": -0.08903026797763713,
+          "band_width": 0.3374999999999999,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2024-10-25",
+            "2025-01-23",
+            "2025-04-23",
+            "2025-07-22",
+            "2025-10-20",
+            "2026-01-18",
+            "2026-04-18",
+            "2026-07-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 180,
+          "model": "Gradient Boosting directo",
+          "selection": [
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.5522366073867367,
+              "rmse": 0.6641561150676196,
+              "smape": 22.080000744070308,
+              "n": 538
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.7247012745618694,
+              "rmse": 0.8533046663168743,
+              "smape": 28.471701437905814,
+              "n": 538
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.8304696672354348,
+              "rmse": 1.0296434514062782,
+              "smape": 39.690443281049866,
+              "n": 538
+            },
+            {
+              "model": "Último precio",
+              "mae": 0.8445539033457251,
+              "rmse": 1.1171128313948036,
+              "smape": 30.872873904937975,
+              "n": 538
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.9812639405204462,
+              "rmse": 1.2742769653362715,
+              "smape": 39.4012995025675,
+              "n": 538
+            }
+          ],
+          "audit": {
+            "mae": 0.4187346719933558,
+            "rmse": 0.5149945456282088,
+            "smape": 20.729483802257747,
+            "n": 360,
+            "coverage80": 0.9555555555555556
+          },
+          "baseline_audit": {
+            "mae": 0.46974999999999995,
+            "rmse": 0.5753976885598342,
+            "smape": 24.48446058879783,
+            "n": 360
+          },
+          "skill": 0.10860101757667728,
+          "band_width": 0.8363321277725699,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2022-11-05",
+            "2023-05-04",
+            "2023-10-31",
+            "2024-04-28",
+            "2024-10-25",
+            "2025-04-23",
+            "2025-10-20",
+            "2026-04-18"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 240,
+          "model": "Media 28 días",
+          "selection": [
+            {
+              "model": "Media 28 días",
+              "mae": 0.744467261904762,
+              "rmse": 1.0599826079949146,
+              "smape": 30.959002928565464,
+              "n": 720
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.7533356596328531,
+              "rmse": 0.9847377299489561,
+              "smape": 33.95565930117699,
+              "n": 720
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.7892534099625033,
+              "rmse": 1.0585737160219586,
+              "smape": 35.63313454249838,
+              "n": 720
+            },
+            {
+              "model": "Último precio",
+              "mae": 0.918291666666667,
+              "rmse": 1.3529496069288351,
+              "smape": 35.71923355923663,
+              "n": 720
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.9386666666666665,
+              "rmse": 1.331391085377329,
+              "smape": 44.459330844460744,
+              "n": 720
+            }
+          ],
+          "audit": {
+            "mae": 0.26939434523809525,
+            "rmse": 0.3334360385992112,
+            "smape": 13.628076479689339,
+            "n": 480,
+            "coverage80": 0.9916666666666667
+          },
+          "baseline_audit": {
+            "mae": 0.30012500000000003,
+            "rmse": 0.3581020571475865,
+            "smape": 15.093467665111158,
+            "n": 480
+          },
+          "skill": 0.1023928521846057,
+          "band_width": 0.848571428571429,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2021-07-13",
+            "2022-03-10",
+            "2022-11-05",
+            "2023-07-03",
+            "2024-02-28",
+            "2024-10-25",
+            "2025-06-22",
+            "2026-02-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        }
+      ],
+      "run_id": "20261015T114431_d00e9873a8",
+      "model_version": "4.0.0",
+      "file": "171339dc9267b37e3611.json",
+      "evaluated_at": "2026-10-15T11:44:31.700926-05:00"
+    },
+    {
+      "variety": "Yungay",
+      "market": "Gran Mercado Mayorista de Lima",
+      "market_id": "15011501",
+      "last_date": "2026-10-15",
+      "last_price": 1.11,
+      "observations": 2843,
+      "coverage": 0.9993,
+      "evaluations": [
+        {
+          "horizon": 7,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.05000000000000001,
+              "rmse": 0.06350852961085884,
+              "smape": 5.084540072095294,
+              "n": 21
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.0675340136054422,
+              "rmse": 0.07403718729152814,
+              "smape": 6.899989328537977,
+              "n": 21
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.17226749615589884,
+              "rmse": 0.19221805257231295,
+              "smape": 16.249657618866497,
+              "n": 21
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.219047619047619,
+              "rmse": 0.23205089753676675,
+              "smape": 20.49532651482134,
+              "n": 21
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.38014727722699626,
+              "rmse": 0.38838023964396257,
+              "smape": 32.94518323277868,
+              "n": 21
+            }
+          ],
+          "audit": {
+            "mae": 0.04214285714285716,
+            "rmse": 0.059581876439064936,
+            "smape": 4.008370480572321,
+            "n": 14,
+            "coverage80": 0.9285714285714286
+          },
+          "baseline_audit": {
+            "mae": 0.04214285714285716,
+            "rmse": 0.059581876439064936,
+            "smape": 4.008370480572321,
+            "n": 14
+          },
+          "skill": 0.0,
+          "band_width": 0.10000000000000009,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2026-08-20",
+            "2026-08-27",
+            "2026-09-03",
+            "2026-09-10",
+            "2026-09-17",
+            "2026-09-24",
+            "2026-10-01",
+            "2026-10-08"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 30,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.3832222222222222,
+              "rmse": 0.49033661906898196,
+              "smape": 27.900649046572916,
+              "n": 90
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.4664761904761906,
+              "rmse": 0.5336517172546138,
+              "smape": 31.458904358803007,
+              "n": 90
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.5174387366184493,
+              "rmse": 0.5978416949925452,
+              "smape": 36.3554011191493,
+              "n": 90
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.5330405090414818,
+              "rmse": 0.5871075776827758,
+              "smape": 37.679604360315736,
+              "n": 90
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.7797777777777779,
+              "rmse": 0.8644882879484256,
+              "smape": 59.845201068759295,
+              "n": 90
+            }
+          ],
+          "audit": {
+            "mae": 0.10550000000000001,
+            "rmse": 0.13270895473428565,
+            "smape": 10.863047542863963,
+            "n": 60,
+            "coverage80": 0.6333333333333333
+          },
+          "baseline_audit": {
+            "mae": 0.10550000000000001,
+            "rmse": 0.13270895473428565,
+            "smape": 10.863047542863963,
+            "n": 60
+          },
+          "skill": 0.0,
+          "band_width": 0.14000000000000012,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2026-02-17",
+            "2026-03-19",
+            "2026-04-18",
+            "2026-05-18",
+            "2026-06-17",
+            "2026-07-17",
+            "2026-08-16",
+            "2026-09-15"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 90,
+          "model": "Estacional anual",
+          "selection": [
+            {
+              "model": "Estacional anual",
+              "mae": 0.19062962962962962,
+              "rmse": 0.24853422150532764,
+              "smape": 17.497222724394245,
+              "n": 270
+            },
+            {
+              "model": "Último precio",
+              "mae": 0.21040740740740743,
+              "rmse": 0.28519973507857416,
+              "smape": 20.002114243597976,
+              "n": 270
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.23136945000789524,
+              "rmse": 0.3133724113796552,
+              "smape": 21.102002330130762,
+              "n": 270
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.31189928143789797,
+              "rmse": 0.4688310527167274,
+              "smape": 26.157342561189484,
+              "n": 270
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.42077513227513236,
+              "rmse": 0.61765458495746,
+              "smape": 30.564120876401326,
+              "n": 270
+            }
+          ],
+          "audit": {
+            "mae": 0.27511111111111103,
+            "rmse": 0.33718606798686745,
+            "smape": 23.76065811611856,
+            "n": 180,
+            "coverage80": 1.0
+          },
+          "baseline_audit": {
+            "mae": 0.13872222222222222,
+            "rmse": 0.1880912898922577,
+            "smape": 11.622515979283161,
+            "n": 180
+          },
+          "skill": -0.9831798157789342,
+          "band_width": 1.0699999999999998,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2024-10-25",
+            "2025-01-23",
+            "2025-04-23",
+            "2025-07-22",
+            "2025-10-20",
+            "2026-01-18",
+            "2026-04-18",
+            "2026-07-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 180,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.25726765799256507,
+              "rmse": 0.3533964253600326,
+              "smape": 20.72992177658786,
+              "n": 538
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.25768056293149233,
+              "rmse": 0.3580191327775549,
+              "smape": 20.69230244465763,
+              "n": 538
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.28417753918427213,
+              "rmse": 0.4183372405901323,
+              "smape": 22.524002472653617,
+              "n": 538
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.29179967408335256,
+              "rmse": 0.3994263450900402,
+              "smape": 23.78675926159378,
+              "n": 538
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.6078066914498141,
+              "rmse": 0.7335948052501209,
+              "smape": 44.661585105433915,
+              "n": 538
+            }
+          ],
+          "audit": {
+            "mae": 0.30572222222222223,
+            "rmse": 0.43253580455520935,
+            "smape": 25.692109781353963,
+            "n": 360,
+            "coverage80": 0.9027777777777778
+          },
+          "baseline_audit": {
+            "mae": 0.30572222222222223,
+            "rmse": 0.43253580455520935,
+            "smape": 25.692109781353963,
+            "n": 360
+          },
+          "skill": 0.0,
+          "band_width": 0.69,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2022-11-05",
+            "2023-05-04",
+            "2023-10-31",
+            "2024-04-28",
+            "2024-10-25",
+            "2025-04-23",
+            "2025-10-20",
+            "2026-04-18"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 240,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.35084722222222225,
+              "rmse": 0.4612532746044556,
+              "smape": 26.436556204076837,
+              "n": 720
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.3626706349206349,
+              "rmse": 0.4564818370066949,
+              "smape": 27.91086955962032,
+              "n": 720
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.4014810281350061,
+              "rmse": 0.4937971947506558,
+              "smape": 31.170470562286543,
+              "n": 720
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.5151093802800387,
+              "rmse": 0.6393518962386182,
+              "smape": 45.471450118286725,
+              "n": 720
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.5170416666666666,
+              "rmse": 0.5938498454061337,
+              "smape": 46.767822488566964,
+              "n": 720
+            }
+          ],
+          "audit": {
+            "mae": 0.3494791666666667,
+            "rmse": 0.46402428995330264,
+            "smape": 31.36057751860546,
+            "n": 480,
+            "coverage80": 0.8854166666666666
+          },
+          "baseline_audit": {
+            "mae": 0.3494791666666667,
+            "rmse": 0.46402428995330264,
+            "smape": 31.36057751860546,
+            "n": 480
+          },
+          "skill": 0.0,
+          "band_width": 0.6399999999999999,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2021-07-13",
+            "2022-03-10",
+            "2022-11-05",
+            "2023-07-03",
+            "2024-02-28",
+            "2024-10-25",
+            "2025-06-22",
+            "2026-02-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        }
+      ],
+      "run_id": "20261015T114446_233f82b29e",
+      "model_version": "4.0.0",
+      "file": "0e2e977d6034f311d8b8.json",
+      "evaluated_at": "2026-10-15T11:44:46.052468-05:00"
+    },
+    {
+      "variety": "Única",
+      "market": "Gran Mercado Mayorista de Lima",
+      "market_id": "15011501",
+      "last_date": "2026-10-15",
+      "last_price": 1.81,
+      "observations": 2834,
+      "coverage": 0.9961,
+      "evaluations": [
+        {
+          "horizon": 7,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.03809523809523808,
+              "rmse": 0.0529150262212918,
+              "smape": 2.444919774720539,
+              "n": 21
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.049207488559743835,
+              "rmse": 0.0667921880644308,
+              "smape": 3.142592329845275,
+              "n": 21
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.10598639455782302,
+              "rmse": 0.11499963028630295,
+              "smape": 7.010799036760447,
+              "n": 21
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.22466549530821414,
+              "rmse": 0.23584858885913534,
+              "smape": 15.454466312300486,
+              "n": 21
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.7433333333333333,
+              "rmse": 0.7454592703894183,
+              "smape": 62.61822398400763,
+              "n": 21
+            }
+          ],
+          "audit": {
+            "mae": 0.10785714285714286,
+            "rmse": 0.12314335432448521,
+            "smape": 5.534171513507487,
+            "n": 14,
+            "coverage80": 1.0
+          },
+          "baseline_audit": {
+            "mae": 0.10785714285714286,
+            "rmse": 0.12314335432448521,
+            "smape": 5.534171513507487,
+            "n": 14
+          },
+          "skill": 0.0,
+          "band_width": 0.41999999999999993,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2026-08-20",
+            "2026-08-27",
+            "2026-09-03",
+            "2026-09-10",
+            "2026-09-17",
+            "2026-09-24",
+            "2026-10-01",
+            "2026-10-08"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 30,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.19177777777777782,
+              "rmse": 0.2653341708529495,
+              "smape": 9.937845944532473,
+              "n": 90
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.3069000483396284,
+              "rmse": 0.3337603004996222,
+              "smape": 15.343989688190733,
+              "n": 90
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.3333015873015875,
+              "rmse": 0.3699239135471767,
+              "smape": 16.791335373184534,
+              "n": 90
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.5530205638624107,
+              "rmse": 0.5861391767150274,
+              "smape": 29.190102618389442,
+              "n": 90
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.683,
+              "rmse": 0.726613912458176,
+              "smape": 37.63175261772552,
+              "n": 90
+            }
+          ],
+          "audit": {
+            "mae": 0.27083333333333326,
+            "rmse": 0.36670378599990844,
+            "smape": 14.786639376009644,
+            "n": 60,
+            "coverage80": 1.0
+          },
+          "baseline_audit": {
+            "mae": 0.27083333333333326,
+            "rmse": 0.36670378599990844,
+            "smape": 14.786639376009644,
+            "n": 60
+          },
+          "skill": 0.0,
+          "band_width": 0.7700000000000002,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "evaluado",
+          "origins": [
+            "2026-02-17",
+            "2026-03-19",
+            "2026-04-18",
+            "2026-05-18",
+            "2026-06-17",
+            "2026-07-17",
+            "2026-08-16",
+            "2026-09-15"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 90,
+          "model": "Ridge directo",
+          "selection": [
+            {
+              "model": "Ridge directo",
+              "mae": 0.25051156219366766,
+              "rmse": 0.30008313124769087,
+              "smape": 24.616174895123226,
+              "n": 270
+            },
+            {
+              "model": "Último precio",
+              "mae": 0.263962962962963,
+              "rmse": 0.40402099322060353,
+              "smape": 25.149224705620192,
+              "n": 270
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.3284815499445671,
+              "rmse": 0.4200385597764862,
+              "smape": 30.83820663526561,
+              "n": 270
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.35325925925925933,
+              "rmse": 0.4331845898562054,
+              "smape": 32.497867776118895,
+              "n": 270
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.3659867724867725,
+              "rmse": 0.46786696746419504,
+              "smape": 37.27061576978505,
+              "n": 270
+            }
+          ],
+          "audit": {
+            "mae": 0.3887186870914753,
+            "rmse": 0.48509020346826914,
+            "smape": 23.519704617615602,
+            "n": 180,
+            "coverage80": 0.8277777777777777
+          },
+          "baseline_audit": {
+            "mae": 0.3162777777777778,
+            "rmse": 0.45803748027135655,
+            "smape": 18.65935797914641,
+            "n": 180
+          },
+          "skill": -0.2290420459593454,
+          "band_width": 0.4994834367904387,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2024-10-25",
+            "2025-01-23",
+            "2025-04-23",
+            "2025-07-22",
+            "2025-10-20",
+            "2026-01-18",
+            "2026-04-18",
+            "2026-07-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 180,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.1489033457249071,
+              "rmse": 0.21098855657053409,
+              "smape": 9.770610910442379,
+              "n": 538
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.19118959107806688,
+              "rmse": 0.24127748220684486,
+              "smape": 12.973367069868758,
+              "n": 538
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.23663597976040612,
+              "rmse": 0.3035408457980502,
+              "smape": 15.961147863813169,
+              "n": 538
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.32159985130076935,
+              "rmse": 0.38174343439817393,
+              "smape": 20.972722521617378,
+              "n": 538
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.5399256505576209,
+              "rmse": 0.6310297243483483,
+              "smape": 35.051547256184676,
+              "n": 538
+            }
+          ],
+          "audit": {
+            "mae": 0.5180833333333333,
+            "rmse": 0.727703198044673,
+            "smape": 35.02132531424208,
+            "n": 360,
+            "coverage80": 0.625
+          },
+          "baseline_audit": {
+            "mae": 0.5180833333333333,
+            "rmse": 0.727703198044673,
+            "smape": 35.02132531424208,
+            "n": 360
+          },
+          "skill": 0.0,
+          "band_width": 0.6799999999999999,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2022-11-05",
+            "2023-05-04",
+            "2023-10-31",
+            "2024-04-28",
+            "2024-10-25",
+            "2025-04-23",
+            "2025-10-20",
+            "2026-04-18"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        },
+        {
+          "horizon": 240,
+          "model": "Último precio",
+          "selection": [
+            {
+              "model": "Último precio",
+              "mae": 0.3095277777777778,
+              "rmse": 0.3828986666063084,
+              "smape": 21.223289175001877,
+              "n": 720
+            },
+            {
+              "model": "Media 28 días",
+              "mae": 0.33164682539682533,
+              "rmse": 0.3989033187499829,
+              "smape": 22.51689268300993,
+              "n": 720
+            },
+            {
+              "model": "Ridge directo",
+              "mae": 0.4643787011714036,
+              "rmse": 0.5291340642849749,
+              "smape": 33.34033097216762,
+              "n": 720
+            },
+            {
+              "model": "Estacional anual",
+              "mae": 0.5291527777777778,
+              "rmse": 0.6156646137847024,
+              "smape": 46.450694762374,
+              "n": 720
+            },
+            {
+              "model": "Gradient Boosting directo",
+              "mae": 0.5389022915705585,
+              "rmse": 0.6113008300452386,
+              "smape": 40.13186185168556,
+              "n": 720
+            }
+          ],
+          "audit": {
+            "mae": 0.5039583333333333,
+            "rmse": 0.57429231813308,
+            "smape": 36.41905636100883,
+            "n": 480,
+            "coverage80": 0.4708333333333333
+          },
+          "baseline_audit": {
+            "mae": 0.5039583333333333,
+            "rmse": 0.57429231813308,
+            "smape": 36.41905636100883,
+            "n": 480
+          },
+          "skill": 0.0,
+          "band_width": 0.52,
+          "band_method": "Error absoluto empírico 80%, calibrado en tres bloques previos; cobertura no garantizada",
+          "status": "experimental",
+          "origins": [
+            "2021-07-13",
+            "2022-03-10",
+            "2022-11-05",
+            "2023-07-03",
+            "2024-02-28",
+            "2024-10-25",
+            "2025-06-22",
+            "2026-02-17"
+          ],
+          "selection_folds": 3,
+          "calibration_folds": 3,
+          "audit_folds": 2,
+          "failures": []
+        }
+      ],
+      "run_id": "20261015T114500_d68cbd76f3",
+      "model_version": "4.0.0",
+      "file": "08417625563bd9d58460.json",
+      "evaluated_at": "2026-10-15T11:45:00.856826-05:00"
+    }
+  ],
+  "excluded": [
+    {
+      "variety": "Perricholi",
+      "reason": "Serie desactualizada; se excluye de los pronósticos actuales"
+    }
+  ],
+  "methodology": {
+    "selection": "3 bloques temporales",
+    "calibration": "3 bloques temporales",
+    "audit": "2 bloques posteriores sin usar en selección",
+    "bands": "Rangos empíricos de error absoluto; cobertura objetivo 80%, no garantizada",
+    "exogenous": "Macros, clima y volumen aún no se usan en el modelo; necesitan validación de disponibilidad y mejora fuera de muestra"
+  },
+  "sources": [
+    {
+      "id": "sisap",
+      "name": "MIDAGRI · SISAP",
+      "state": "conectado",
+      "kind": "Precios y volumen diarios",
+      "url": "http://sistemas.midagri.gob.pe/sisap/portal2/mayorista/resumenes/consultar/",
+      "detail": "Consulta pública POST verificada. Papa, mercado 15011501. Volumen ausente se conserva como nulo. HTTP legado: contrastar con boletines antes de decisiones."
+    },
+    {
+      "id": "bcrp",
+      "name": "BCRPData",
+      "state": "contexto",
+      "kind": "Tipo de cambio mensual · PN01210PM",
+      "url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/ayuda/api",
+      "detail": "API JSON oficial. Se exploran cambios mensuales rezagados; no participa aún en el modelo. No se confunde correlación con mejora predictiva."
+    },
+    {
+      "id": "regional",
+      "name": "MIDAGRI · El Agro en Cifras",
+      "state": "snapshot",
+      "kind": "Producción por región",
+      "url": "https://www.gob.pe/institucion/midagri/informes-publicaciones/7910469-boletin-estadistico-mensual-el-agro-en-cifras-2026",
+      "detail": "Libro de junio de 2026 conservado en v3. Cuadro C.18, producción preliminar enero–junio; total regional reconciliado con nacional."
+    },
+    {
+      "id": "emmsa",
+      "name": "EMMSA",
+      "state": "pendiente",
+      "kind": "Contraste de cotizaciones",
+      "url": "https://www.emmsa.com.pe/index.php/precios-diarios/",
+      "detail": "El portal redirige al sistema old.emmsa.com.pe. La extracción directa falló por validación del certificado TLS; no se desactivó la verificación."
+    },
+    {
+      "id": "datero",
+      "name": "Datero Agrario · Datos Abiertos",
+      "state": "descartado",
+      "kind": "Actividad del servicio",
+      "url": "https://www.datosabiertos.gob.pe/dataset/midagri-02-datero-agrario-ministerio-de-desarrollo-agrario-y-riego",
+      "detail": "Los 38 CSV locales contienen consultas/transacciones telefónicas y operador. No contienen precios de papa; excluidos del entrenamiento."
+    },
+    {
+      "id": "senamhi",
+      "name": "SENAMHI",
+      "state": "pendiente",
+      "kind": "Lluvia, temperatura y heladas",
+      "url": "https://www.senamhi.gob.pe/",
+      "detail": "Falta seleccionar estaciones y contratos de descarga por zona productora, fechas de disponibilidad, calidad y pronóstico meteorológico. No hay clima conectado al modelo."
+    },
+    {
+      "id": "powerbi",
+      "name": "SIEA · Dashboards Power BI",
+      "state": "referencia",
+      "kind": "Visualización de fuentes originales",
+      "url": "https://siea.midagri.gob.pe/index.php/herramientas/estadistica-agropecuarias",
+      "detail": "Se identificaron Comparativa de Precios Mercados Lima, Comportamiento de Precios Semanales y Abastecimiento Mercados y Precios. El primero declara SISAP como fuente. No se afirma acceso al PBIX, Power Query o base interna de los tres reportes."
+    }
+  ],
+  "regional": {
+    "period": "enero–junio 2026",
+    "preliminary": true,
+    "unit": "toneladas",
+    "regions": [
+      {
+        "region": "Amazonas",
+        "production_t": 33459.2,
+        "cell": "AQ8"
+      },
+      {
+        "region": "Ancash",
+        "production_t": 139284.5,
+        "cell": "AQ10"
+      },
+      {
+        "region": "Apurímac",
+        "production_t": 339957.8,
+        "cell": "AQ12"
+      },
+      {
+        "region": "Arequipa",
+        "production_t": 119801.363,
+        "cell": "AQ14"
+      },
+      {
+        "region": "Ayacucho",
+        "production_t": 801220.0,
+        "cell": "AQ16"
+      },
+      {
+        "region": "Cajamarca",
+        "production_t": 236547.665,
+        "cell": "AQ18"
+      },
+      {
+        "region": "Callao",
+        "production_t": 0.0,
+        "cell": "AQ20"
+      },
+      {
+        "region": "Cusco",
+        "production_t": 509378.6,
+        "cell": "AQ22"
+      },
+      {
+        "region": "Huancavelica",
+        "production_t": 297317.3,
+        "cell": "AQ24"
+      },
+      {
+        "region": "Huánuco",
+        "production_t": 474795.312,
+        "cell": "AQ26"
+      },
+      {
+        "region": "Ica",
+        "production_t": 15134.73,
+        "cell": "AQ28"
+      },
+      {
+        "region": "Junín",
+        "production_t": 484988.83,
+        "cell": "AQ30"
+      },
+      {
+        "region": "La Libertad",
+        "production_t": 467440.15,
+        "cell": "AQ32"
+      },
+      {
+        "region": "Lambayeque",
+        "production_t": 1087.0,
+        "cell": "AQ34"
+      },
+      {
+        "region": "Lima",
+        "production_t": 40926.75,
+        "cell": "AQ36"
+      },
+      {
+        "region": "Lima Metropolitana",
+        "production_t": 0.0,
+        "cell": "AQ38"
+      },
+      {
+        "region": "Loreto",
+        "production_t": 0.0,
+        "cell": "AQ40"
+      },
+      {
+        "region": "Madre de Dios",
+        "production_t": 0.0,
+        "cell": "AQ42"
+      },
+      {
+        "region": "Moquegua",
+        "production_t": 9798.644,
+        "cell": "AQ44"
+      },
+      {
+        "region": "Pasco",
+        "production_t": 137519.343,
+        "cell": "AQ46"
+      },
+      {
+        "region": "Piura",
+        "production_t": 4848.9,
+        "cell": "AQ48"
+      },
+      {
+        "region": "Puno",
+        "production_t": 1089346.6,
+        "cell": "AQ50"
+      },
+      {
+        "region": "San Martín",
+        "production_t": 0.0,
+        "cell": "AQ52"
+      },
+      {
+        "region": "Tacna",
+        "production_t": 5231.0,
+        "cell": "AQ54"
+      },
+      {
+        "region": "Tumbes",
+        "production_t": 0.0,
+        "cell": "AQ56"
+      },
+      {
+        "region": "Ucayali",
+        "production_t": 0.0,
+        "cell": "AQ58"
+      }
+    ],
+    "total_t": 5208083.686999999,
+    "sheet": "c-18",
+    "file": "1.- AGRÍCOLA JUNIO 2026.xlsx",
+    "sha256": "4a61004d49714abc2d56e3fc833efc3c939ab2c827711498e7a56abcc4d6e260",
+    "source_url": "https://www.gob.pe/institucion/midagri/informes-publicaciones/7910469-boletin-estadistico-mensual-el-agro-en-cifras-2026",
+    "note": "Producción histórica preliminar; no es precio regional ni pronóstico. Snapshot del libro conservado en v3."
+  },
+  "macro": {
+    "code": "PN01210PM",
+    "description": "Tipo de cambio - promedio del periodo (S/ por US$) - Bancario - Promedio",
+    "url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01210PM/json/2019-1/2026-10/ing",
+    "retrieved_at": "2026-10-15T12:41:52.833070-05:00",
+    "rows": [
+      {
+        "period": "2019-01-01",
+        "value": 3.34386363636364
+      },
+      {
+        "period": "2019-02-01",
+        "value": 3.321475
+      },
+      {
+        "period": "2019-03-01",
+        "value": 3.30469047619048
+      },
+      {
+        "period": "2019-04-01",
+        "value": 3.303825
+      },
+      {
+        "period": "2019-05-01",
+        "value": 3.33236363636364
+      },
+      {
+        "period": "2019-06-01",
+        "value": 3.32565
+      },
+      {
+        "period": "2019-07-01",
+        "value": 3.29021428571428
+      },
+      {
+        "period": "2019-08-01",
+        "value": 3.37756
+      },
+      {
+        "period": "2019-09-01",
+        "value": 3.35735714285714
+      },
+      {
+        "period": "2019-10-01",
+        "value": 3.3597619047619
+      },
+      {
+        "period": "2019-11-01",
+        "value": 3.3717
+      },
+      {
+        "period": "2019-12-01",
+        "value": 3.35519047619048
+      },
+      {
+        "period": "2020-01-01",
+        "value": 3.32736363636364
+      },
+      {
+        "period": "2020-02-01",
+        "value": 3.39035
+      },
+      {
+        "period": "2020-03-01",
+        "value": 3.49136363636364
+      },
+      {
+        "period": "2020-04-01",
+        "value": 3.3975
+      },
+      {
+        "period": "2020-05-01",
+        "value": 3.42115
+      },
+      {
+        "period": "2020-06-01",
+        "value": 3.47016666666667
+      },
+      {
+        "period": "2020-07-01",
+        "value": 3.51656818181818
+      },
+      {
+        "period": "2020-08-01",
+        "value": 3.56392857142857
+      },
+      {
+        "period": "2020-09-01",
+        "value": 3.55490909090909
+      },
+      {
+        "period": "2020-10-01",
+        "value": 3.59561363636364
+      },
+      {
+        "period": "2020-11-01",
+        "value": 3.6077619047619
+      },
+      {
+        "period": "2020-12-01",
+        "value": 3.60261904761905
+      },
+      {
+        "period": "2021-01-01",
+        "value": 3.624575
+      },
+      {
+        "period": "2021-02-01",
+        "value": 3.645275
+      },
+      {
+        "period": "2021-03-01",
+        "value": 3.70815217391304
+      },
+      {
+        "period": "2021-04-01",
+        "value": 3.69945
+      },
+      {
+        "period": "2021-05-01",
+        "value": 3.77354761904762
+      },
+      {
+        "period": "2021-06-01",
+        "value": 3.91030952380952
+      },
+      {
+        "period": "2021-07-01",
+        "value": 3.94005
+      },
+      {
+        "period": "2021-08-01",
+        "value": 4.08619047619048
+      },
+      {
+        "period": "2021-09-01",
+        "value": 4.10747727272727
+      },
+      {
+        "period": "2021-10-01",
+        "value": 4.01505
+      },
+      {
+        "period": "2021-11-01",
+        "value": 4.01959523809524
+      },
+      {
+        "period": "2021-12-01",
+        "value": 4.03697727272727
+      },
+      {
+        "period": "2022-01-01",
+        "value": 3.88928571428572
+      },
+      {
+        "period": "2022-02-01",
+        "value": 3.7908
+      },
+      {
+        "period": "2022-03-01",
+        "value": 3.73878260869565
+      },
+      {
+        "period": "2022-04-01",
+        "value": 3.73973684210526
+      },
+      {
+        "period": "2022-05-01",
+        "value": 3.75754545454545
+      },
+      {
+        "period": "2022-06-01",
+        "value": 3.74714285714286
+      },
+      {
+        "period": "2022-07-01",
+        "value": 3.90218421052632
+      },
+      {
+        "period": "2022-08-01",
+        "value": 3.87379545454545
+      },
+      {
+        "period": "2022-09-01",
+        "value": 3.89770454545455
+      },
+      {
+        "period": "2022-10-01",
+        "value": 3.97871428571429
+      },
+      {
+        "period": "2022-11-01",
+        "value": 3.87730952380952
+      },
+      {
+        "period": "2022-12-01",
+        "value": 3.829175
+      },
+      {
+        "period": "2023-01-01",
+        "value": 3.83278571428571
+      },
+      {
+        "period": "2023-02-01",
+        "value": 3.840875
+      },
+      {
+        "period": "2023-03-01",
+        "value": 3.77960869565217
+      },
+      {
+        "period": "2023-04-01",
+        "value": 3.76561111111111
+      },
+      {
+        "period": "2023-05-01",
+        "value": 3.68870454545455
+      },
+      {
+        "period": "2023-06-01",
+        "value": 3.65104761904762
+      },
+      {
+        "period": "2023-07-01",
+        "value": 3.6013
+      },
+      {
+        "period": "2023-08-01",
+        "value": 3.69634090909091
+      },
+      {
+        "period": "2023-09-01",
+        "value": 3.72966666666667
+      },
+      {
+        "period": "2023-10-01",
+        "value": 3.84440909090909
+      },
+      {
+        "period": "2023-11-01",
+        "value": 3.76188095238095
+      },
+      {
+        "period": "2023-12-01",
+        "value": 3.73368421052632
+      },
+      {
+        "period": "2024-01-01",
+        "value": 3.73980952380952
+      },
+      {
+        "period": "2024-02-01",
+        "value": 3.82730952380952
+      },
+      {
+        "period": "2024-03-01",
+        "value": 3.70955263157895
+      },
+      {
+        "period": "2024-04-01",
+        "value": 3.71315909090909
+      },
+      {
+        "period": "2024-05-01",
+        "value": 3.73097727272727
+      },
+      {
+        "period": "2024-06-01",
+        "value": 3.78463157894737
+      },
+      {
+        "period": "2024-07-01",
+        "value": 3.7644
+      },
+      {
+        "period": "2024-08-01",
+        "value": 3.741325
+      },
+      {
+        "period": "2024-09-01",
+        "value": 3.76821428571429
+      },
+      {
+        "period": "2024-10-01",
+        "value": 3.75359090909091
+      },
+      {
+        "period": "2024-11-01",
+        "value": 3.77885
+      },
+      {
+        "period": "2024-12-01",
+        "value": 3.73489473684211
+      },
+      {
+        "period": "2025-01-01",
+        "value": 3.74775
+      },
+      {
+        "period": "2025-02-01",
+        "value": 3.6977
+      },
+      {
+        "period": "2025-03-01",
+        "value": 3.65259523809524
+      },
+      {
+        "period": "2025-04-01",
+        "value": 3.6997
+      },
+      {
+        "period": "2025-05-01",
+        "value": 3.66014285714286
+      },
+      {
+        "period": "2025-06-01",
+        "value": 3.60390476190476
+      },
+      {
+        "period": "2025-07-01",
+        "value": 3.5562
+      },
+      {
+        "period": "2025-08-01",
+        "value": 3.5432
+      },
+      {
+        "period": "2025-09-01",
+        "value": 3.50281818181818
+      },
+      {
+        "period": "2025-10-01",
+        "value": 3.41409090909091
+      },
+      {
+        "period": "2025-11-01",
+        "value": 3.37285
+      },
+      {
+        "period": "2025-12-01",
+        "value": 3.36673684210526
+      },
+      {
+        "period": "2026-01-01",
+        "value": 3.35675
+      },
+      {
+        "period": "2026-02-01",
+        "value": 3.356975
+      },
+      {
+        "period": "2026-03-01",
+        "value": 3.44677272727273
+      },
+      {
+        "period": "2026-04-01",
+        "value": 3.442675
+      },
+      {
+        "period": "2026-05-01",
+        "value": 3.434825
+      },
+      {
+        "period": "2026-06-01",
+        "value": 3.40457142857143
+      },
+      {
+        "period": "2026-07-01",
+        "value": 3.4
+      },
+      {
+        "period": "2026-08-01",
+        "value": 3.36385
+      },
+      {
+        "period": "2026-09-01",
+        "value": 3.37886363636364
+      }
+    ],
+    "model_use": false,
+    "note": "Serie revisable; sin historial de publicaciones. Correlación exploratoria de cambios mensuales, sin causalidad."
+  },
+  "correlations": [
+    {
+      "variety": "Amarilla",
+      "lag_months": 1,
+      "correlation": 0.0885,
+      "n": 91
+    },
+    {
+      "variety": "Amarilla",
+      "lag_months": 2,
+      "correlation": 0.002,
+      "n": 90
+    },
+    {
+      "variety": "Amarilla",
+      "lag_months": 3,
+      "correlation": -0.1517,
+      "n": 89
+    },
+    {
+      "variety": "Blanca",
+      "lag_months": 1,
+      "correlation": 0.1946,
+      "n": 91
+    },
+    {
+      "variety": "Blanca",
+      "lag_months": 2,
+      "correlation": 0.1753,
+      "n": 90
+    },
+    {
+      "variety": "Blanca",
+      "lag_months": 3,
+      "correlation": 0.0498,
+      "n": 89
+    },
+    {
+      "variety": "Canchán",
+      "lag_months": 1,
+      "correlation": 0.0062,
+      "n": 91
+    },
+    {
+      "variety": "Canchán",
+      "lag_months": 2,
+      "correlation": 0.0253,
+      "n": 90
+    },
+    {
+      "variety": "Canchán",
+      "lag_months": 3,
+      "correlation": -0.0412,
+      "n": 89
+    },
+    {
+      "variety": "Color",
+      "lag_months": 1,
+      "correlation": 0.0092,
+      "n": 91
+    },
+    {
+      "variety": "Color",
+      "lag_months": 2,
+      "correlation": -0.0518,
+      "n": 90
+    },
+    {
+      "variety": "Color",
+      "lag_months": 3,
+      "correlation": -0.0904,
+      "n": 89
+    },
+    {
+      "variety": "Huamantanga",
+      "lag_months": 1,
+      "correlation": 0.1572,
+      "n": 91
+    },
+    {
+      "variety": "Huamantanga",
+      "lag_months": 2,
+      "correlation": -0.0053,
+      "n": 90
+    },
+    {
+      "variety": "Huamantanga",
+      "lag_months": 3,
+      "correlation": -0.0866,
+      "n": 89
+    },
+    {
+      "variety": "Huayro",
+      "lag_months": 1,
+      "correlation": 0.1595,
+      "n": 91
+    },
+    {
+      "variety": "Huayro",
+      "lag_months": 2,
+      "correlation": 0.0717,
+      "n": 90
+    },
+    {
+      "variety": "Huayro",
+      "lag_months": 3,
+      "correlation": 0.0286,
+      "n": 89
+    },
+    {
+      "variety": "Negra Andina",
+      "lag_months": 1,
+      "correlation": 0.1523,
+      "n": 91
+    },
+    {
+      "variety": "Negra Andina",
+      "lag_months": 2,
+      "correlation": 0.0797,
+      "n": 90
+    },
+    {
+      "variety": "Negra Andina",
+      "lag_months": 3,
+      "correlation": -0.0085,
+      "n": 89
+    },
+    {
+      "variety": "Peruanita",
+      "lag_months": 1,
+      "correlation": 0.1787,
+      "n": 91
+    },
+    {
+      "variety": "Peruanita",
+      "lag_months": 2,
+      "correlation": 0.0805,
+      "n": 90
+    },
+    {
+      "variety": "Peruanita",
+      "lag_months": 3,
+      "correlation": -0.0013,
+      "n": 89
+    },
+    {
+      "variety": "Yungay",
+      "lag_months": 1,
+      "correlation": 0.1936,
+      "n": 91
+    },
+    {
+      "variety": "Yungay",
+      "lag_months": 2,
+      "correlation": 0.1796,
+      "n": 90
+    },
+    {
+      "variety": "Yungay",
+      "lag_months": 3,
+      "correlation": 0.0533,
+      "n": 89
+    },
+    {
+      "variety": "Única",
+      "lag_months": 1,
+      "correlation": -0.0225,
+      "n": 91
+    },
+    {
+      "variety": "Única",
+      "lag_months": 2,
+      "correlation": -0.1111,
+      "n": 90
+    },
+    {
+      "variety": "Única",
+      "lag_months": 3,
+      "correlation": -0.1013,
+      "n": 89
+    }
+  ],
+  "ingestion": {
+    "at": "2026-10-15T12:41:52.205563-05:00",
+    "state": "OK",
+    "logs": [
+      {
+        "source": "SISAP",
+        "period": "2026-08",
+        "state": "CACHE",
+        "rows": 10,
+        "error": ""
+      },
+      {
+        "source": "SISAP",
+        "period": "2026-09",
+        "state": "CACHE",
+        "rows": 300,
+        "error": ""
+      },
+      {
+        "source": "SISAP",
+        "period": "2026-10",
+        "state": "CACHE",
+        "rows": 150,
+        "error": ""
+      }
+    ],
+    "source_url": "http://sistemas.midagri.gob.pe/sisap/portal2/mayorista/resumenes/consultar/"
+  },
+  "cycles": {
+    "Canchán": {
+      "min": 115,
+      "max": 130,
+      "reference": 120,
+      "source": "https://www.inia.gob.pe/wp-content/uploads/investigacion/programa/sistProductivo/variedad/papa/INIA_303.pdf",
+      "note": "INIA: periodo vegetativo de referencia 120 días. Ventana 115–130 es un supuesto editable, no una predicción agronómica local."
+    }
+  },
+  "forecast_horizon_days": 240,
+  "stale_after_days": 7,
+  "geography": {
+    "source": "https://www.geoboundaries.org/api/current/gbOpen/PER/ADM1/",
+    "license": "Public Domain",
+    "year": 2008,
+    "note": "Límites de referencia geoBoundaries, 26 unidades; sin validez catastral."
+  },
+  "monitoring": {
+    "at": "2026-10-15T12:41:53.761262-05:00",
+    "series": [
+      {
+        "variety": "Amarilla",
+        "n": 0,
+        "state": "sin observaciones futuras realizadas"
+      },
+      {
+        "variety": "Blanca",
+        "n": 0,
+        "state": "sin observaciones futuras realizadas"
+      },
+      {
+        "variety": "Canchán",
+        "n": 0,
+        "state": "sin observaciones futuras realizadas"
+      },
+      {
+        "variety": "Color",
+        "n": 0,
+        "state": "sin observaciones futuras realizadas"
+      },
+      {
+        "variety": "Huamantanga",
+        "n": 0,
+        "state": "sin observaciones futuras realizadas"
+      },
+      {
+        "variety": "Huayro",
+        "n": 0,
+        "state": "sin observaciones futuras realizadas"
+      },
+      {
+        "variety": "Negra Andina",
+        "n": 0,
+        "state": "sin observaciones futuras realizadas"
+      },
+      {
+        "variety": "Peruanita",
+        "n": 0,
+        "state": "sin observaciones futuras realizadas"
+      },
+      {
+        "variety": "Yungay",
+        "n": 0,
+        "state": "sin observaciones futuras realizadas"
+      },
+      {
+        "variety": "Única",
+        "n": 0,
+        "state": "sin observaciones futuras realizadas"
+      }
+    ],
+    "note": "Solo pronósticos emitidos antes de observar la fecha objetivo. Alertas heurísticas requieren al menos 30 pares recientes."
+  }
+}

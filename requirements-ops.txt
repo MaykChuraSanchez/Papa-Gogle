@@ -1,0 +1,3 @@
+-r requirements-v4.txt
+# Optional local experiment tracking: python -m agrodecide.v4.train --mlflow
+mlflow>=3.0,<4
