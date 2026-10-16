@@ -4,9 +4,9 @@ from zipfile import ZipFile, ZIP_DEFLATED
 import json
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT.parent / 'AgroDecide_Papa_v4_2.zip'
-TOP = 'AgroDecide_Papa_v4_2'
-FILES = ['README.md', 'ABRIR_AGRODECIDE.cmd', 'package.json', 'package-lock.json',
+OUTPUT = ROOT.parent / 'AgroDecide_Papa_v4_2_1.zip'
+TOP = 'AgroDecide_Papa_v4_2_1'
+FILES = ['DESIGN.md', 'README.md', 'ABRIR_AGRODECIDE.cmd', 'package.json', 'package-lock.json',
          'tsconfig.json', 'vite.config.ts', 'vercel.json', 'index.html', '.env.example',
          '.gitignore', 'requirements-v4.txt', 'requirements-ops.txt']
 DIRS = ['src', 'api', 'server', 'public/analytics', 'agrodecide', 'reference', 'tests', 'docs', 'sql', 'scripts', '.github', 'archive', 'data/v4', 'dist']

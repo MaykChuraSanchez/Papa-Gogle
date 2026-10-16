@@ -9,9 +9,9 @@ export function TimeChart({rows,lines,band=false,brush=true,unit='S/ por kg',hei
  <div style={{height,width:'100%',minWidth:0}}><ResponsiveContainer width="100%" height="100%"><ComposedChart data={rows.map(p=>({...p,ts:Date.parse(p.date+'T12:00:00Z')}))} margin={{top:12,right:15,left:0,bottom:4}} accessibilityLayer>
  <defs><linearGradient id={'fill'+id} x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#20C77A" stopOpacity={.24}/><stop offset="100%" stopColor="#20C77A" stopOpacity={.015}/></linearGradient></defs>
  <CartesianGrid strokeDasharray="3 5" vertical={false} stroke="#e7eeea"/>
- <XAxis type="number" dataKey="ts" domain={['dataMin','dataMax']} scale="time" tickFormatter={v=>dateLabel(v).slice(0,7)} minTickGap={45} tick={{fontSize:11,fill:'#75857e'}} axisLine={false} tickLine={false}/>
- <YAxis width={48} tick={{fontSize:11,fill:'#75857e'}} domain={['auto','auto']} tickFormatter={v=>Number(v).toFixed(1)} axisLine={false} tickLine={false}/>
- <Tooltip labelFormatter={dateLabel} formatter={(value:any,name:any)=>[Array.isArray(value)?value.map(v=>Number(v).toFixed(2)).join(' – '):Number(value).toFixed(3),name]} contentStyle={{borderRadius:14,border:'1px solid #d8e9df',boxShadow:'0 8px 30px #0b302515',fontSize:12}}/>
+ <XAxis type="number" dataKey="ts" domain={['dataMin','dataMax']} scale="time" tickFormatter={v=>dateLabel(v).slice(0,7)} minTickGap={45} tick={{fontSize:12,fill:'#526b5e'}} axisLine={false} tickLine={false}/>
+ <YAxis width={48} tick={{fontSize:12,fill:'#526b5e'}} domain={['auto','auto']} tickFormatter={v=>Number(v).toFixed(1)} axisLine={false} tickLine={false}/>
+ <Tooltip labelFormatter={dateLabel} formatter={(value:any,name:any)=>[Array.isArray(value)?value.map(v=>Number(v).toFixed(2)).join(' – '):Number(value).toFixed(3),name]} contentStyle={{borderRadius:12,border:'1px solid #d8e9df',boxShadow:'0 8px 30px #0b302515',fontSize:12}}/>
  <Legend wrapperStyle={{fontSize:12,paddingTop:12}}/>
  {band&&<Area type="linear" dataKey="band" name="Rango empírico diario" fill="#20C77A" fillOpacity={.14} stroke="none" isAnimationActive={false}/>}
  {lines.map((l,n)=><Line key={l.key} type="linear" dataKey={l.key} name={l.name} stroke={l.color||palette[n%palette.length]} strokeWidth={2} dot={false} connectNulls={false} strokeDasharray={l.dashed?'5 4':undefined} isAnimationActive={false}/>)}

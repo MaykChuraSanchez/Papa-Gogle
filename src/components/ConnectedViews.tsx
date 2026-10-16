@@ -9,10 +9,10 @@ import type { Series } from '../data/contracts';
 import type { ViewTab } from '../types/agro';
 
 export function Card({children, className = ''}: {children: React.ReactNode; className?: string}) {
-  return <section className={'bg-white rounded-3xl border border-slate-200 shadow-sm p-5 sm:p-7 ' + className}>{children}</section>;
+  return <section className={'surface-card bg-white rounded-3xl border border-slate-200 shadow-sm p-5 sm:p-7 ' + className}>{children}</section>;
 }
 function Title({eyebrow, title, text}: {eyebrow: string; title: string; text: string}) {
-  return <div className="mb-6"><p className="text-xs font-bold uppercase tracking-widest text-emerald-700 mb-2">{eyebrow}</p><h1 className="text-2xl sm:text-3xl font-extrabold text-[#0B3025]">{title}</h1><p className="text-sm text-slate-500 mt-2 max-w-3xl leading-relaxed">{text}</p></div>;
+  return <div className="workspace-heading mb-6"><p className="text-xs font-bold uppercase tracking-widest text-emerald-700 mb-2">{eyebrow}</p><h1 className="text-2xl sm:text-3xl font-extrabold text-[#0B3025]">{title}</h1><p className="text-sm text-slate-500 mt-2 max-w-3xl leading-relaxed">{text}</p></div>;
 }
 export function VarietyPicker() {
   const {index, variety, select} = useData();
