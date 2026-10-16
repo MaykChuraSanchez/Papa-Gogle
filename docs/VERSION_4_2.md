@@ -1,3 +1,5 @@
+> Documento histórico de la versión anterior. Para el estado actual de Única consultar [motor V2](MOTOR_PRONOSTICOS_V2.md), [resultados V2](RESULTADOS_V2.md) y [fuentes V2](FUENTES_V2.md).
+
 # AgroDecide 4.2 · Recuperación de la experiencia de AI Studio
 
 Se revisó la carpeta `agrodecide-ai---pronóstico-de-precios-&-decisión-agrícola`, sus componentes activos y la implementación completa conservada en `archive/demo-v3`. La raíz del ZIP contiene la integración 4.1; los módulos originales más amplios están en el archivo. Se recupera la experiencia de exploración con cifras calculadas a partir de las publicaciones oficiales.

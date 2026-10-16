@@ -7,3 +7,11 @@ duckdb==1.5.5
 scikit-learn==1.6.1
 openpyxl==3.1.5
 tzdata==2025.2
+
+# Advanced forecasting engine: verified in Python 3.12
+statsmodels==0.14.2
+scipy==1.14.1
+xgboost==3.4.1
+lightgbm==4.7.0
+catboost==1.2.10
+pypdf==6.16.0

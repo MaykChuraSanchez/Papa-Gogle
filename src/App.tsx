@@ -7,6 +7,7 @@ import { Card, Home, Varieties, Planting, Harvest, ModelLab, Sources, Climate, M
 import { Dashboard } from './components/Dashboard';
 import { Explorer } from './components/Explorer';
 import { ResearchLab } from './components/ResearchLab';
+import {ClimateInsights} from './components/ClimateInsights';
 import { AssistantChat } from './components/AssistantChat';
 import { freshness } from './utils/forecast';
 import type { ViewTab } from './types/agro';
@@ -33,12 +34,12 @@ function Platform() {
         {tab==='harvest'&&(series?<Harvest/>:<Card>Cargando variedad…</Card>)}
         {tab==='modellab'&&<ResearchLab/>}
         {tab==='sync'&&<Sources/>}
-        {tab==='enfen'&&<Climate/>}
+        {tab==='enfen'&&<ClimateInsights navigate={navigate} fallback={<Climate/>}/>}
         {tab==='market'&&(series?<Market/>:<Card>Cargando variedad…</Card>)}
         {tab==='architecture'&&<AssistantChat navigate={navigate}/>}
       </>}
     </main>
-    <footer className="app-footer bg-[#0B3025] text-white border-t border-[#174436] py-8 px-4 sm:px-6 mt-10"><div className="max-w-7xl mx-auto flex flex-wrap justify-between gap-5 items-center"><div className="flex gap-3 items-center"><div className="p-3 bg-[#20C77A]/20 rounded-xl"><Sprout className="text-[#B7F36B]"/></div><div><p className="font-extrabold">AgroDecide AI <span className="text-[#B7F36B] text-xs">· Piloto papa</span></p><p className="text-xs text-[#A2C7B8] mt-1">Siembra con información. Cosecha con mejores decisiones.</p></div></div><div className="text-xs text-[#A2C7B8] max-w-md leading-relaxed">Precios mayoristas de Lima. Escenarios orientativos, con errores y limitaciones visibles. Diseño basado en tu plataforma Papa-Gogle · v4.2.1.</div></div></footer>
+    <footer className="app-footer bg-[#0B3025] text-white border-t border-[#174436] py-8 px-4 sm:px-6 mt-10"><div className="max-w-7xl mx-auto flex flex-wrap justify-between gap-5 items-center"><div className="flex gap-3 items-center"><div className="p-3 bg-[#20C77A]/20 rounded-xl"><Sprout className="text-[#B7F36B]"/></div><div><p className="font-extrabold">AgroDecide AI <span className="text-[#B7F36B] text-xs">· Mercado de papa</span></p><p className="text-xs text-[#A2C7B8] mt-1">Siembra con información. Cosecha con mejores decisiones.</p></div></div><div className="text-xs text-[#A2C7B8] max-w-md leading-relaxed">Precios mayoristas de Lima. Escenarios orientativos, con errores y limitaciones visibles.</div></div></footer>
   </div>;
 }
 export default function App(){return <DataProvider><Platform/></DataProvider>;}

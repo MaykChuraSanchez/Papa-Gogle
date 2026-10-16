@@ -18,7 +18,7 @@ Los datos de `public/data` se incorporan a cada despliegue. No se requieren clav
 
 ## Actualización diaria
 
-El workflow `.github/workflows/agrodecide.yml` está preparado para las 03:00 de Perú. GitHub puede demorar su ejecución. Primera ejecución sin caché: descarga desde 2019 y entrena. Con caché: ingesta incremental, contexto, seguimiento y refit; primer día del mes vuelve a seleccionar y auditar.
+El workflow `.github/workflows/agrodecide.yml` está preparado para las 03:00 de Perú. GitHub puede demorar su ejecución. Primera ejecución sin caché: descarga desde 2019 y entrena. Con caché: ingesta incremental, contexto, seguimiento y refit; primer día del mes vuelve a seleccionar y auditar el motor anterior. Para Única, el motor V2 recompone la evaluación reutilizando los ajustes válidos por hash y entrena los nuevos cortes/inferencias que correspondan. Los resultados avanzados se publican también desde `public/forecasting`.
 
 Sin credenciales Vercel, guarda artefactos de datos y aplicación en GitHub Actions. Con secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID` y `VERCEL_PROJECT_ID`, publica solo después de pruebas y build exitosos. **El proyecto ya está desplegado y conectado al repositorio; la publicación nocturna sigue pendiente de configurar los secrets.**
 
@@ -26,7 +26,7 @@ No basta con el autodespliegue de Vercel al hacer push: la actualización noctur
 
 ## Persistencia
 
-Para este piloto, DuckDB en el worker conserva datos y estado; la interfaz consume archivos precalculados. GitHub cache puede expirar: la descarga histórica permite reconstruirlo y los artefactos tienen retención de 30 días. Para producción sostenida, usar almacenamiento durable del worker u objetos con control de versiones y copias de seguridad.
+Para esta arquitectura, DuckDB en el worker conserva datos y estado; la interfaz consume archivos precalculados. GitHub cache puede expirar: la descarga histórica permite reconstruirlo y los artefactos tienen retención de 30 días. Para producción sostenida, usar almacenamiento durable del worker u objetos con control de versiones y copias de seguridad.
 
 La migración opcional `sql/001_warehouse.sql` y `python -m agrodecide.v4.postgres` permiten sincronizar precios y resultados a PostgreSQL desde un worker de confianza. Requiere instalar `psycopg[binary]>=3,<4` y configurar `DATABASE_URL` solo en el worker. No se ha creado una base remota ni probado una conexión remota en esta entrega. El frontend aún usa publicaciones JSON; no se afirma integración con Supabase.
 

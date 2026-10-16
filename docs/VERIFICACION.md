@@ -1,3 +1,5 @@
+> Documento histórico de la versión anterior. Para el estado actual de Única consultar [motor V2](MOTOR_PRONOSTICOS_V2.md), [resultados V2](RESULTADOS_V2.md) y [fuentes V2](FUENTES_V2.md).
+
 # Verificación de la entrega v4.1
 
 Fecha de trabajo: 15/10/2026. Entorno: Windows, Node 24.21 y Python 3.12.

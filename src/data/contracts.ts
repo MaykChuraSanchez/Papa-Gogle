@@ -1,7 +1,8 @@
-export interface Metric { model?: string; mae: number; rmse: number; smape: number; n: number; coverage80?: number }
+export interface Metric { model?: string; mae: number; rmse: number; smape: number; n: number; coverage80?: number; coverage95?: number; wape?: number; mase?: number; bias?: number }
 export interface Evaluation {
   horizon: number; model: string; selection: Metric[]; audit: Metric;
   baseline_audit: Metric; skill: number; status: string; band_method: string;
+  features?: string[]; qualification?: string;
   origins: string[]; selection_folds: number; calibration_folds: number; audit_folds: number;
 }
 export interface Summary {
@@ -11,9 +12,10 @@ export interface Summary {
 }
 export interface Point { date: string; price: number }
 export interface Prediction extends Point {
-  low: number; high: number; lead: number; model: string; evaluated_horizon: number; status: string;
+  low: number; high: number; low95?: number; high95?: number; lead: number; model: string; evaluated_horizon: number; status: string;
 }
 export interface Series extends Summary {
+  forecasts_by_horizon?: Record<string, Prediction[]>;
   history: Point[]; forecast: Prediction[]; generated_at: string; data_hash: string;
 }
 export interface DataIndex {

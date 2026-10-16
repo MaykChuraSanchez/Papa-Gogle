@@ -1,3 +1,5 @@
+> Documento histórico de la versión anterior. Para el estado actual de Única consultar [motor V2](MOTOR_PRONOSTICOS_V2.md), [resultados V2](RESULTADOS_V2.md) y [fuentes V2](FUENTES_V2.md).
+
 # Resultados de la ejecución del 15 de octubre de 2026
 
 Mercado: Gran Mercado Mayorista de Lima. Datos desde enero de 2019. MAE en S/kg. Cobertura del rango empírico con objetivo 80%, medida sobre los dos bloques de auditoría. La selección se hizo en tres bloques anteriores; la calibración en otros tres.

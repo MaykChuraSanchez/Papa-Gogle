@@ -5,6 +5,16 @@ import {contextFor} from './grounding.ts';
 function response(){return {statusCode:0,headers:{} as Record<string,string>,data:null as any,setHeader(key:string,v:string){this.headers[key]=v;},end(text:string){this.data=JSON.parse(text);}};}
 test('Grounding resolves the variety in the question and never trusts a filename',async()=>{const result=await contextFor({question:'Precio de papa Amarilla',variety:'../../.env'});assert.equal(result.facts.variety,'Amarilla');assert.equal(result.facts.market_id,'15011501');assert.ok(result.local.includes('mayorista'));});
 test('Grounding rejects empty or oversized questions',async()=>{await assert.rejects(()=>contextFor({question:''}));await assert.rejects(()=>contextFor({question:'a'.repeat(1501)}));});
+test('Unica short-horizon answer reads the complete published 15-day curve and actual coverage',async()=>{
+ const {facts,local}=await contextFor({question:'¿Cuál es el pronóstico del precio de Única a 15 días?',variety:'Única'});
+ assert.equal(facts.advanced,true);
+ if(facts.staleness){assert.equal(facts.future,null);assert.ok(facts.forecastError);}
+ else{assert.equal(facts.future.days,15);assert.ok(facts.future.low95<=facts.future.low80);assert.ok(facts.future.high95>=facts.future.high80);assert.ok(local.includes('cobertura observada'));assert.ok(local.includes('no una cotización real'));}
+});
+test('Climate response distinguishes evaluated alert candidates from actual deployed inputs',async()=>{
+ const {facts,local}=await contextFor({question:'¿El Niño influye en el modelo de Única?',variety:'Única'});
+ assert.equal(facts.advanced,true);assert.ok(local.includes('comunicados fechados'));assert.ok(local.includes('No hay una serie meteorológica regional validada'));
+});
 test('API reports local mode honestly without credentials',async()=>{const key=process.env.OPENAI_API_KEY;delete process.env.OPENAI_API_KEY;try{const res=response();await handler({method:'GET',headers:{}},res);assert.equal(res.statusCode,200);assert.equal(res.data.configured,false);assert.equal(res.data.provider,'local');}finally{if(key)process.env.OPENAI_API_KEY=key;}});
 test('Cross-origin queries and unsupported methods are rejected',async()=>{let res=response();await handler({method:'POST',headers:{origin:'https://unrelated.example','x-forwarded-for':'test-a'},body:{question:'Precio de papa'}},res);assert.equal(res.statusCode,403);res=response();await handler({method:'DELETE',headers:{}},res);assert.equal(res.statusCode,405);});
 test('Configured provider receives trusted facts and secret stays server-side',async()=>{

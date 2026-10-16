@@ -20,7 +20,10 @@ export function forecastWindow(series: Series, start: string, end: string, today
   const stale = freshness(series, today); if (stale) throw new Error(stale);
   const count = (dateValue(end) - dateValue(start)) / DAY + 1;
   if (!Number.isInteger(count) || count < 1 || count > 240) throw new Error('Ventana de cosecha inválida.');
-  const lookup = new Map(series.forecast.map(p => [p.date, p]));
+  const lead = (dateValue(end)-dateValue(series.last_date))/DAY;
+  const appropriate = Object.keys(series.forecasts_by_horizon||{}).map(Number).sort((a,b)=>a-b).find(h=>h>=lead);
+  const curve = appropriate ? series.forecasts_by_horizon![String(appropriate)] : series.forecast;
+  const lookup = new Map(curve.map(p => [p.date, p]));
   const points: Prediction[] = [];
   for (let day = 0; day < count; day++) {
     const point = lookup.get(addDays(start, day));

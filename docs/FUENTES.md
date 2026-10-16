@@ -1,3 +1,5 @@
+> Documento histórico de la versión anterior. Para el estado actual de Única consultar [motor V2](MOTOR_PRONOSTICOS_V2.md), [resultados V2](RESULTADOS_V2.md) y [fuentes V2](FUENTES_V2.md).
+
 # Investigación de las fuentes
 
 Fecha de revisión: 15 de octubre de 2026. Se distingue acceso comprobado de propuestas de integración.

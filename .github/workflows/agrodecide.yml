@@ -16,7 +16,7 @@ concurrency:
 jobs:
   pipeline:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 120
     env:
       OMP_NUM_THREADS: '2'
       OPENBLAS_NUM_THREADS: '2'
@@ -63,6 +63,7 @@ jobs:
             data/v4
             public/data
             public/analytics
+            public/forecasting
             dist
           retention-days: 30
       - name: Publicar versión verificada en Vercel

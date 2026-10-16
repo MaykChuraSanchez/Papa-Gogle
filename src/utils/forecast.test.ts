@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { addDays, change, dateValue, economics, forecastWindow, freshness } from './forecast.ts';
 import type { DataIndex, Series } from '../data/contracts';
+import {validForecastPublication} from '../data/validation';
 const root = new URL('../../', import.meta.url);
 const load = (name: string) => JSON.parse(readFileSync(new URL('public/data/' + name, root), 'utf8'));
 const index = load('index.json') as DataIndex;
@@ -58,9 +59,30 @@ test('Every published variety is distinct, complete, and has traceable evaluated
       assert.ok(Number.isFinite(p.price)&&p.low<=p.price&&p.price<=p.high);
       const e=data.evaluations.find(e=>e.horizon===p.evaluated_horizon)!;
       assert.ok(e);assert.equal(e.model,p.model);assert.equal(e.status,p.status);
-      assert.equal(e.selection_folds,3);assert.equal(e.calibration_folds,3);assert.equal(e.audit_folds,2);
+      const advanced=data.model_version.startsWith('forecasting-');
+      assert.equal(e.selection_folds,advanced?6:3);assert.equal(e.calibration_folds,advanced?6:3);assert.equal(e.audit_folds,advanced?6:2);
     }
   }
+});
+
+test('A harvest window uses one complete horizon curve without joining different models',()=>{
+ const curves=Object.fromEntries([7,15,30,90,180,240].map(h=>[String(h),series.forecast.slice(0,h).map(p=>({...p,price:h,low:h-1,high:h+1,model:'horizon-'+h,evaluated_horizon:h}))]));
+ const s={...series,forecasts_by_horizon:curves};
+ const result=forecastWindow(s,addDays(today,5),addDays(today,20),today);
+ assert.equal(result.price,30);assert.deepEqual(result.models,['horizon-30']);
+ assert.equal(forecastWindow(s,addDays(today,8),addDays(today,15),today).price,15);
+ const missing={...s,forecasts_by_horizon:{...curves,'30':curves['30'].filter(p=>p.lead!==16)}};
+ assert.throws(()=>forecastWindow(missing,addDays(today,5),addDays(today,20),today),/ventana completa/);
+});
+
+test('Publication validation rejects broken horizon dates and non-nested 95% bands',()=>{
+ assert.equal(validForecastPublication(series),true);
+ const curves=Object.fromEntries([7,15,30,90,180,240].map(h=>[String(h),series.forecast.slice(0,h).map(p=>({...p,low95:Math.max(0,p.low-.1),high95:p.high+.1}))]));
+ const s={...series,forecasts_by_horizon:curves};assert.equal(validForecastPublication(s),true);
+ const broken=structuredClone(s);broken.forecasts_by_horizon['15'][1].low95=999;
+ assert.equal(validForecastPublication(broken),false);
+ const wrongDate=structuredClone(s);wrongDate.forecasts_by_horizon['30'][2].date=today;
+ assert.equal(validForecastPublication(wrongDate),false);
 });
 test('Regional snapshot reconciles and is not labeled regional forecast',()=>{
   assert.equal(index.regional.regions.length,26);

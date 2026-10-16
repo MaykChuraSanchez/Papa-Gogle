@@ -24,6 +24,14 @@ def main():
         else:
             from .refresh import run
         run()
+        from agrodecide.forecasting.sources import run as update_sources
+        update_sources()
+        from agrodecide.forecasting.engine import run as forecast_advanced
+        forecast_advanced('Única')
+        from agrodecide.forecasting.enrich import run as enrich
+        enrich('Única')
+        from agrodecide.forecasting.monitor import run as monitor_advanced
+        monitor_advanced()
         export()
         if status['state']=='DEGRADED':
             raise RuntimeError('Ingesta parcial; revisa status.json. Se preservaron meses válidos.')

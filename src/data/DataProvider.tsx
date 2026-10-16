@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Context } from './DataContext';
 import type { DataIndex, Series } from './contracts';
+import {validForecastPublication} from './validation';
 // Cache entries are tied to the content-addressed file in the selected publication.
 const memory = new Map<string, unknown>();
 async function load<T>(url: string, validate: (x: any) => boolean): Promise<{data: T; cached: boolean}> {
@@ -22,7 +23,7 @@ async function load<T>(url: string, validate: (x: any) => boolean): Promise<{dat
 }
 export function DataProvider({children}: {children: React.ReactNode}) {
   const [index, setIndex] = useState<DataIndex | null>(null), [series, setSeries] = useState<Series | null>(null);
-  const [variety, select] = useState('Canchán'), [error, setError] = useState(''), [cached, setCached] = useState(false), [attempt, setAttempt] = useState(0);
+  const [variety, select] = useState('Única'), [error, setError] = useState(''), [cached, setCached] = useState(false), [attempt, setAttempt] = useState(0);
   useEffect(() => { let active = true;
     load<DataIndex>('/data/index.json', x => x && Array.isArray(x.series) && x.series.length && x.sources && x.regional)
       .then(x => {if (active) {setIndex(x.data);setCached(x.cached);setError('');}})
@@ -32,7 +33,7 @@ export function DataProvider({children}: {children: React.ReactNode}) {
   useEffect(() => {let active = true; setSeries(null); if (!index) return;
     const summary = index.series.find(s => s.variety === variety);
     if (!summary || !/^[a-f0-9]{20}\.json$/.test(summary.file)) {setError('Variedad no disponible.');return;}
-    load<Series>('/data/' + summary.file, x => x?.variety === variety && x?.market_id === summary.market_id && Array.isArray(x.history) && Array.isArray(x.forecast) && x.history.length > 0 && x.forecast.every((p: any) => Number.isFinite(p.price) && Number.isFinite(p.low) && Number.isFinite(p.high) && p.low <= p.price && p.price <= p.high))
+    load<Series>('/data/' + summary.file, x => x?.variety === variety && x?.market_id === summary.market_id && Array.isArray(x.history) && x.history.length > 0 && validForecastPublication(x))
       .then(x => {if(active){setSeries({...x.data, evaluated_at: summary.evaluated_at});setCached(c => c || x.cached);setError('');}})
       .catch(() => {if(active)setError('No se pudo cargar esta variedad. Los resultados anteriores no se usan para otra variedad.');});
     return () => {active = false;};

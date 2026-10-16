@@ -20,14 +20,17 @@ def run(artifact=None, prices=None):
         y=series(frame); audits=[]
         for evaluation in report['evaluations']:
             h=evaluation['horizon']; rows=[]
-            for origin in evaluation['origins'][-2:]:
-                train=y.loc[:origin]; target=y.loc[pd.Timestamp(origin)+pd.Timedelta(days=1):].iloc[:h]
-                p=predict(evaluation['model'], train, h); baseline=predict('Último precio', train, h)
-                for n,(date,actual) in enumerate(target.items()):
-                    if np.isfinite(actual) and np.isfinite(p[n]):
-                        rows.append({'date':str(date.date()),'actual':round(float(actual),6),
-                            'predicted':round(float(p[n]),6),'baseline':round(float(baseline[n]),6),
-                            'residual':round(float(actual-p[n]),6),'covered':bool(abs(actual-p[n])<=evaluation['band_width']), 'origin':origin})
+            if evaluation.get('embedded_audit') is not None:
+                rows=evaluation['embedded_audit']
+            else:
+                for origin in evaluation['origins'][-2:]:
+                    train=y.loc[:origin]; target=y.loc[pd.Timestamp(origin)+pd.Timedelta(days=1):].iloc[:h]
+                    p=predict(evaluation['model'], train, h); baseline=predict('Último precio', train, h)
+                    for n,(date,actual) in enumerate(target.items()):
+                        if np.isfinite(actual) and np.isfinite(p[n]):
+                            rows.append({'date':str(date.date()),'actual':round(float(actual),6),
+                                'predicted':round(float(p[n]),6),'baseline':round(float(baseline[n]),6),
+                                'residual':round(float(actual-p[n]),6),'covered':bool(abs(actual-p[n])<=evaluation['band_width']), 'origin':origin})
             score=metrics(np.array([r['actual'] for r in rows]),np.array([r['predicted'] for r in rows]))
             verified=abs(score['mae']-evaluation['audit']['mae'])<1e-5 and score['n']==evaluation['audit']['n']
             audits.append({'horizon':h,'model':evaluation['model'],'verified':verified,'width':evaluation['band_width'],'rows':rows})

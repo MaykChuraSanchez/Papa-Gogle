@@ -1,3 +1,6 @@
 -r requirements-v4.txt
 # Optional local experiment tracking: python -m agrodecide.v4.train --mlflow
 mlflow>=3.0,<4
+
+# Optional model interpretation; errors stay isolated if a backend is unsupported.
+shap==0.52.0
