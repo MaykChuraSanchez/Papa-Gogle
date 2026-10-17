@@ -1,7 +1,7 @@
 {
   "schema_version": "5.0.0",
   "version": "5.0.0",
-  "source_tree_sha256": "2ddfb8ccc196ffe3ed30480e2a6d72b37834bd2ecfe4930b0d0d55e5d4152faf",
+  "source_tree_sha256": "2dad6a29d0f589df1937b287458d482b61e3194a478b3f7a6ce5afa268aab474",
   "source_files": {
     ".gitattributes": "36735fd9c80a1f375cf9c6c4c0962d44c3d1e9fd8dd4147cde2a0afc66639b5f",
     "agrodecide/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -43,11 +43,11 @@
     "requirements-v4.txt": "e815437be97d589fe0ccf60003803ba976de935ac7c36c4bd7676c0e5e9146dd",
     "requirements-v5.txt": "922647edbe1b2db368e8b93d828043e58e84a8128c2b0cd89aeebee41789519b",
     "scripts/package.py": "aa3d82c1dd03af2f11795d426ef6fd243ee4f41366dd915b818e65460d6df6c3",
-    "scripts/publish_release_v5.py": "24af2307a6eb6f60f261e8ad9cf8d3e713819823d8529532fd1d154d98e17618",
+    "scripts/publish_release_v5.py": "b7736be5b3aefd9a4782acac5e3c520f700844b41ca14974032df9ecbc83acf8",
     "scripts/publish_research_v5.py": "abe743f01f522e18a5f48d27977a28d5d2c796db4f0a97907ec10efbce264d2d",
     "scripts/report_forecasting.py": "87bf4606fb25a1885c17f3d5cc6f8bcb333de2ccbf35c8cab7df5ef47ba66174",
     "scripts/run_tests_v5.py": "e6b68023f332d7c01212b4773365c94e39ba4a14d200047d8eac0cbeed8d45bb",
-    "scripts/verify_release.mjs": "acea48f0b36dfc5340da9b990a118fd9858f10dc27035d1203e2b797b6948446",
+    "scripts/verify_release.mjs": "ce7a2f7887b69d959c7e34559f14e6e6f1442703a94da76212dc291153129d32",
     "server/assistant.test.ts": "5e2c5f33776fb2f8104ef66be68b1324eff6e68ae3ebb5481242e0d065f68460",
     "server/grounding.ts": "bee3afd6a5e20eee3afc0b3b815f550d38ae605f2d27a5cc7fa4f1dd66108d75",
     "src/App.tsx": "1ffa7bb7b0392d403e2f3fd9f45acfa3bc23151d35332dbce8ca7fcda4fee2d8",
@@ -91,8 +91,66 @@
     "src/utils/research.ts": "c578f9cf54896ab31026bb8e99b7aba1a0e2d8c7b30f570acd0630bb70aec10f",
     "src/v5-evidence.css": "eada6c5edd3aaa6ab39ef9f4c17bb603db153865d025a2a128ea1f2cfde9aaeb",
     "src/v5-visual.css": "8829db621ff66686d5655c49be1fe2dc3ccea73fb600de2db638a1ba2318ec1a",
-    "vercel.json": "f1167ecae1fc357b15eb210a9813f1a6a37534a566ef89b62123291449329c0f",
+    "vercel.json": "9a22a441d7b6ceb657e35d96c7c43ec4df6e9612f26f4270b98750105b7b0f43",
     "vite.config.ts": "56cbb679256d2ad88a4fc489066df1e5c8803c31a59243a3d3b3ee2bd3e467ef"
+  },
+  "source_config": {
+    "buildCommand": "npm run build",
+    "outputDirectory": "dist",
+    "framework": "vite",
+    "headers": [
+      {
+        "source": "/(research-v5|forecasting|climate-v5)/index.json",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "/release.json",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "/data/index.json",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "/(.*)",
+        "headers": [
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          },
+          {
+            "key": "Referrer-Policy",
+            "value": "strict-origin-when-cross-origin"
+          },
+          {
+            "key": "Content-Security-Policy",
+            "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'"
+          }
+        ]
+      }
+    ],
+    "functions": {
+      "api/assistant.ts": {
+        "includeFiles": "public/data/*.json",
+        "maxDuration": 30
+      }
+    },
+    "installCommand": "npm ci"
   },
   "operational": {
     "url": "/data/index.json",
@@ -134,6 +192,6 @@
   "data_as_of": "2026-10-15",
   "climate_as_of": "2026-10-16",
   "scope": "Published core preserved; complementary research does not override the operational model.",
-  "build_id": "agro-v5-2b2016e423642da9e668",
-  "sealed_at": "2026-10-16T20:47:07.926916-05:00"
+  "build_id": "agro-v5-cfbfec47d3bb4846be5c",
+  "sealed_at": "2026-10-16T20:49:49.103435-05:00"
 }

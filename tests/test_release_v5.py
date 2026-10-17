@@ -6,7 +6,7 @@ from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import patch
 
-from scripts.publish_release_v5 import reference, run, source_hash
+from scripts.publish_release_v5 import reference, run, source_hash, source_bytes
 
 
 def write_json(path, value):
@@ -147,12 +147,19 @@ class ReleaseV5(unittest.TestCase):
                    'package-lock.json', 'package.json', 'requirements-v4.txt',
                    'requirements-v5.txt', 'scripts/x.py', 'server/bg.ts', 'src/A.ts',
                    'src/b.ts', 'src/b/index.ts', 'src/z.tsx', 'vercel.json', 'vite.config.ts']
-        content = b''.join(name.encode()+b'\0'+(self.root/name).read_bytes()+b'\0' for name in ordered)
+        content = b''.join(name.encode()+b'\0'+source_bytes(self.root/name)+b'\0' for name in ordered)
         expected = sha256(content).hexdigest()
         self.assertEqual(source_hash(self.root), expected)
         for name in ordered:
             path = self.root/name; path.write_bytes(path.read_bytes().replace(b'\n', b'\r\n'))
         self.assertEqual(source_hash(self.root), expected)
+
+    def test_vercel_config_formatting_is_irrelevant_but_actual_settings_remain_protected(self):
+        path=self.root/'vercel.json';value={'headers':[{'source':'/(.*)','headers':[{'key':'X-Content-Type-Options','value':'nosniff'}]}],'framework':'vite'}
+        path.write_text(json.dumps(value,indent=2)+'\n',encoding='utf-8');before=source_hash(self.root)
+        path.write_text(json.dumps(value,separators=(',',':'),sort_keys=True),encoding='utf-8');self.assertEqual(before,source_hash(self.root))
+        value['headers'][0]['headers'][0]['value']='changed'
+        path.write_text(json.dumps(value),encoding='utf-8');self.assertNotEqual(before,source_hash(self.root))
 
     def test_source_hash_ignores_documents_cache_and_data_but_detects_real_code_change(self):
         before = source_hash(self.root)

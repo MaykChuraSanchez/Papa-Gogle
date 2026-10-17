@@ -32,14 +32,21 @@ def source_paths(root=ROOT):
     return sorted((p for p in set(files) if p.is_file()),key=lambda x:x.relative_to(root).as_posix())
 
 
+def source_bytes(path):
+    # Vercel can reserialize its config before the build; hash its meaning.
+    if path.name=='vercel.json':
+        return json.dumps(read(path),sort_keys=True,separators=(',',':'),ensure_ascii=False).encode('utf-8')
+    return path.read_bytes().replace(b'\r\n',b'\n')
+
+
 def source_files(root=ROOT):
-    return {p.relative_to(root).as_posix():sha256(p.read_bytes().replace(b'\r\n',b'\n')).hexdigest() for p in source_paths(root)}
+    return {p.relative_to(root).as_posix():sha256(source_bytes(p)).hexdigest() for p in source_paths(root)}
 
 
 def source_hash(root=ROOT):
     h=sha256()
     for p in source_paths(root):
-        if p.is_file():h.update(p.relative_to(root).as_posix().encode()+b'\0'+p.read_bytes().replace(b'\r\n',b'\n')+b'\0')
+        if p.is_file():h.update(p.relative_to(root).as_posix().encode()+b'\0'+source_bytes(p)+b'\0')
     return h.hexdigest()
 
 
@@ -60,7 +67,7 @@ def run(root=ROOT):
     if immutable.exists() and immutable.read_bytes()!=climate_path.read_bytes():raise ValueError('Snapshot climático inmutable corrupto')
     if not immutable.exists():immutable.write_bytes(climate_path.read_bytes())
     payload={'schema_version':'5.0.0','version':read(root/'package.json')['version'],
-             'source_tree_sha256':source_hash(root),'source_files':source_files(root),
+             'source_tree_sha256':source_hash(root),'source_files':source_files(root),'source_config':read(root/'vercel.json'),
              'operational':reference(pub/'data/index.json',root),
              'advanced':reference(pub/'forecasting/index.json',root),
              'research':reference(pub/'research-v5/index.json',root),
