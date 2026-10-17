@@ -426,8 +426,23 @@ Fallos explícitos: 1. 2026-07-07 Tendencia amortiguada: Predicción inválida o
 
 ## Interpretación de Única
 
-A 150 días, objetivo promedio de la ventana final: MAE 0.404 frente a 0.532 de Naive, mejora retrospectiva de 24.0%. Sin embargo, cobertura80 observada sólo64.3% (28 orígenes). No se acredita mejora robusta global. A 7–30 días la política no supera Naive; cambiar la curva por estética empeoraría la evidencia. A 240 días, el error puntual baja38.1%, pero los pocos bloques independientes y un fallo AR1 impiden promoción bajo el protocolo.
+A 150 días, objetivo promedio de la ventana final: MAE 0.404 frente a 0.532 de Naive, mejora retrospectiva de 24.0%. Sin embargo, cobertura80 observada sólo64.3% (28 orígenes). No se acredita mejora robusta global. A 7–30 días la política no supera Naive; cambiar la curva por estética empeoraría la evidencia. A 240 días, el error puntual baja38.1%, pero los pocos bloques independientes y un fallo del candidato de tendencia impiden promoción bajo el protocolo.
 
 El menor error de un candidato observado después de evaluar todos los objetivos no convierte a ese candidato en un ganador validado. Las recomendaciones actuales se basan sólo en errores anteriores maduros. No se han añadido variables macro/clima con historial de publicación desconocido.
 
 El rango de un promedio no se dibuja como banda diaria. El escenario de cosecha no es precio en chacra, rentabilidad neta ni recomendación de siembra garantizada.
+
+
+## Precisiones sobre la implementación
+
+AR1 conserva la transformación de V5: media condicional lognormal con
+corrección de varianza, documentada en sus metadatos. Las regresiones directas
+y Fourier transforman sin esa corrección (estimación de mediana). La frase
+general del protocolo sobre mediana se refiere a estas regresiones; no debe
+extenderse a AR1. Todos los candidatos se comparan por su error observado,
+sin modificar parámetros ni seleccionar después de ver esta auditoría.
+
+Los dos fallos registrados corresponden a tendencia amortiguada: Huamantanga
+el26/10/2022 y Única el07/07/2026. Una pendiente negativa prolongada produjo
+valores fuera del contrato. Se rechazan, sin recortar precios ni sustituirlos
+por predicciones de otro candidato bajo el mismo nombre.
