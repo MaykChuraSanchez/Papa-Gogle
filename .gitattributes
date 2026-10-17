@@ -4,3 +4,12 @@ agrodecide/forecasting/models.py -text whitespace=blank-at-eol,blank-at-eof,spac
 agrodecide/forecasting/features.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 agrodecide/forecasting/engine.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 agrodecide/forecasting/data.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# V5 run fingerprints use exact source bytes across Windows and Linux.
+agrodecide/research_v5/*.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+agrodecide/climate_v5/*.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Content-addressed evidence must retain its exact byte checksums.
+public/research-v5/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+public/climate-v5/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+public/release.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

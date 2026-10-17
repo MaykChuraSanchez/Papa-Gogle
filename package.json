@@ -1,17 +1,20 @@
 {
   "name": "agrodecide-papa",
   "private": true,
-  "version": "4.3.0",
+  "version": "5.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "start": "vite --host 127.0.0.1",
-    "build": "tsc --noEmit && vite build",
+    "build": "node scripts/verify_release.mjs && tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "lint": "tsc --noEmit",
     "test": "tsx --test src/utils/*.test.ts server/*.test.ts",
     "data:update": "python -m agrodecide.v4.pipeline",
-    "data:train": "python -m agrodecide.v4.pipeline --retrain"
+    "data:train": "python -m agrodecide.v4.pipeline --retrain",
+    "data:research": "python -m agrodecide.research_v5.run",
+    "data:publish-research": "python scripts/publish_research_v5.py",
+    "release:seal": "python scripts/publish_release_v5.py"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",

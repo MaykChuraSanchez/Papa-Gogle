@@ -37,7 +37,7 @@ jobs:
           path: data/v4
           key: agrodecide-v41-${{ github.run_id }}
           restore-keys: agrodecide-v41-
-      - run: pip install -r requirements-v4.txt
+      - run: pip install -r requirements-v5.txt
       - run: npm ci
       - name: Descargar, validar y generar pronósticos
         env:
@@ -64,6 +64,9 @@ jobs:
             public/data
             public/analytics
             public/forecasting
+            public/research-v5
+            public/climate-v5
+            public/release.json
             dist
           retention-days: 30
       - name: Publicar versión verificada en Vercel

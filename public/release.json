@@ -1,0 +1,47 @@
+{
+  "schema_version": "5.0.0",
+  "version": "5.0.0",
+  "source_tree_sha256": "5e375e96cc40f28354cc1ccb1a697e169f60ef9709aeff348509827895518e6d",
+  "operational": {
+    "url": "/data/index.json",
+    "sha256": "30868199c6ef7ccc9125d9b54a7351d15a5e2662baa7ae92777e49b188bfeaaf",
+    "bytes": 213156,
+    "normalization": "LF"
+  },
+  "advanced": {
+    "url": "/forecasting/index.json",
+    "sha256": "43e910816e978bbfd43a70fc000815a5ea3d3a3b7e60d024190336a59f368b70",
+    "bytes": 323,
+    "normalization": "LF"
+  },
+  "research": {
+    "url": "/research-v5/index.json",
+    "sha256": "892a8e4997a20cbd3e9f7277741ffe464d64cff4990ca88bf411601f97fa3bfc",
+    "bytes": 4176,
+    "normalization": "none"
+  },
+  "climate": {
+    "url": "/climate-v5/66f1360eeeda738138cb56dade0154449895a0c369b25e3e53c65e2bebb1d320.json",
+    "sha256": "66f1360eeeda738138cb56dade0154449895a0c369b25e3e53c65e2bebb1d320",
+    "bytes": 49401,
+    "normalization": "none"
+  },
+  "research_run_id": "research-v5-d8d020466b89b190691f",
+  "operational_runs": {
+    "Amarilla": "20261015T114246_d9d9f6f75d",
+    "Blanca": "20261015T114301_a36b21701f",
+    "Canchán": "20261015T114317_2a39d1c9a0",
+    "Color": "20261015T114332_84dba79637",
+    "Huamantanga": "20261015T114347_864da82a26",
+    "Huayro": "20261015T114401_a9467d972c",
+    "Negra Andina": "20261015T114417_81a0e4518a",
+    "Peruanita": "20261015T114431_d00e9873a8",
+    "Yungay": "20261015T114446_233f82b29e",
+    "Única": "forecasting-d68cbd76f386-2026-10-15"
+  },
+  "data_as_of": "2026-10-15",
+  "climate_as_of": "2026-10-16",
+  "scope": "Published core preserved; complementary research does not override the operational model.",
+  "build_id": "agro-v5-f1c2352d1cd4abad3059",
+  "sealed_at": "2026-10-16T19:21:58.356427-05:00"
+}

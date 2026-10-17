@@ -15,3 +15,6 @@ __pycache__/
 
 # Evidencia visual de desarrollo; se entrega localmente.
 docs/screenshots/v42*.jpg
+
+# Emitted during the Vercel build, bound to the sealed release.
+public/deployment.json

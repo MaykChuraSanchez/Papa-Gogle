@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agrodecide:climate-evidence:1.0.0",
+  "title": "AgroDecide · evidencia climática contextual",
+  "type": "object",
+  "required": ["schema_version", "generated_at", "as_of", "context", "evidence", "indicators", "regional_scenarios", "source_checks", "limitations"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "as_of": {"type": "string", "format": "date"},
+    "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidence"}},
+    "indicators": {"type": "array", "items": {"type": "object", "required": ["id", "label", "quantity", "value", "unit", "evidence_id", "model_eligible"], "properties": {"model_eligible": {"const": false}, "value": {"type": ["number", "null"]}}}},
+    "regional_scenarios": {"type": "array", "items": {"type": "object", "required": ["id", "kind", "assumption", "evidence_ids", "price_effect", "probability", "price_simulation_enabled"], "properties": {"kind": {"const": "agricultural_hypothesis"}, "price_effect": {"type": "null"}, "probability": {"type": "null"}, "price_simulation_enabled": {"const": false}}}},
+    "limitations": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "dayOrNull": {"type": ["string", "null"], "format": "date"},
+    "evidence": {
+      "type": "object",
+      "required": ["id", "kind", "title", "summary", "issue_date", "available_at", "valid_from", "valid_to", "geography", "spatial_scope", "risk_scope", "source", "model_eligible", "status"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["observation", "institutional_forecast", "agricultural_hypothesis", "economic_simulation"]},
+        "issue_date": {"$ref": "#/$defs/dayOrNull"},
+        "available_at": {"type": "string", "format": "date"},
+        "valid_from": {"$ref": "#/$defs/dayOrNull"},
+        "valid_to": {"$ref": "#/$defs/dayOrNull"},
+        "model_eligible": {"const": false},
+        "status": {"enum": ["not_yet_available", "expired", "historical", "update_due", "current_context"]},
+        "source": {
+          "type": "object",
+          "required": ["institution", "title", "url", "sha256", "retrieved_at"],
+          "properties": {"url": {"type": "string", "format": "uri"}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "retrieved_at": {"type": "string", "format": "date-time"}}
+        }
+      }
+    }
+  }
+}

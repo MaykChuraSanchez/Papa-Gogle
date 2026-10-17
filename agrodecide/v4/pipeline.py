@@ -33,6 +33,18 @@ def main():
         from agrodecide.forecasting.monitor import run as monitor_advanced
         monitor_advanced()
         export()
+        # Build one coherent immutable bundle; any exception leaves the live
+        # deployment on its previous validated release.
+        from agrodecide.research_v5.run import run as research
+        research()
+        from scripts.publish_research_v5 import publish
+        publish()
+        # The climate CLI has independent source guards and keeps old snapshots.
+        import subprocess
+        from .storage import ROOT
+        subprocess.run([sys.executable,'-m','agrodecide.climate_v5.build','--refresh'],cwd=ROOT,check=True)
+        from scripts.publish_release_v5 import run as seal
+        seal()
         if status['state']=='DEGRADED':
             raise RuntimeError('Ingesta parcial; revisa status.json. Se preservaron meses válidos.')
     except Exception as exc:
