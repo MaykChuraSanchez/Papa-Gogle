@@ -1,0 +1,186 @@
+{
+  "schema_version": "5.0.0",
+  "date": "2026-10-16",
+  "owner_production_confirmation": "Sí, publicar en producción",
+  "production": {
+    "date": "2026-10-16",
+    "url": "https://papa-gogle.vercel.app",
+    "commit": "e255a9d7b1e4d0082d0621397f4363c126a9e830",
+    "environment": "production",
+    "build_id": "agro-v5-cfbfec47d3bb4846be5c",
+    "research_run_id": "research-v5-d8d020466b89b190691f",
+    "data_as_of": "2026-10-15",
+    "climate_as_of": "2026-10-16",
+    "series": 10,
+    "assistant": {
+      "configured": false,
+      "provider": "local"
+    },
+    "gzip_http_content_encoding": null,
+    "auditorias_modelos": [
+      "Naive",
+      "AR1 log · ventana validada"
+    ],
+    "status": "verified_live_after_owner_confirmation"
+  },
+  "preview": {
+    "url": "https://papa-gogle-git-codex-agrodecide-v5-maykchurasanchez.vercel.app/",
+    "verified_commit": "461384cc20bcb21928cae97fd772ec654cfad112",
+    "build_id": "agro-v5-cfbfec47d3bb4846be5c",
+    "access": "Verified in owner authenticated browser; preview protection retained"
+  },
+  "tests": {
+    "python": 117,
+    "typescript_and_server": 32,
+    "build_assets_verified": 130
+  },
+  "browser": {
+    "date": "2026-10-16",
+    "method": "Codex browser Playwright and real screenshots",
+    "checks": [
+      {
+        "case": "auditoría gzip móvil",
+        "passed": true,
+        "origins": 12
+      },
+      {
+        "case": "inicio responsive",
+        "hero": "El futuro de tu cosechaempieza con datos.",
+        "overflow": false,
+        "photoCount": 2,
+        "width": 320
+      },
+      {
+        "case": "inicio responsive",
+        "hero": "El futuro de tu cosechaempieza con datos.",
+        "overflow": false,
+        "photoCount": 2,
+        "width": 390
+      },
+      {
+        "case": "inicio responsive",
+        "hero": "El futuro de tu cosechaempieza con datos.",
+        "overflow": false,
+        "photoCount": 2,
+        "width": 820
+      },
+      {
+        "case": "inicio responsive",
+        "hero": "El futuro de tu cosechaempieza con datos.",
+        "overflow": false,
+        "photoCount": 2,
+        "width": 1440
+      },
+      {
+        "case": "ruta móvil Datos",
+        "errors": [],
+        "heading": "Conoce de dónde viene cada dato",
+        "overflow": false
+      },
+      {
+        "case": "ruta móvil Explorar precios",
+        "errors": [],
+        "heading": "La historia detrás de cada precio.",
+        "overflow": false
+      },
+      {
+        "case": "ruta móvil Mercado",
+        "errors": [],
+        "heading": "Mira el mercado, entiende el territorio",
+        "overflow": false
+      },
+      {
+        "case": "ruta móvil Clima y El Niño",
+        "errors": [],
+        "heading": "El clima importa. Su efecto se comprueba.",
+        "overflow": false
+      },
+      {
+        "case": "ruta móvil Sembrar",
+        "errors": [],
+        "heading": "Planifica tu próxima campaña",
+        "overflow": false
+      },
+      {
+        "case": "ruta móvil Coseché",
+        "errors": [],
+        "heading": "Compara tus alternativas de venta",
+        "overflow": false
+      },
+      {
+        "case": "ruta móvil Laboratorio",
+        "errors": [],
+        "heading": "Decide con datos. Comprueba el pronóstico.",
+        "overflow": false
+      },
+      {
+        "case": "ruta móvil Asistente",
+        "errors": [],
+        "heading": "Conversemos sobre tu próxima decisión.",
+        "overflow": false
+      },
+      {
+        "case": "asistente local Amarilla",
+        "response": [
+          "AGRODECIDE · RESPUESTA LOCALEl último precio observado de Amarilla en Gran Mercado Mayorista de Lima es S/ 3.60/kg, con fecha 2026-10-15. Es una cotización mayorista, no un precio en chacra.  En «Explorar precios» puedes filtrar desde 2019, comparar variedades, ver oferta observada y descargar tu selección."
+        ]
+      },
+      {
+        "case": "ruta 320 Datos",
+        "heading": "Conoce de dónde viene cada dato",
+        "overflow": false
+      },
+      {
+        "case": "ruta 320 Explorar precios",
+        "heading": "La historia detrás de cada precio.",
+        "overflow": false
+      },
+      {
+        "case": "ruta 320 Mercado",
+        "heading": "Mira el mercado, entiende el territorio",
+        "overflow": false
+      },
+      {
+        "case": "ruta 320 Clima y El Niño",
+        "heading": "El clima importa. Su efecto se comprueba.",
+        "overflow": false
+      },
+      {
+        "case": "ruta 320 Sembrar",
+        "heading": "Planifica tu próxima campaña",
+        "overflow": false
+      },
+      {
+        "case": "ruta 320 Coseché",
+        "heading": "Compara tus alternativas de venta",
+        "overflow": false
+      },
+      {
+        "case": "ruta 320 Laboratorio",
+        "heading": "Abre el modelo. Revisa la evidencia.",
+        "overflow": false
+      },
+      {
+        "case": "ruta 320 Asistente",
+        "heading": "Conversemos sobre tu próxima decisión.",
+        "overflow": false
+      },
+      {
+        "case": "exportación CSV histórico",
+        "download": "agrodecide-Amarilla-historico.csv"
+      },
+      {
+        "case": "Color 7d excluye AR1 inválido",
+        "reason": "ModeloFase y origenMotivoAR1 log · ventana validadacalibration · 2024-12-31AR(1) no estable: |phi| >= 1"
+      }
+    ],
+    "console": [],
+    "reduced_motion": "CSS and lifecycle guards inspected; browser preference emulation unavailable"
+  },
+  "limitations": [
+    "0 promociones robustas V5; no precisión futura garantizada",
+    "V2 operativo separado de investigación V5",
+    "GPT no configurado: modo local real",
+    "Publicación nocturna necesita secretos Vercel y persistencia del worker"
+  ]
+}

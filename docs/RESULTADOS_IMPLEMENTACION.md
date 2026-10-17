@@ -24,7 +24,7 @@ Run científico: `research-v5-d8d020466b89b190691f`. Código: `08791f8d02eea6205
 | Inicio y fotos consentidas | Hecho | Dashboard/FarmScene/FieldStories, public/images |2fotos adultas,4WebP; pausa/reducedmotion/offscreen | Profundidad CSS ilustrativa; no retratos sintéticos ni geografía inventada |
 | Simuladores y asistente sin API | Conservado y comprobado | ConnectedViews, forecast.ts, api/assistant.ts | Cálculos de merma/flete/comisión y grounding publicados | Sin clave no se activa GPT; ubicación no genera precio en chacra |
 | Automatización nocturna | Código preparado, operación pendiente | .github/workflows/agrodecide.yml, v4/pipeline.py |03:00Perú, actualización→evaluación→sellado→tests→deploy | Secrets/persistencia remota aún no acreditados; no afirmar operación activa |
-| Preview y producción | En revisión final | Ver recibo de QA de la entrega | Build pasa; preview y commit se registran al publicarse | Producción requiere confirmación final del brief13.9 |
+| Preview y producción | Hecho, autorizado y verificado | reference/qa/V5_VERIFICACION.json | Producción e255a9d; build agro-v5-cfbfec47d3bb4846be5c; API y auditorías verificadas | La operación nocturna sigue requiriendo credenciales |
 
 ## Lo que enseñan los errores
 
@@ -34,7 +34,7 @@ En V2, el modelo operativo h180 de Única tenía MAE≈0,614 vs≈0,701 de Naive
 
 ## Verificación técnica
 
-Python:116 pruebas correctas con temporales dentro del workspace; TypeScript/servidor:32. Las pruebas incluyen fallos de fuentes, snapshots corruptos, publicación atómica, objetivos faltantes, días futuros, fuga de información, índices climáticos separados, merma, bandas anidadas y reconciliación de los errores desde SISAP. Los primeros temporales de Windows no eran escribibles en el sandbox: ese intento no cuenta como aprobado; `scripts/run_tests_v5.py` resuelve la ubicación de fixtures sin modificar datos reales.
+Python:117 pruebas correctas con temporales dentro del workspace; TypeScript/servidor:32. Las pruebas incluyen fallos de fuentes, snapshots corruptos, publicación atómica, objetivos faltantes, días futuros, fuga de información, índices climáticos separados, merma, bandas anidadas y reconciliación de los errores desde SISAP. Los primeros temporales de Windows no eran escribibles en el sandbox: ese intento no cuenta como aprobado; `scripts/run_tests_v5.py` resuelve la ubicación de fixtures sin modificar datos reales.
 
 `npm run build` valida130assets, código de investigación exacto y coherencia del release antes de compilar. `.gitattributes` preserva bytes de evidencias y fingerprints; índices heredados se hashean con normalización LF explícita. Este detalle evita que Windows pase localmente y Linux rechace la misma publicación.
 
@@ -44,8 +44,18 @@ Capturas y comprobaciones DOM se realizan con el navegador real de Codex, median
 
 ## Operación y siguientes pasos
 
-1. Revisar preview y confirmar producción de esta entrega concreta; no equivale a garantizar precios futuros.
+1. V5 publicada tras la confirmación explícita del propietario; continuar la evaluación prospectiva sin prometer exactitud futura.
 2. Configurar credenciales privadas del workflow y respaldo/persistencia del worker para actualización desatendida real.
 3. Guardar emisiones diarias inmutables y evaluar prospectivamente cuando existan objetivos observados.
 4. Obtener series meteorológicas locales y vintages de macro/volumen antes de atribuirles mejora predictiva.
 5. Ampliar los modelos avanzados a otras variedades según evidencia y costo, manteniendo los casos sin ganancia.
+
+## Producción verificada
+
+URL [papa-gogle.vercel.app](https://papa-gogle.vercel.app/), commit `e255a9d7b1e4d0082d0621397f4363c126a9e830`, build `agro-v5-cfbfec47d3bb4846be5c`. Se verificaron manifiestos, código, diez series, catálogo climático y auditoría gzip por HTTP, más Inicio y Laboratorio en navegador real. El propietario confirmó «Sí, publicar en producción». [Recibo](../reference/qa/V5_VERIFICACION.json).
+
+![Antes](screenshots/V5-antes-escritorio.png)
+
+![Vista V5](screenshots/V5-preview-inicio.png)
+
+![Móvil](screenshots/V5-inicio-movil.png)

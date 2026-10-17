@@ -104,3 +104,5 @@ Antes de producción: rama `codex/agrodecide-v5` → preview de Vercel → QA y 
 - [Contrato de investigación](docs/modelos/CONTRATO_RESEARCH_V5.md)
 - [Fuentes y escenarios climáticos](docs/clima/FUENTES_Y_ESCENARIOS.md)
 - [Resultado de implementación y pendientes](docs/RESULTADOS_IMPLEMENTACION.md)
+
+V5 publicada y verificada el16/10/2026 tras autorización del propietario:117 tests Python,32 TS/servidor, build `agro-v5-cfbfec47d3bb4846be5c`. [Recibo de producción](reference/qa/V5_VERIFICACION.json). El laboratorio complementario conserva referencias cuando la evidencia no justifica un cambio.
