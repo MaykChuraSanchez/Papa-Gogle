@@ -99,6 +99,15 @@ def published_files(root=ROOT):
 
     add('climate-v5/index.json')
     release = read(add('release.json'))
+    if release.get('harvest'):
+        harvest=read(add('harvest-v6/index.json'))
+        if harvest['run_id']!=release['harvest_run_id']:raise ValueError('Ejecución cosecha distinta del sello')
+        for row in harvest['series']:
+            summary=read(add('harvest-v6/'+row['file']))
+            for name in [row['file'],*summary['details'].values()]:
+                path=add('harvest-v6/'+name)
+                if sha256(path.read_bytes()).hexdigest()!=name[:64]:raise ValueError('Checksum cosecha incorrecto')
+        ref=release['harvest'];assert sha256((public/ref['url'].lstrip('/')).read_bytes()).hexdigest()==ref['sha256']
     add('deployment.json')
     for field in ('operational', 'advanced', 'research', 'climate'):
         reference = release[field]
@@ -144,6 +153,7 @@ def collect_paths(root=ROOT, include_dist=True):
 def manifest(paths, root=ROOT):
     release = read(root / 'public/release.json')
     return {'schema_version': '5.0.0', 'build_id': release['build_id'],
+            'harvest_run_id': release.get('harvest_run_id'),
             'research_run_id': release['research_run_id'],
             'source_tree_sha256': release['source_tree_sha256'],
             'exclusions': 'Credenciales, warehouse, caché, originales y archivo demo; sólo publicación vigente.',
@@ -156,10 +166,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--list', action='store_true', help='Lista verificable; no crea ZIP')
     parser.add_argument('--source-only', action='store_true', help='Omite dist; conserva los assets públicos')
-    parser.add_argument('--output', type=Path, default=OUTPUT)
+    parser.add_argument('--output', type=Path)
     args = parser.parse_args()
     paths = collect_paths(include_dist=not args.source_only)
     package = manifest(paths)
+    top=TOP.replace('V5','V6') if package.get('harvest_run_id') else TOP
+    if args.output is None:args.output=OUTPUT.with_name('AgroDecide_Papa_V6.zip') if package.get('harvest_run_id') else OUTPUT
     if args.list:
         print(json.dumps(package, ensure_ascii=False, indent=2))
         return
@@ -176,13 +188,13 @@ def main():
     try:
         with ZipFile(temporary, 'w', ZIP_DEFLATED, compresslevel=7) as archive:
             for path in paths:
-                archive.write(path, TOP + '/' + path.relative_to(ROOT).as_posix())
-            archive.writestr(TOP + '/PACKAGE_MANIFEST.json', json.dumps(package, ensure_ascii=False, indent=2))
+                archive.write(path, top + '/' + path.relative_to(ROOT).as_posix())
+            archive.writestr(top + '/PACKAGE_MANIFEST.json', json.dumps(package, ensure_ascii=False, indent=2))
         with ZipFile(temporary) as archive:
             if archive.testzip() is not None:
                 raise RuntimeError('ZIP corrupto')
             for entry in package['files']:
-                if sha256(archive.read(TOP + '/' + entry['path'])).hexdigest() != entry['sha256']:
+                if sha256(archive.read(top + '/' + entry['path'])).hexdigest() != entry['sha256']:
                     raise RuntimeError('Bytes alterados durante empaquetado: ' + entry['path'])
         os.replace(temporary, args.output)
     finally:

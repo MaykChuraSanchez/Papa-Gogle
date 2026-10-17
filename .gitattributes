@@ -13,3 +13,5 @@ agrodecide/climate_v5/*.py -text whitespace=blank-at-eol,blank-at-eof,space-befo
 public/research-v5/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 public/climate-v5/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 public/release.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+public/harvest-v6/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/modelos/PROTOCOLO_V6.md -text

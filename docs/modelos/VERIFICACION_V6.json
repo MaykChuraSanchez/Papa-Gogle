@@ -1,0 +1,14 @@
+{
+  "run_id": "harvest-v6-1530308447ded0bad63b",
+  "code_hash": "b643632490f73dfdfd2d58fecb4556bd538e297a317e6b66965c5706d48652ba",
+  "series_verified": 10,
+  "evaluations_verified": 140,
+  "dated_objectives_reconciled": 7780,
+  "checks": [
+    "Cotizaciones originales",
+    "Métricas pareadas",
+    "Madurez de objetivos de selección",
+    "Calibración sin errores futuros",
+    "Agregación de curvas actuales"
+  ]
+}

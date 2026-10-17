@@ -78,6 +78,17 @@ def run(root=ROOT):
              'climate_as_of':climate['as_of'],
              'scope':'Published core preserved; complementary research does not override the operational model.'}
     payload['build_id']='agro-v5-'+sha256(json.dumps(payload,sort_keys=True,separators=(',',':')).encode()).hexdigest()[:20]
+    harvest_path=pub/'harvest-v6/index.json'
+    if harvest_path.exists():
+        from agrodecide.research_v6.run import fingerprint
+        harvest=read(harvest_path)
+        if harvest['code_hash']!=fingerprint():raise ValueError('El código de cosecha cambió después de entrenar')
+        for s in harvest['series']:
+            if s['history_hash']!=core_rows[s['variety']]['data_hash']:raise ValueError('Cosecha con histórico incompatible')
+        if {s['variety'] for s in harvest['series']}!=set(core_rows):raise ValueError('Catálogo cosecha incompleto')
+        payload['harvest']=reference(harvest_path,root)
+        payload['harvest_run_id']=harvest['run_id']
+        payload['build_id']='agro-v6-'+sha256(json.dumps(payload,sort_keys=True,separators=(',',':')).encode()).hexdigest()[:20]
     payload['sealed_at']=datetime.now(ZoneInfo('America/Lima')).isoformat()
     atomic_json(pub/'release.json',payload)
     return payload
