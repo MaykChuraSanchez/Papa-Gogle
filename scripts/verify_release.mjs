@@ -35,6 +35,7 @@ const paths=[];function walk(dir){for(const name of readdirSync(dir)){const p=re
 ['package.json','package-lock.json','vercel.json','vite.config.ts','requirements-v4.txt','requirements-v5.txt','.gitattributes'].forEach(p=>paths.push(resolve(root,p)));
 const code=createHash('sha256');const pairs=[...new Set(paths)].map(p=>[relative(root,p).replaceAll('\\','/'),p]).sort((a,b)=>a[0]<b[0]?-1:a[0]>b[0]?1:0);
 for(const [name,p]of pairs){code.update(name+'\0');code.update(readFileSync(p,'utf8').replaceAll('\r\n','\n'));code.update('\0');}
-if(code.digest('hex')!==release.source_tree_sha256)fail('el código cambió; vuelve a ejecutar npm run release:seal');
+const actualCode=code.digest('hex');
+if(actualCode!==release.source_tree_sha256){const current=Object.fromEntries(pairs.map(([name,p])=>[name,hash(readFileSync(p,'utf8').replaceAll('\r\n','\n'))]));const names=new Set([...Object.keys(current),...Object.keys(release.source_files||{})]);const changed=[...names].filter(name=>current[name]!==release.source_files?.[name]);console.error(JSON.stringify({expected:release.source_tree_sha256,actual:actualCode,changed_files:changed}));fail('el código cambió; vuelve a ejecutar npm run release:seal');}
 writeFileSync(resolve(pub,'deployment.json'),JSON.stringify({build_id:release.build_id,source_commit:process.env.VERCEL_GIT_COMMIT_SHA||null,environment:process.env.VERCEL_ENV||'local',built_at:new Date().toISOString()})+'\n');
 console.log(JSON.stringify({build_id:release.build_id,research_run_id:research.run_id,assets_verified:checked.size,data_as_of:release.data_as_of}));

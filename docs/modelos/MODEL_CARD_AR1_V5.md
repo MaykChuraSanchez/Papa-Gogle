@@ -34,4 +34,3 @@ Las versiones efectivamente utilizadas están en el JSON del run; las páginas `
 
 
 El campo técnico de AR1 `observations` cuenta los días de ajuste regularizados de la ventana (incluye ffill causal declarado), no nuevas cotizaciones. El número de cotizaciones originales y días imputados se conserva por separado en `series.quality`. Ningún objetivo de evaluación se imputa.
-

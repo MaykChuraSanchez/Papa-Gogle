@@ -53,5 +53,6 @@
       "includeFiles": "public/data/*.json",
       "maxDuration": 30
     }
-  }
+  },
+  "installCommand": "npm ci"
 }

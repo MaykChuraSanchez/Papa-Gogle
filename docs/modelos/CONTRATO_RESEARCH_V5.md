@@ -36,4 +36,3 @@ La investigación final es sólo de precio. No exponer `LIVE` como sinónimo de 
 Se corrigió un problema encontrado durante la ejecución: algunas fechas internas mensuales caían en ausencia de cotización real (p.ej.2023-08-03). Ahora se retrocede a una cotización observada dentro de7d, sin adelantar fecha ni mirar precios objetivo. Esa reparación no cambia la compuerta ni selecciona el modelo por resultados de auditoría.
 
 Una mejora adicional exige más historia homogénea fechada y/o evaluación prospectiva. Añadir días solapados o tratar variedades correlacionadas como réplicas independientes no crea potencia estadística. El volumen, IPC y clima pendientes requieren publicación/revisión verificable antes de poder atribuir mejora incremental.
-
