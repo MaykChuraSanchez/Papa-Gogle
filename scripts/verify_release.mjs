@@ -27,6 +27,26 @@ function checkAsset(name,expectedContentHash,expected={}){
 }
 
 research.series.forEach(s=>checkAsset(s.file,undefined,{variety:s.variety}));
+if(release.harvest){
+ const ref=release.harvest,bytes=readFileSync(file(ref.url));if(hash(bytes)!==ref.sha256)fail('evidencia cosecha cambió después del sellado');
+ const catalog=JSON.parse(bytes);if(catalog.run_id!==release.harvest_run_id||catalog.series.length!==10)fail('catálogo cosecha incompatible');
+ const checkedHarvest=new Set();
+ function checkHarvest(name,expected){
+  if(!/^[a-f0-9]{64}\.json$/.test(name))fail('ruta cosecha inválida');
+  const raw=readFileSync(resolve(pub,'harvest-v6',name));if(hash(raw)!==name.slice(0,64))fail('checksum cosecha');
+  const data=JSON.parse(raw);for(const [k,v]of Object.entries(expected))if(data[k]!==v)fail('metadatos cosecha incompatibles');
+  if(data.run_id!==catalog.run_id)fail('mezcla de ejecuciones cosecha');
+  checkedHarvest.add(name);
+  if(data.details)for(const [key,value]of Object.entries(data.details)){const [h,...parts]=key.split('-');checkHarvest(value,{...expected,horizon:Number(h),target:parts.join('-')});}
+ }
+ for(const s of catalog.series){const main=core.series.find(r=>r.variety===s.variety);if(!main||read(resolve(pub,'data',main.file)).data_hash!==s.history_hash)fail('historia cosecha antigua');checkHarvest(s.file,{variety:s.variety,history_hash:s.history_hash});}
+ const digest=createHash('sha256');
+ for(const name of readdirSync(resolve(root,'agrodecide/research_v6')).filter(n=>n.endsWith('.py')).sort()){digest.update(name);digest.update(readFileSync(resolve(root,'agrodecide/research_v6',name),'utf8').replaceAll('\r\n','\n'));}
+ digest.update('PROTOCOLO_V6.md');digest.update(readFileSync(resolve(root,'docs/modelos/PROTOCOLO_V6.md'),'utf8').replaceAll('\r\n','\n'));
+ digest.update('models.py');digest.update(readFileSync(resolve(root,'agrodecide/research_v5/models.py'),'utf8').replaceAll('\r\n','\n'));
+ if(digest.digest('hex')!==catalog.code_hash)fail('código cosecha distinto del evaluado');
+ console.log(JSON.stringify({harvest_run_id:catalog.run_id,harvest_assets_verified:checkedHarvest.size}));
+}
 const modelCode=createHash('sha256');
 for(const name of readdirSync(resolve(root,'agrodecide/research_v5')).filter(n=>n.endsWith('.py')).sort()){modelCode.update(name);modelCode.update(readFileSync(resolve(root,'agrodecide/research_v5',name)));}
 if(modelCode.digest('hex')!==research.code_hash)fail('código de investigación distinto del evaluado');

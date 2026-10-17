@@ -1,0 +1,125 @@
+{
+  "schema_version": "6.0.0",
+  "code_hash": "b643632490f73dfdfd2d58fecb4556bd538e297a317e6b66965c5706d48652ba",
+  "protocol_sha256": "6de26aae8f9d53a502c5f24173a89255099ba97120aa4629c019706a186dee20",
+  "run_id": "harvest-v6-1530308447ded0bad63b",
+  "generated_at": "2026-10-16T21:08:46.415879-05:00",
+  "limitations": [
+    "Historia retrospectiva ya explorada; no test prospectivo virgen.",
+    "Vintage SISAP actual: fecha original de publicación y revisiones no recuperadas.",
+    "Precio mayorista GMML Lima; no precio en chacra ni pronóstico regional.",
+    "Sin clima, macro ni volumen como predictores; sin garantía de precisión futura."
+  ],
+  "models": [
+    "Naive",
+    "Referencia anual",
+    "AR1 365",
+    "AR1 730",
+    "Tendencia amortiguada",
+    "Fourier 730",
+    "Fourier 1460",
+    "Ridge directo 10",
+    "Ridge directo 100",
+    "Boosting directo"
+  ],
+  "versions": {
+    "numpy": "2.0.0",
+    "pandas": "2.2.2",
+    "scipy": "1.14.1",
+    "scikit-learn": "1.6.1",
+    "statsmodels": "0.14.2",
+    "duckdb": "1.5.5"
+  },
+  "series": [
+    {
+      "variety": "Amarilla",
+      "history_hash": "d9d9f6f75d2642f8b6de20dbfb42a46353e72fb333b499ba20a9e8ac5004a70b",
+      "last_date": "2026-10-15",
+      "last_price": 3.6,
+      "observations": 2843,
+      "run_id": "harvest-v6-1530308447ded0bad63b",
+      "file": "aa48f75667b6ccacca0e2ca53e23eeb57718484176e0755d75dbf17b10b5dd74.json"
+    },
+    {
+      "variety": "Blanca",
+      "history_hash": "a36b21701fb37879b0786cfd8689dc304c731feb2bdf8dc417020104e18efe7d",
+      "last_date": "2026-10-15",
+      "last_price": 1.11,
+      "observations": 2843,
+      "run_id": "harvest-v6-1530308447ded0bad63b",
+      "file": "6fe01c0b71b2a4405e00c1afa19dee5796af0f3fe82cb7d038f7c1a23fa66f37.json"
+    },
+    {
+      "variety": "Canchán",
+      "history_hash": "2a39d1c9a0c70ae3ea29b677dfcd937aefb364d6d35acdee1338784e0b9d19ff",
+      "last_date": "2026-10-15",
+      "last_price": 2.23,
+      "observations": 2843,
+      "run_id": "harvest-v6-1530308447ded0bad63b",
+      "file": "8262b4e8924c434908518ab21cfa536f2d5c0a54e04a4f3d13b3bb9d4982d9e9.json"
+    },
+    {
+      "variety": "Color",
+      "history_hash": "84dba79637212a4956052a1ab204691a0917eb166befb0f5b5fdfa2bb746b533",
+      "last_date": "2026-10-15",
+      "last_price": 2.02,
+      "observations": 2843,
+      "run_id": "harvest-v6-1530308447ded0bad63b",
+      "file": "71b298d5f0582b7ed9e67853af83a6bcfb0adb875211698d5c8c2952f6e07906.json"
+    },
+    {
+      "variety": "Huamantanga",
+      "history_hash": "864da82a262f0dfc160691781cbf4e7a5bb80761087b545c7f132fa491d1edd6",
+      "last_date": "2026-10-15",
+      "last_price": 2.0,
+      "observations": 2841,
+      "run_id": "harvest-v6-1530308447ded0bad63b",
+      "file": "304ae1a780103d662550ea700eabab0a688006460fcb1857f273595255019ff0.json"
+    },
+    {
+      "variety": "Huayro",
+      "history_hash": "a9467d972caf8937a71e452dcc8497cd6345eac2ef0ddb7d9e594e829593a603",
+      "last_date": "2026-10-15",
+      "last_price": 2.08,
+      "observations": 2843,
+      "run_id": "harvest-v6-1530308447ded0bad63b",
+      "file": "16db0b5f26eaed16d6f1056320ea3ea8e19f3775fffbd1cbbb512c5a647b98b2.json"
+    },
+    {
+      "variety": "Negra Andina",
+      "history_hash": "81a0e4518a64ecb58b468464606d36988dc45e7c0c62e53bbed9692d76ce3ac7",
+      "last_date": "2026-10-15",
+      "last_price": 1.48,
+      "observations": 2843,
+      "run_id": "harvest-v6-1530308447ded0bad63b",
+      "file": "529464aab1d7e7cc434ac53d9f71084adeadfe18c9d789a595fcdb71d1cd41e5.json"
+    },
+    {
+      "variety": "Peruanita",
+      "history_hash": "d00e9873a829ef88122a79f74a2a70b9117afa3dc87ed5b9e18209b167252f4d",
+      "last_date": "2026-10-15",
+      "last_price": 2.38,
+      "observations": 2843,
+      "run_id": "harvest-v6-1530308447ded0bad63b",
+      "file": "0296fc273eedd065d5939469757e6f1715fa9b0296a13844fc12cdb02caaf26a.json"
+    },
+    {
+      "variety": "Yungay",
+      "history_hash": "233f82b29e0d9e6c134373f13aacb596ad6dcd28f0b948ada0bb23bad0b7a5e8",
+      "last_date": "2026-10-15",
+      "last_price": 1.11,
+      "observations": 2843,
+      "run_id": "harvest-v6-1530308447ded0bad63b",
+      "file": "04e51aef41d35846d67c4513ef25f45154932f573d5d284f2cb55a3fb7a0250e.json"
+    },
+    {
+      "variety": "Única",
+      "history_hash": "d68cbd76f386b453a6cd2e07702e41b6b037c5eec0b7089cba3f1dba69601445",
+      "last_date": "2026-10-15",
+      "last_price": 1.81,
+      "observations": 2834,
+      "run_id": "harvest-v6-1530308447ded0bad63b",
+      "file": "c9c2f69e790c0cb15ee54016ef810793d06dda1fe50e742d1c463be2900cfaa6.json"
+    }
+  ]
+}

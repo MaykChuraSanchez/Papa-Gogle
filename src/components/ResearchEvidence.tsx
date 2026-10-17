@@ -7,10 +7,11 @@ import {TimeChart,Bars} from './Charts';
 import {Glossary} from './Glossary';
 import {money} from '../utils/forecast';
 import {saveCsv} from '../utils/analytics';
+const HarvestLab=lazy(()=>import('./HarvestLab'));
 const PublishedLab=lazy(()=>import('./ResearchLab').then(m=>({default:m.ResearchLab})));
 const percent=(v:number|null|undefined)=>v==null?null:v*100;
 const f=(v:number|null|undefined,n=3)=>v==null||!Number.isFinite(v)?'—':v.toFixed(n);
-export function ModelWorkspace(){const [mode,setMode]=useState('published');return <div className="space-y-6"><div className="workspace-switch" role="group" aria-label="Tipo de evidencia"><button aria-pressed={mode==='published'} onClick={()=>setMode('published')}>Pronóstico publicado</button><button aria-pressed={mode==='research'} onClick={()=>setMode('research')}>Evaluación AR(1) · 10 variedades</button></div>{mode==='published'?<Suspense fallback={<Card>Cargando pronóstico publicado…</Card>}><PublishedLab/></Suspense>:<ResearchEvidence/>}<Glossary/></div>;}
+export function ModelWorkspace(){const [mode,setMode]=useState('harvest');return <div className="space-y-6"><div className="workspace-switch" role="group" aria-label="Tipo de evidencia"><button aria-pressed={mode==='harvest'} onClick={()=>setMode('harvest')}>Análisis para cosecha</button><button aria-pressed={mode==='published'} onClick={()=>setMode('published')}>Pronóstico publicado</button><button aria-pressed={mode==='research'} onClick={()=>setMode('research')}>Evaluación AR(1) · 10 variedades</button></div>{mode==='harvest'?<Suspense fallback={<Card>Cargando análisis de cosecha…</Card>}><HarvestLab/></Suspense>:mode==='published'?<Suspense fallback={<Card>Cargando pronóstico publicado…</Card>}><PublishedLab/></Suspense>:<ResearchEvidence/>}<Glossary/></div>;}
 function ResearchEvidence(){
  const {series,variety}=useData();const [horizon,setHorizon]=useState(30),[view,setView]=useState('forecast'),[choice,setChoice]=useState('recommended');
  const {summary,detail,error,retry}=useResearch(variety,series?.data_hash,horizon);

@@ -106,3 +106,25 @@ Antes de producción: rama `codex/agrodecide-v5` → preview de Vercel → QA y 
 - [Resultado de implementación y pendientes](docs/RESULTADOS_IMPLEMENTACION.md)
 
 V5 publicada y verificada el16/10/2026 tras autorización del propietario:117 tests Python,32 TS/servidor, build `agro-v5-cfbfec47d3bb4846be5c`. [Recibo de producción](reference/qa/V5_VERIFICACION.json). El laboratorio complementario conserva referencias cuando la evidencia no justifica un cambio.
+
+
+## Análisis de cosecha V6
+
+Laboratorio → Análisis para cosecha: diez candidatos por variedad, 7 plazos
+(incluido150 días), precio final y promedio de la ventana final30d. Usa selección
+cronológica con errores maduros, sin cambiar automáticamente el simulador V2.
+
+- Protocolo: `docs/modelos/PROTOCOLO_V6.md`.
+- Resultados y diagnóstico individual: `docs/modelos/RESULTADOS_V6.md`.
+- Verificación de7780 objetivos: `docs/modelos/VERIFICACION_V6.json`.
+- Entrenar: `python -m agrodecide.research_v6.run` (warehouse existente).
+- Verificar: `python scripts/verify_harvest_v6.py`.
+- Publicar evidencia local: `python scripts/publish_harvest_v6.py`.
+- Sellar y construir: `npm run release:seal` y `npm run build`.
+- ZIP de entrega: `python scripts/package.py` (V6 cuando existe evidencia de cosecha).
+
+Única, promedio final a150d: MAE0.404 frente a0.532 deNaive en44orígenes;
+mejora retrospectiva24.0%, sin mejora robusta acreditada y cobertura80 sólo64.3%.
+No equivale a precisión garantizada ni a precio en chacra. Los modelos complejos
+no mejoran todos los plazos. El histórico ya fue explorado; el seguimiento
+prospectivo sigue siendo necesario.
