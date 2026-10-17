@@ -1,0 +1,34 @@
+{
+  "permission": "El propietario confirmó autorización para las dos fotos de adultos el 16/10/2026 en este chat. Fotografías aportadas por el usuario; lugar y nombres no verificados. No se usan retratos de menores.",
+  "processing": "Resize, WebP, sin EXIF; sin generar rostros, cambiar personas o atribuir testimonios.",
+  "assets": [
+    {
+      "file": "campo-cosecha-480.webp",
+      "width": 480,
+      "height": 360,
+      "bytes": 43364,
+      "source_sha256": "ffc401ad085ca2b573ca81b2da0767b069b051bed3b62df6b9956f2d29e6004a"
+    },
+    {
+      "file": "campo-cosecha-960.webp",
+      "width": 960,
+      "height": 720,
+      "bytes": 190186,
+      "source_sha256": "ffc401ad085ca2b573ca81b2da0767b069b051bed3b62df6b9956f2d29e6004a"
+    },
+    {
+      "file": "productora-andina-480.webp",
+      "width": 480,
+      "height": 527,
+      "bytes": 40822,
+      "source_sha256": "ef4c4a54b575a63ac91c7a6172a3fec75e050ff87dee33ee8f0774750e4d956f"
+    },
+    {
+      "file": "productora-andina-872.webp",
+      "width": 872,
+      "height": 957,
+      "bytes": 78954,
+      "source_sha256": "ef4c4a54b575a63ac91c7a6172a3fec75e050ff87dee33ee8f0774750e4d956f"
+    }
+  ]
+}

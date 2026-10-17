@@ -4,6 +4,24 @@
   "framework": "vite",
   "headers": [
     {
+      "source": "/(research-v5|forecasting|climate-v5)/index.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/release.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
       "source": "/data/index.json",
       "headers": [
         {
@@ -35,5 +53,6 @@
       "includeFiles": "public/data/*.json",
       "maxDuration": 30
     }
-  }
+  },
+  "installCommand": "npm ci"
 }
